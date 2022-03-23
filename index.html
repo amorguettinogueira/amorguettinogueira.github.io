@@ -9,33 +9,70 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             @font-face {font-family: 'beauty_flowerregular'; src: url('./fonts/bf/beauty_flower-webfont.woff2') format('woff2'), url('./fonts/bf/beauty_flower-webfont.woff') format('woff'); font-weight: normal; font-style: normal}
-            body {background-image:url("./burgess-milner-OYYE4g-I5ZQ-unsplash-vignette.jpg");background-repeat:no-repeat;background-size:cover;display:flex;flex-direction:row;justify-content:center;align-items:center;background-position:center center;}
-            .floatin-bg {background-color:white;opacity:0.7;box-shadow: 3px 3px 5px #888888;border-radius:10px;height:50vh;width:50vw;position:absolute;left:calc(50vw - 25vw);top:calc(50vh - 25vh)}
+            body {background-image:url("./burgess-milner-OYYE4g-I5ZQ-unsplash-vignette.jpg");background-repeat:no-repeat;background-size:cover;display:flex;flex-direction:row;justify-content:center;align-items:center;background-position:center center}
+            .floatin-bg {background-color:white;opacity:0.8;box-shadow: 3px 3px 5px #888888;border-radius:10px;height:50vh;width:50vw;position:absolute;left:calc(50vw - 25vw);top:calc(50vh - 25vh)}
             .d-center {height:50vh;width:50vw;z-index:100;display:flex;flex-direction:column;flex-wrap:nowrap;justify-content:center;align-items:center}
-            @media screen and (orientation:portrait) and (max-width: 1167px) {
-                .floatin-bg {width:566px;left:calc(50vw - 283px)}
-            }
-            @media screen and (orientation:landscape) and (max-height: 1131px) {
-                .floatin-bg {height:584px;top:calc(50vh - 292px)}
-            }
-            @media screen and (orientation:portrait) and (max-height: 90px) {
-                .floatin-bg {border-radius:0px;width:100%;left:0px;}
-            }
-            @media screen and (orientation:landscape) and (max-width: 90px) {
-                .floatin-bg {border-radius:0px;height:100%;top:0px;}
-            }
             .d-center p{font-family: "Century Gothic", Tahoma, Verdana, Geneva, sans-serif;font-weight:500;font-size: 40px;color:rgb(75, 66, 66);text-shadow:1px 1px #000;text-align:center;margin-top: 5px;;margin-bottom: 5px}
-            .flor-zaya{font-family: "beauty_flowerregular", Tahoma, Verdana, Geneva, sans-serif;font-weight:500;font-size: 70px;color:#aa1a44;text-align:center;margin-right:10px;line-height: 2;letter-spacing:2px;}
-            .message{font-family: "Century Gothic", Tahoma, Verdana, Geneva, sans-serif;font-size: 24px;color:#000;text-align:center;margin-left:50px;margin-right:50px;margin-top:10px;line-height: 2;letter-spacing:2px;}
+            .flor-zaya{font-family: "beauty_flowerregular", Tahoma, Verdana, Geneva, sans-serif;font-weight:500;font-size: 70px;color:#aa1a44;text-align:center;margin-right:10px;line-height: 2;letter-spacing:2px}
+            .message{font-family: "Century Gothic", Tahoma, Verdana, Geneva, sans-serif;font-size: 24px;color:rgb(75, 66, 66);text-align:center;margin-left:50px;margin-right:50px;margin-top:10px;line-height: 2;letter-spacing:2px}
             .d-center img{max-width: 80px;max-height:80px;}
-            .brand {display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;}
+            .brand {display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:-30px}
             .channels {margin-top:20px;}
             a {margin: 5px}
             a:link {color: #aa1a44;}
             a:visited {color: #aa1a44;}
             a:hover {color: orange;}
             a:active {color: #aa1a44;}
-          </style>
+            @media screen and (orientation:portrait) and (max-height: 1167px) {
+                .floatin-bg {height:584px;top:calc(50vh - 292px)}
+                .d-center {height:584px}
+            }
+            @media screen and (orientation:portrait) and (max-width: 1131px) {
+                .floatin-bg {width:566px;left:calc(50vw - 283px)}
+                .d-center {width:566px}
+            }
+            @media screen and (orientation:landscape) and (max-width: 1167px) {
+                .floatin-bg {width:584px;left:calc(50vw - 292px)}
+                .d-center {width:584px}
+            }
+            @media screen and (orientation:landscape) and (max-height: 1131px) {
+                .floatin-bg {height:566px;top:calc(50vh - 283px)}
+                .d-center {height:566px}
+            }
+
+            @media screen and (orientation:portrait) and (max-height: 587px) {
+                .floatin-bg {box-shadow:none;border-radius:0px;width:100%;height:100%;left:0px;top:0px}
+                .d-center {width:100%;height:100%;left:0px;top:0px;justify-content:space-around}
+                .d-center p{font-size:24px;text-shadow:none;letter-spacing:0px;font-weight:700}
+                .message{font-size:20px;letter-spacing:0px;line-height:1.3;font-weight:700}
+                .flor-zaya{letter-spacing:0px}
+                body {background-size:auto 100%}
+            }
+            @media screen and (orientation:portrait) and (max-width: 569px) {
+                .floatin-bg {box-shadow:none;border-radius:0px;width:100%;height:100%;left:0px;top:0px}
+                .d-center {width:100%;height:100%;left:0px;top:0px;justify-content:space-around}
+                .d-center p{font-size:24px;text-shadow:none;letter-spacing:0px;font-weight:700}
+                .message{font-size:20px;letter-spacing:0px;line-height:1.3;font-weight:700}
+                .flor-zaya{letter-spacing:0px}
+                body {background-size:auto 100%}
+            }
+            @media screen and (orientation:landscape) and (max-width: 1167px) {
+                .floatin-bg {box-shadow:none;border-radius:0px;width:100%;height:100%;left:0px;top:0px}
+                .d-center {width:100%;height:100%;left:0px;top:0px;justify-content:space-around}
+                .d-center p{font-size:24px;text-shadow:none;letter-spacing:0px;font-weight:700}
+                .message{font-size:20px;letter-spacing:0px;line-height:1.3;font-weight:700}
+                .flor-zaya{letter-spacing:0px}
+                body {background-size:100% auto}
+            }
+            @media screen and (orientation:landscape) and (max-height: 1131px) {
+                .floatin-bg {box-shadow:none;border-radius:0px;width:100%;height:100%;left:0px;top:0px}
+                .d-center {width:100%;height:100%;left:0px;top:0px;justify-content:space-around}
+                .d-center p{font-size:24px;text-shadow:none;letter-spacing:0px;font-weight:700}
+                .message{font-size:20px;letter-spacing:0px;line-height:1.3;font-weight:700}
+                .flor-zaya{letter-spacing:0px}
+                body {background-size:100% auto}
+            }
+            </style>
           <link rel="stylesheet" href="./fonts/fa/css/all.min.css">
       </head>
     <body>
@@ -46,8 +83,7 @@
                 <span class="flor-zaya">Flor de Zaya</span>
                 <img src="./Chapeu.Rosa.SEM.Nome.Circular-Colorido.png">
             </div>
-            <p>Atenção!</p>
-            <p>Tem loja nova chegando</p>
+            <p>Atenção!<br/>Tem loja nova chegando</p>
             <span class="message">Em breve você vai passar por aqui para rechear o seu guarda-roupas com peças de qualidade por preços inacreditáveis. Por favor, aguarde...</span>
             <div class="channels">
                 <a href="https://www.instagram.com/flordezaya" target="_blank" title="Instagram"><i class="fa-brands fa-3x fa-instagram-square"></i></a>
