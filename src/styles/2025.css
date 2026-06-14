@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Romantic design tokens for the 2025 letter. All colors are HSL.
+   This file is imported only by the 2025 page, so Tailwind's preflight reset
+   and these tokens stay scoped to that document. */
+@layer base {
+  :root {
+    --background: 30 40% 98%;
+    --foreground: 350 20% 20%;
+
+    --primary: 350 65% 55%;
+    --primary-foreground: 30 40% 98%;
+
+    --secondary: 25 70% 85%;
+    --secondary-foreground: 350 20% 20%;
+
+    --muted: 30 20% 90%;
+    --muted-foreground: 350 15% 40%;
+
+    --accent: 40 80% 65%;
+    --accent-foreground: 350 20% 20%;
+
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 350 65% 55%;
+
+    --radius: 0.5rem;
+
+    /* Custom romantic tokens */
+    --rose: 350 65% 55%;
+    --rose-light: 350 70% 70%;
+    --rose-dark: 350 60% 40%;
+    --cream: 30 40% 98%;
+    --gold: 40 80% 65%;
+    --burgundy: 350 60% 30%;
+
+    /* Gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(350 65% 55% / 0.8), hsl(40 80% 65% / 0.6));
+    --gradient-sunset: linear-gradient(180deg, hsl(350 70% 70%), hsl(40 80% 65%), hsl(30 40% 98%));
+    --gradient-text: linear-gradient(135deg, hsl(350 60% 40%), hsl(350 65% 55%));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(350 65% 55% / 0.1);
+    --shadow-glow: 0 0 40px hsl(40 80% 65% / 0.3);
+    --shadow-deep: 0 10px 40px hsl(350 60% 30% / 0.2);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .font-serif {
+    line-height: 1.15;
+  }
+}
+
+/* Balloon float keyframe (was inlined in the old React component). */
+@keyframes balloon-float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.85;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.05);
+    opacity: 0.1;
+  }
+}

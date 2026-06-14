@@ -1,0 +1,54 @@
+---
+// Shared document shell for the Astro-managed pages (landing + each new year).
+// Bespoke legacy pages (2023, 2024) live untouched in /public and don't use this.
+interface Props {
+  title: string;
+  description?: string;
+  /** Google Fonts (or any) stylesheet href to load for this page. */
+  fontsHref?: string;
+  /** Optional Open Graph image URL (absolute path from site root). */
+  ogImage?: string;
+  /** Language of the document. */
+  lang?: string;
+}
+
+const {
+  title,
+  description = "",
+  fontsHref,
+  ogImage,
+  lang = "pt-BR",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    {
+      fontsHref && (
+        <>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link href={fontsHref} rel="stylesheet" />
+        </>
+      )
+    }
+
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
