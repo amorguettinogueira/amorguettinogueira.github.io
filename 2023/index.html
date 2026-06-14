@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="../favicon.ico">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <style>
+            *, *:before, *:after {
+                box-sizing: border-box;
+            }
+            body{
+                background-color:#fefefe;
+                margin:7%;
+                color:#DB7093;
+                font-family: 'Signika', sans-serif;
+                font-size: 24px;
+                position: relative;
+            }
+            .bold{
+                font-weight: bold;
+                font-size: 32px;
+            }
+            .destaque{
+                font-family: Lobster, display !important;
+                font-size: 48px;
+                text-align: center;
+                color: #DB7093;
+                text-shadow: 1px 1px #FFB6C1;
+            }
+            .left-top, .center-down{
+                margin-top: -8%;
+                margin-left: -8%;
+                object-fit: cover;
+                display: block;
+                background-size: cover;
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+                margin-right: auto;
+                position: relative;
+            }
+            .left-top{
+                margin-top: -8%;
+                margin-left: -8%;
+            }
+            .center-down{
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+            @-webkit-keyframes rotating /* Safari and Chrome */ {
+                0% { zoom:100%; }
+                15% { zoom:120%; }
+                25% { zoom:110%; }
+                35% { zoom:120%; }
+                100% { zoom:100%; }
+            }
+            @-o-keyframes rotating {
+                0% { zoom:100%; }
+                15% { zoom:120%; }
+                25% { zoom:110%; }
+                35% { zoom:120%; }
+                100% { zoom:100%; }
+            }
+            @-ms-keyframes rotating {
+                0% { transform:scale(1); }
+                15% { transform:scale(1.2); }
+                25% { transform:scale(1.1); }
+                35% { transform:scale(1.2); }
+                100% { transform:scale(1); }
+            }
+            @keyframes rotating {
+                0% { transform:scale(1); }
+                15% { transform:scale(1.2); }
+                25% { transform:scale(1.1); }
+                35% { transform:scale(1.2); }
+                100% { transform:scale(1); }
+            }
+            .float{
+                position:fixed;
+                width:120px;
+                height:120px;
+                top:40px;
+                right:40px;
+                border-radius:60px;
+                box-shadow: 2px 2px 3px #999;
+                z-index:100;
+                -webkit-animation: rotating 1s linear infinite;
+                -moz-animation: rotating 1s linear infinite;
+                -ms-animation: rotating 1s linear infinite;
+                -o-animation: rotating 1s linear infinite;
+                animation: rotating 1s linear infinite;
+            }
+            @media (width <= 1024px) {
+                body{
+                    margin-top: 70px;
+                    margin-bottom: 40px;
+                }
+                .left-top{
+                    margin-top: -70px;
+                    width: 350px;
+                }
+                .float{
+                    top:30px;
+                    right:30px;
+                    width:90px;
+                    height:90px;
+                }
+                .destaque{
+                    font-size: 40px;
+                }
+            }
+            @media (width <= 576px) {
+                body{
+                    margin-top: 90px;
+                    margin-bottom: 50px;
+                }
+                .left-top{
+                    margin-top: -90px;
+                    width: 250px;
+                }
+                .float{
+                    top:20px;
+                    right:20px;
+                    width:60px;
+                    height:60px;
+                }
+                .center-down{
+                    width: 274px;
+                }
+            }
+
+            /* --- Romantic & dramatic enhancements --- */
+            body { z-index: 1; }
+
+            /* Scroll-reveal for each paragraph / image */
+            .reveal {
+                opacity: 0;
+                transform: translateY(32px);
+                filter: blur(6px);
+                transition: opacity 1.1s cubic-bezier(0.2, 0.7, 0.2, 1),
+                            transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1),
+                            filter 1.1s cubic-bezier(0.2, 0.7, 0.2, 1);
+                will-change: opacity, transform;
+            }
+            .reveal.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+
+            /* Glowing emphasis on the highlighted headings + signature */
+            .destaque {
+                animation: tender-glow 3.6s ease-in-out infinite;
+            }
+            @keyframes tender-glow {
+                0%, 100% { text-shadow: 1px 1px #FFB6C1, 0 0 6px rgba(219,112,147,0.25); }
+                50%      { text-shadow: 1px 1px #FFB6C1, 0 0 22px rgba(219,112,147,0.65); }
+            }
+
+            /* Gentle continuous pulse for the floating avatar (was a jittery 1s loop) */
+            .float {
+                animation: rotating 4.5s ease-in-out infinite !important;
+            }
+
+            /* Ambient drifting hearts behind the letter */
+            .hearts {
+                position: fixed;
+                inset: 0;
+                z-index: 0;
+                pointer-events: none;
+                overflow: hidden;
+            }
+            .hearts span {
+                position: absolute;
+                bottom: -10vh;
+                color: #DB7093;
+                opacity: 0;
+                will-change: transform, opacity;
+                animation: heart-float linear infinite;
+                filter: drop-shadow(0 2px 6px rgba(219,112,147,0.4));
+            }
+            @keyframes heart-float {
+                0%   { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
+                12%  { opacity: 0.4; }
+                88%  { opacity: 0.4; }
+                100% { transform: translateY(-118vh) scale(1.05) rotate(-26deg); opacity: 0; }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .reveal { opacity: 1; transform: none; filter: none; transition: none; }
+                .destaque { animation: none; }
+                .float { animation: none !important; }
+                .hearts { display: none; }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hearts" aria-hidden="true"></div>
+        <img src="flor.top.png" class="left-top">
+        <img src="mi.png" class="float">
+        <p class="bold destaque" style="margin-top: 0;">Feliz aniversário Mi!</p>
+        <p>As vezes a gente acha que já disse tudo, que o relacionamento está garantido, que não pairam mais dúvidas...</p>
+        <p>Contudo, o tempo sempre traz aprendizado e o mais recente é que, como todo o resto, há que se ter manutenção constante; inclusive, nessa maravilhosa relação que estabelecemos há mais de 10 anos!</p>
+        <p>Sempre haverá espaço para mais flores, mais carinho, mais palavras de encorajamento, mais compreensão, mais confidencialidade, mais cumplicidade, mais parceria e, por fim, mais união.</p>
+        <p>No cinema não é o filme, são as mãos dadas da fila da pipoca até a poltrona, é a troca de olhares quando alguma cena emociona, é se preocupar em saber o que o outro achou do que acabou de assistir, é sobre debater os pontos de vista.</p>
+        <p>Na piscina não é se a água é fria ou morna, é passar protetor nas costas um do outro, é o convite para entrar junto na piscina, é querer carregar nos braços a outra pessoa quando o empuxo a deixa mais leve, é monitorar se o nariz do outro está limpo, é se preocupar em olhar a criança e avisar que está tudo sob controle.</p>
+        <p>Em casa não é quem faz o quê, é deixar a pasta de dentes na escova para o outro, é buscar a toalha para o outro se secar depois do banho, é brigar para ver quem desce na portaria para buscar o que chegou, é fechar a porta para não atrapalhar a reunião que está rolando, é sobre servir ao outro água, fruta ou snack quando a fome e a sede chegam para gente.</p>
+        <p>Nos encontros sociais não é saber quem estará lá, é querer saber se o outro vai também, é se preocupar em saber se o outro comeu, é perguntar se o outro quer bebida quando a sede bate e você vai pegar algo pra você, é cantar parabéns do ladinho um do outro, é dançar mesmo quando parece que toda 'dureza' do mundo se concentra no quadril do parceiro, é fofocar a caminho de casa sobre o que viu e atestar que não faria o mesmo em situação semelhante.</p>
+        <p>Nos desafios não é se você já passou por pior sem reclamar, é empatizar-se e querer dizer a coisa certa que colocaria fim ao sofrimento, é segurar as mãos na esperança que o toque botaria fim à ansiedade e ao pesar, é sentir a dor alheia e não saber como convencer o outro que Deus transformará aquela ocasião em superação, é desejar passar pela experiência que aflige o conjugê no lugar dele.</p>
+        <p>No aniversário não é o presente, é o esforço em impressionar, é a tentativa de surpreender apesar das gafes e bolas fora, é fazer vista grossa quando tudo está muito evidente e você não quer deixar o outro triste por que descobriu o presente, é sobre não querer ser um fardo só porque você nasceu naquele dia, é sobre genuinamente só querer de presente um pouquinho mais do outro.</p>
+        <p>Não é se o cartão de aniversário é bonito ou se a qualidade do papel é fotográfica, é sobre ter a consideração de parar para escrever, é querer ter certeza que apesar da evolução pessoal a essência da mensagem ainda cativa a outra parte, é ter medo de escrever alguma coisa que possa ser interpretada de forma errada, é se importar se vai emocionar positivamente.</p>
+        <p>Tenho certeza que há quem jure que eu não tenha essa consciência toda por conta do que falo e faço ou por causa do que deixo de falar e de fazer. Em última análise, entretanto, só me reservo ao direito de dissociar meus atos e palavras do que sinto. Acredito, no fundo do meu âmago, que roubar um sorriso descontraindo valha tanto quanto um "eu te amo" bem colocado; pois, o tempo tem o poder mágico de transformar qualquer "mau bocado" em piada nostálgica.</p>
+        <p>Eu não te amo apenas, eu amo a imagem residual inconsciente que tenho de ti... Uma pessoa justa, uma esposa imbatível, uma parceira fiel, uma mulher caprichosa, uma mãe exemplar, de um caráter indubitável, de fé ímpar, que se coloca como porto seguro para todos os navios, de equilíbrio perfeito para motivar na prostração e confortar na inquietação, com uma felicidade que contagia e uma disposição infindável... e o tempo só me ensina mais e mais a teu respeito, quando eu penso que a lista de características positivas acabou eu me dou conta de um detalhezinho pequeno, e quando exploro racionalmente percebo que ele é indício de algo muito maior, algo que agrega ainda mais à minha ideia de "Michelle". Uma ideia tão impactante que eu gostaria que todos a pudessem construir em relação aos seus conjugês, pois garantidamente os cartórios não registrariam mais divórcios.</p>
+        <p>Não bastasse tudo isso, o que você me proporcionou e proporciona não tem preço. A família que formamos, e poder estar junto dela, é digno de celebração e graça diária. E quando "estivermos bem velhinhos" (usando suas próprias palavras) olharemos para nossa trajetória e nos encheremos de orgulho, e olharemos um para o outro e nos encheremos da admiração máxima. Admiração máxima: por termos desfrutado de  tudo o que tínhamos para oferecer um ao outro; e, Orgulho: por termos um dia tomado a decisão de "nos tornarmos maior do que a soma das partes que somos".</p>
+        <p>Meu Deus, meu pai, me ajude a continuar fazendo o que está dando certo para manter a graça de continuar com essa Tua filha até o último dos meus dias, meu Pai. E abençoa, Senhor, essa união; que quem te pede quer acima de tudo o bem da família que a ele entregaste a cuidado.</p>
+        <p>Eu desejo que o dia de hoje chegue aos seus pés e seja tão alegre quanto é a minha vida graças à tua existência.</p>
+        <p class="bold destaque">Eu te amo, Adriano.</p>
+        <img src="flor.bottom.png" class="center-down">
+        <script>
+            (function () {
+                var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                /* Ambient drifting hearts */
+                if (!reduce) {
+                    var layer = document.querySelector('.hearts');
+                    if (layer) {
+                        var glyphs = ['❤', '♥', '🌸', '🤍'];
+                        for (var i = 0; i < 12; i++) {
+                            var s = document.createElement('span');
+                            s.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+                            s.style.left = (Math.random() * 100) + 'vw';
+                            s.style.fontSize = (0.9 + Math.random() * 1.6) + 'rem';
+                            s.style.animationDuration = (12 + Math.random() * 13) + 's';
+                            s.style.animationDelay = (-Math.random() * 22) + 's';
+                            layer.appendChild(s);
+                        }
+                    }
+                }
+
+                /* Scroll-reveal paragraphs (markup untouched; class added at runtime) */
+                var items = document.querySelectorAll('body > p, body > .center-down');
+                if (reduce || !('IntersectionObserver' in window)) return;
+                items.forEach(function (el) { el.classList.add('reveal'); });
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+                items.forEach(function (el) { io.observe(el); });
+            })();
+        </script>
+</html>
