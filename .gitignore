@@ -1,0 +1,17 @@
+# build output
+dist/
+
+# dependencies
+node_modules/
+
+# astro
+.astro/
+
+# logs / env
+*.log
+.env
+.env.*
+.DS_Store
+
+# leftover scaffolding from the old (pre-Astro) 2025 build
+2025-src/

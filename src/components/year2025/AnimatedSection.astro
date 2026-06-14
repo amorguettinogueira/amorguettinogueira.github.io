@@ -1,0 +1,25 @@
+---
+// Reveal-on-scroll wrapper. Starts hidden; the page's scroll script adds the
+// matching `animate-*` class when the element enters the viewport.
+interface Props {
+  animation?: "fade-up" | "fade-in" | "slide-left" | "slide-right";
+  delay?: number;
+  class?: string;
+}
+const { animation = "fade-up", delay = 0, class: className = "" } = Astro.props;
+
+const animClass = {
+  "fade-up": "animate-fade-up",
+  "fade-in": "animate-fade-in",
+  "slide-left": "animate-slide-in-left",
+  "slide-right": "animate-slide-in-right",
+}[animation];
+---
+<div
+  class:list={["opacity-0", className]}
+  data-animate
+  data-anim-class={animClass}
+  data-anim-delay={delay}
+>
+  <slot />
+</div>

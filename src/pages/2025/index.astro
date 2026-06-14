@@ -1,0 +1,316 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AnimatedSection from "../../components/year2025/AnimatedSection.astro";
+import Parallax from "../../components/year2025/Parallax.astro";
+import Floating from "../../components/year2025/Floating.astro";
+import Heart from "../../components/year2025/Heart.astro";
+import bg from "../../assets/2025/background3.jpg";
+import miEDri from "../../assets/2025/mi_e_dri.jpg";
+import "../../styles/2025.css";
+
+const nicknames = [
+  ["Lindeza", "Característica ou natureza de lindo; beleza, formosura, graça."],
+  ["Lindula", "Substantivo derivado do adjetivo linda, com pronúncia balbuciada (assim como doce está para doçura ou formosa está para formosura)."],
+  ["Bebezulida", "Paródia ao medicamento nimesulida. A ideia é transmitir que você é o bebê, um princípio ativo, na forma de pomada, que eu preciso que seja administrado em mim, pelo menos duas vezes ao dia, de forma tópica sobre a carequinha ou o pescoço."],
+  ["Coisamaix", "Contração de “Coisa mais linda” em sua versão acariocada, onde a palavra “mais” tem pronúncia de “maixi”. Reforça a exclusividade de sua beleza já que não existe outra “maixi” linda que você."],
+  ["Ômodeus", "Contração de “O meu Deus”, com pronúncia balbuciada. Interjeição de surpresa, geralmente como consequência de um sentimento de empatia. Exemplo de emprego: “Muita dor de cabeça.”, diz ela. “Ômodeus”, responde ele."],
+  ["Dona Micéli", "Dona: proprietária, aquela que possui ou tem posse do meu coração. Micéli: Michelle, com pronúncia balbuciada, reforçando a noção de que eu fosse ou continue sendo apenas uma criança, alguém que precisa dos cuidados de sua dona para encontrar-se pelos caminhos da vida."],
+  ["Micélia", "Coloquial íntimo de “Dona Micéli”, usado pela criança (eu, no caso) em construções frasais onde ela deseja receber ou pedir algo à sua dona."],
+  ["Nega", "Feminino de nego. Tratamento carinhoso dado a alguém; amor."],
+];
+---
+
+<BaseLayout
+  title="Feliz aniversário Mi"
+  description="Carta de feliz aniversário para Michelle, ano 2025"
+  fontsHref="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+  ogImage="/2025.jpg"
+  lang="pt-BR"
+>
+  <div
+    class="relative min-h-screen bg-background overflow-hidden before:content-[''] before:fixed before:inset-0 before:z-0 before:pointer-events-none before:bg-gradient-to-r before:from-[#f7c5c8] before:to-[#fdefec] before:w-full before:h-full"
+  >
+    <!-- Scroll progress -->
+    <div class="fixed top-0 left-0 w-full h-1 z-50 bg-muted/20">
+      <div id="scroll-progress-bar" class="h-full bg-gradient-romantic transition-all duration-200" style="width: 0%"></div>
+    </div>
+
+    <!-- Parallax background elements -->
+    <div class="fixed inset-0 pointer-events-none">
+      <Parallax speed={0.05} class="absolute inset-0">
+        <div
+          class="w-full h-full opacity-20"
+          style={`background-image: url(${bg.src}); background-size: cover; background-position: center;`}
+        >
+        </div>
+      </Parallax>
+
+      <Parallax speed={0.35} class="absolute top-20 left-10">
+        <Floating delay={0}><Heart filled class="w-12 h-12 text-rose/20" /></Floating>
+      </Parallax>
+
+      <Parallax speed={0.45} class="absolute -top-36 left-40">
+        <Floating delay={1.5}><Heart filled class="w-16 h-16 text-gold" /></Floating>
+      </Parallax>
+
+      <Parallax speed={0.3} class="absolute top-40 right-48">
+        <Floating delay={1}><Heart class="w-16 h-16 text-gold/30" /></Floating>
+      </Parallax>
+
+      <Parallax speed={0.7} class="absolute bottom-40 left-20">
+        <Floating delay={2}><Heart filled class="w-8 h-8 text-rose-light/25" /></Floating>
+      </Parallax>
+    </div>
+
+    <!-- Main content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-8 py-20">
+      <AnimatedSection animation="fade-up" class="mb-16 text-center">
+        <h1 class="font-script text-6xl md:text-8xl text-rose mb-16 animate-heartbeat">Mi amore</h1>
+        <div class="w-64 h-1 bg-gradient-romantic mx-auto rounded-full"></div>
+      </AnimatedSection>
+
+      <AnimatedSection animation="fade-in" delay={300} class="mb-16">
+        <p class="font-script text-2xl md:text-3xl text-center mb-12 text-rose-dark">
+          "A obra de arte que Deus criou para mim..."
+        </p>
+        <Parallax speed={-0.1}>
+          <div class="relative rounded-2xl overflow-hidden shadow-deep">
+            <img src={miEDri.src} alt="Garden of Love" class="w-full h-auto border-2 border-rose/40 rounded-2xl" />
+            <div class="absolute inset-0 bg-gradient-romantic opacity-20"></div>
+          </div>
+        </Parallax>
+      </AnimatedSection>
+
+      <AnimatedSection animation="fade-up" delay={200} class="mb-16">
+        <p class="font-serif text-xl leading-relaxed text-foreground">
+          Desejo a você o melhor aniversário do mundo. Gostaria tanto de poder estar dentro da sua cabeça,
+          nem que fosse por poucos instantes, para poder identificar o que realmente a deixaria mais
+          satisfeita, mais feliz, mais completa... assim minha missão autoimposta de te fazer feliz,
+          quem sabe, fosse um pouco mais tranquila.
+        </p>
+      </AnimatedSection>
+
+      <AnimatedSection animation="fade-up" delay={300} class="mb-16">
+        <p class="font-serif text-xl leading-relaxed text-foreground">
+          Eu te observo já há treze anos e, ainda assim, não consigo lê-la por completo. Consigo captar bem,
+          muito bem, alguns detalhes, mas o quadro todo ainda sinto que seja um grande mistério.
+          Sinto-me como uma pequena formiguinha andando sobre um daqueles quadros imensos que vimos no Louvre;
+          embora meus pés estejam tocando a tela, e eu esteja vendo a troca das cores das tintas
+          e a mudança de padrões nas pinceladas, eu não tenho ideia do que seja o quadro todo...
+        </p>
+      </AnimatedSection>
+
+      <AnimatedSection animation="slide-left" delay={400} class="mb-16">
+        <p class="font-serif text-xl leading-relaxed text-foreground mb-16">
+          Porém, isso não me impede de tentar, de explorar, de desbravar, de tentar descobrir, afinal,
+          do que você gosta, minha maravilhosa esposa? Certamente não é das comédias sitcom americanas,
+          isso já ficou claro.
+        </p>
+        <p class="font-serif text-xl leading-relaxed text-foreground">
+          Seria realmente desses textos entediosos? Embora não me convença, ainda assim, você diz que gosta deles.
+          E eu fico a me perguntar, por que você gostaria dos textos? Penso eu que talvez, na sua cabeça, eles
+          sinalizem de forma inconsciente que eu parei para dedicar meu tempo exclusivamente a você...
+          Mas será que é isso? Porque eu dedico meu amor e minha vida, exclusivamente a você, há treze anos!
+          Por mais adornos que haja, ou tenha havido, o cerne da minha vida tem sido você. Há treze anos você
+          é a tinta que dá sentido a esse quadro que eu chamo de vida; sem você, minha vida seria só mais uma
+          tela em branco, sem cor, sem forma, sem sentido...
+        </p>
+      </AnimatedSection>
+
+      <AnimatedSection animation="slide-right" delay={500} class="mb-16">
+        <p class="font-serif text-xl leading-relaxed text-foreground">
+          É, talvez não seja isso então... Quem sabe você veja nos textos prova de afeição que eu talvez não
+          consiga entregar ao vivo, seria isso? Difícil ter certeza, porque eu juro que achava que algum
+          dos apelidos carinhosos que te dei demonstrariam de alguma maneira minha afeição:
+        </p>
+        <div class="border-l-4 border-rose/30 pl-8 font-serif text-xl leading-relaxed text-foreground mt-16">
+          <ul class="list-disc pl-6">
+            {nicknames.map(([name, meaning]) => (
+              <li class="mb-4 last:mb-0">
+                <span class="font-bold italic mr-2">{name}</span>{meaning}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection animation="fade-up" delay={600} class="mb-16">
+        <p class="font-serif text-xl leading-relaxed text-foreground">
+          Sei lá, será que com tantas tentativas assim nenhuma teve sucesso? Não dá para ter certeza
+          do porquê de você gostar tanto desses textos <span class="italic">“bobageiras”</span>.
+        </p>
+      </AnimatedSection>
+
+      <AnimatedSection animation="slide-right" delay={700} class="mb-16">
+        <p class="font-serif text-xl leading-relaxed text-foreground">
+          Ahhh espera aí... será que é isso? Só se no fundo, no fundo, você saiba que esse véu fino que
+          a gente chama de vida possa a qualquer momento se rasgar; e os textos acabariam sendo a forma
+          de expressão póstuma do amor que eu sinto por você. “Ômodeus”... se for essa a razão, então,
+          você merece demais esses textos. Não porque eu não pretendo estar aqui do seu lado para sempre,
+          mas porque de fato é isso que eu sinto por você:
+        </p>
+        <div class="border-l-4 border-rose/30 pl-8 font-serif text-xl leading-relaxed text-foreground mt-16">
+          <ul class="list-disc pl-6">
+            <li class="mb-4 last:mb-0">Um amor que só espalha.</li>
+            <li class="mb-4 last:mb-0">Um respeito que só aumenta.</li>
+            <li class="mb-4 last:mb-0">Uma admiração que só se intensifica.</li>
+          </ul>
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection animation="fade-up" delay={800} class="mb-16">
+        <p class="font-serif text-xl leading-relaxed text-foreground">
+          Mi, eu te amo, e você sabe o quanto. Porque no fundo, no fundo, eu sei que você sente
+          a mesma coisa por mim. É como daquela vez em que estávamos na casa de não lembro quem
+          e a pessoa nos ofereceu alguma coisa para comer e nós, por educação, resolvemos aceitar.
+          Porém, a pessoa foi esquentar a comida e colocou o Tupperware direto no microondas.
+          A gente só precisou trocar um olhar, sem dizer nada, para entender exatamente o que
+          se passava na cabeça do outro... 🤣
+        </p>
+      </AnimatedSection>
+
+      <AnimatedSection animation="fade-up" delay={900} class="text-center py-20">
+        <div class="inline-block p-8 bg-gradient-romantic rounded-3xl shadow-glow">
+          <Floating>
+            <Heart filled class="w-20 h-20 text-cream mx-auto mb-6 animate-heartbeat" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)" />
+          </Floating>
+          <h2 class="font-script text-5xl md:text-7xl text-cream mb-6" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)">
+            Feliz Aniversário meu amor
+          </h2>
+          <p class="font-serif text-2xl text-cream mb-4" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)">
+            Minha querida, minha obra-prima, meu amor para sempre
+          </p>
+          <p class="font-serif text-xl text-cream max-w-2xl mx-auto" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)">
+            Aproveite seu dia. Você completou mais um ano, cheio de conquistas e histórias para compartilhar.
+            Com uma família que te admira, te ama e te respeita. Que cada novo dia seja mais uma pincelada
+            de alegria nesse quadro que Deus nos permite pintar a quatro mãos.
+          </p>
+          <p class="font-script text-3xl md:text-4xl text-cream mt-8" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)">
+            Para sempre seu, e com todo meu amor, Dri.
+          </p>
+        </div>
+      </AnimatedSection>
+
+      <div class="fixed bottom-10 right-10 animate-heartbeat">
+        <Floating><Heart filled class="w-16 h-16 text-rose" /></Floating>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const bar = document.getElementById("scroll-progress-bar");
+  const parallaxEls = Array.from(document.querySelectorAll("[data-parallax]")) as HTMLElement[];
+
+  let atEnd = false;
+  function onScroll() {
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = window.scrollY;
+    const progress = scrollHeight > 0 ? (scrolled / scrollHeight) * 100 : 0;
+    if (bar) bar.style.width = progress + "%";
+    for (const el of parallaxEls) {
+      const speed = parseFloat(el.dataset.parallaxSpeed || "0");
+      el.style.transform = `translateY(${scrolled * speed}px)`;
+    }
+    if (progress > 95 && !atEnd) {
+      atEnd = true;
+      celebrate();
+    } else if (progress < 95) {
+      atEnd = false;
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Reveal-on-scroll
+  const animated = Array.from(document.querySelectorAll("[data-animate]")) as HTMLElement[];
+  if (reduce || !("IntersectionObserver" in window)) {
+    animated.forEach((el) => el.classList.remove("opacity-0"));
+  } else {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = parseInt(el.dataset.animDelay || "0", 10);
+            window.setTimeout(() => {
+              el.classList.remove("opacity-0");
+              const cls = el.dataset.animClass;
+              if (cls) el.classList.add(cls);
+            }, delay);
+            io.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+    animated.forEach((el) => io.observe(el));
+  }
+
+  // Confetti + balloons when the reader reaches the end
+  const BALLOON_PATH =
+    "M390.2,331.69c3.7,5.27,6.35,9.05,9,12.83-.61,.48-1.21,.95-1.82,1.43-3.46-3.78-6.93-7.57-11.79-12.88,0,24.34-.96,47.13,.24,69.81,1.61,30.33,4.64,60.6,7.6,90.84,1.03,10.52,7.02,15.02,17.76,15.6,1.4,.08,2.8,.21,4.66,.36-12.19,10.21-23.36,.16-28.44-24.76-8.48,26.06-16.65,33.2-29.46,25.7,.21-.37,.38-1.04,.63-1.08,16.67-2.2,19.76-6.49,23.69-23.15,3.95-16.72,.17-32.88-.16-49.31-.57-28.23-.04-56.49,.02-84.73,.01-6.56,0-13.12,0-20.94-4.59,5.67-8.39,10.36-12.19,15.05l-1.92-1.31c2.74-4.56,5.48-9.11,8.7-14.46-8.85,2.52-8.84-3.05-6.26-7.31,7.14-11.77,.24-19.58-6.77-27.13-17.89-19.27-36.29-38.09-54.25-57.3-48.2-51.58-44.46-131.53,8.16-176.93,38.53-33.25,96.94-31.74,134.12,3.02,25.22,23.59,38.51,52.52,38.87,86.81,.35,33.02-11.29,62.09-33.38,86.6-15.33,17-31.44,33.31-47.11,50.01-2.99,3.19-5.55,6.79-8.32,10.18-5.78,7.08-11.04,13.89-4.95,23.86,2.61,4.27,3.08,9.99-6.62,9.2Zm-56.4-234.51c1.88-.55,4.86-.97,7.42-2.24,12.67-6.34,25.17-13.14,33.55-25.02,1.88-2.67,2.65-7.74,1.35-10.5-.87-1.86-6.79-3.01-9.55-2-10.4,3.8-20.85,7.89-30.44,13.34-4.68,2.66-8.45,8.1-10.94,13.12-3.18,6.41,1.33,13.22,8.61,13.3Z";
+
+  function celebrate() {
+    if (reduce) return;
+    spawnConfetti();
+    spawnBalloons();
+  }
+
+  function spawnConfetti() {
+    const colors = ["hsl(350, 65%, 55%)", "hsl(40, 80%, 65%)", "hsl(350, 70%, 70%)", "hsla(143, 53%, 48%, 1.00)", "hsl(199, 100%, 50%)"];
+    const layer = document.createElement("div");
+    layer.className = "fixed inset-0 pointer-events-none z-50";
+    for (let i = 0; i < 200; i++) {
+      const p = document.createElement("div");
+      p.className = "absolute w-3 h-3 animate-confetti";
+      p.style.left = Math.random() * 100 + "%";
+      p.style.animationDelay = Math.random() * 2 + "s";
+      p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      p.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
+      p.style.transform = `rotate(${Math.random() * 360}deg)`;
+      layer.appendChild(p);
+    }
+    document.body.appendChild(layer);
+    window.setTimeout(() => layer.remove(), 5000);
+  }
+
+  function spawnBalloons() {
+    const COLORS = ["#f7c5c8", "#fdefec", "#f9e79f", "#a3e4d7", "#aed6f1", "#d2b4de", "#f5b7b1", "#f8c471"];
+    const rnd = (min: number, max: number) => Math.random() * (max - min) + min;
+    const svgNS = "http://www.w3.org/2000/svg";
+    const layer = document.createElement("div");
+    layer.className = "pointer-events-none fixed inset-0 z-50";
+    for (let i = 0; i < 20; i++) {
+      const size = rnd(160, 280);
+      const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      const span = document.createElement("span");
+      span.className = "absolute flex flex-col items-center opacity-90";
+      span.style.left = rnd(10, 80) + "%";
+      span.style.bottom = "-80px";
+      span.style.width = size + "px";
+      span.style.height = size * 1.3 + "px";
+      span.style.animation = `balloon-float ${rnd(3.5, 5.5)}s cubic-bezier(0.4,0,0.2,1) ${rnd(0, 0.8)}s both`;
+
+      const svg = document.createElementNS(svgNS, "svg");
+      svg.setAttribute("viewBox", "0 0 800 600.7");
+      svg.setAttribute("preserveAspectRatio", "xMidYMin meet");
+      svg.style.display = "block";
+      svg.style.width = size + "px";
+      svg.style.height = size * 1.3 + "px";
+      const path = document.createElementNS(svgNS, "path");
+      path.setAttribute("d", BALLOON_PATH);
+      path.setAttribute("fill", color);
+      svg.appendChild(path);
+      span.appendChild(svg);
+
+      const str = document.createElement("span");
+      str.style.cssText = `width:2px;height:${size * 0.9}px;background:#aaa;border-radius:2px;opacity:0.6;margin-top:-8px;display:block;`;
+      span.appendChild(str);
+      layer.appendChild(span);
+    }
+    document.body.appendChild(layer);
+    window.setTimeout(() => layer.remove(), 6000);
+  }
+</script>

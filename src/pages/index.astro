@@ -1,0 +1,331 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// The gallery of years. To add a new year, drop a new entry at the top of this
+// list and create src/pages/<year>/index.astro (see 2025 for a worked example).
+// `href` may be an internal route ("/2026/") or an external link (a video, etc.).
+const years = [
+  { year: "2025", age: "43 anos", href: "/2025/", img: "/2025.jpg" },
+  { year: "2024", age: "42 anos", href: "/2024/", img: "/2024.jpg" },
+  { year: "2023", age: "41 anos", href: "/2023/", img: "/2023.jpg" },
+  { year: "2020", age: "38 anos", href: "https://youtu.be/gbf-Ln3W1r8", img: "/2020.jpg" },
+  { year: "2015", age: "33 anos", href: "https://youtu.be/iaZs_Lzxa48", img: "/2015.jpg" },
+  { year: "2014", age: "32 anos", href: "https://youtu.be/Gb7v0Ki5Dm4", img: "/2014.jpg" },
+];
+---
+
+<BaseLayout
+  title="À Michelle Nogueira"
+  description="Uma homenagem à Michelle Nogueira, ano a ano."
+  fontsHref="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Rowdies:wght@300;400;700&display=swap"
+  ogImage="/2025.jpg"
+>
+  <div class="hearts" aria-hidden="true"></div>
+  <div class="main">
+    <div class="content-wrapper">
+      <header class="page-header">
+        <div class="header-content">
+          <div class="header-center">
+            <h1 class="header-title">À Michelle Nogueira</h1>
+            <div class="header-bars">
+              <span class="bar bar-primary"></span>
+              <span class="bar bar-secondary"></span>
+              <span class="bar bar-accent"></span>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="grid-container">
+        {
+          years.map((y) => (
+            <div class="grid-cell">
+              <a href={y.href} class={y.year}>
+                <img src={y.img} alt={`Michelle em ${y.year}`} />
+                <div class="photo-title">
+                  <span class="big-text">{y.year}</span>
+                  {y.age}
+                </div>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  :root {
+    --gradient-dreamy: radial-gradient(circle at 50% 30%, hsl(340deg 75% 68% / 80%) 0%, hsl(280deg 60% 85% / 80%) 70%);
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1.1;
+    --tw-scale-y: 1.1;
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    --shadow-hover: 0 8px 30px -8px hsl(340 75% 68% / 0.4);
+  }
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0px;
+    font-family: "Rowdies", serif;
+    font-weight: 700;
+  }
+  .main {
+    background-image: var(--gradient-dreamy);
+    min-height: 100vh;
+  }
+  .content-wrapper {
+    width: min(100%, 1600px);
+    margin: 0 auto;
+    padding: 0 min(10%, 160px) 0 min(10%, 160px);
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 622px);
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .grid-cell {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+    animation-duration: 300ms;
+    transition-duration: 300ms;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fade-in 0.4s ease-out;
+  }
+  .grid-cell > a {
+    width: 100%;
+    position: relative;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    aspect-ratio: 622 / 415;
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+  .grid-cell > a > img {
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    box-sizing: border-box;
+    display: block;
+  }
+  .grid-cell > a:hover > img,
+  .grid-cell > a > img:hover {
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+  .grid-cell > a:hover {
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 1px 1px gray;
+    transform: translateY(0);
+  }
+  .photo-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 1.5rem 0 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    border-radius: 1.5rem;
+    color: #fff;
+    font-size: min(2cqw, 2rem);
+    font-weight: 600;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .grid-cell:hover .photo-title {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .big-text {
+    font-size: min(8cqw, 102.4px);
+    text-align: left;
+  }
+  .photo-title span + text,
+  .photo-title span + * {
+    text-align: right;
+    margin-left: auto;
+  }
+  @media (width <= 1600px) {
+    .grid-container {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2vw;
+    }
+  }
+  @media (width <= 800px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+      gap: 4vw;
+    }
+    .photo-title {
+      font-size: min(3cqw, 2rem);
+    }
+  }
+  .page-header {
+    position: relative;
+    overflow: hidden;
+  }
+  .header-content {
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem 1.5rem;
+    z-index: 1;
+  }
+  .header-center {
+    text-align: center;
+    animation: fade-in 1s;
+  }
+  .header-title {
+    font-family: "Quicksand", sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(180deg, #c50000, #991799);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header-desc {
+    color: #a78bfa;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 1rem auto 0 auto;
+  }
+  .header-bars {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
+  }
+  .bar {
+    display: inline-block;
+    width: 3rem;
+    height: 0.25rem;
+    border-radius: 9999px;
+    animation: glow 2s infinite alternate;
+  }
+  .bar-primary { background: #f7b6d2; animation-delay: 0s; }
+  .bar-secondary { background: #d1c4e9; animation-delay: 0.5s; }
+  .bar-accent { background: #f8bbd0; animation-delay: 1s; }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes glow {
+    from { box-shadow: 0 0 8px 0 #f7b6d2; }
+    to { box-shadow: 0 0 24px 4px #f7b6d2; }
+  }
+
+  /* --- Romantic & dramatic enhancements --- */
+  .header-title {
+    background: linear-gradient(110deg, #c50000, #991799, #ff6fae, #991799, #c50000);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: title-rise 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both,
+               title-shimmer 7s ease-in-out infinite 1.4s;
+  }
+  @keyframes title-rise {
+    0% { opacity: 0; transform: translateY(28px) scale(0.94); letter-spacing: 0.18em; filter: blur(6px); }
+    100% { opacity: 1; transform: translateY(0) scale(1); letter-spacing: normal; filter: blur(0); }
+  }
+  @keyframes title-shimmer {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+  }
+
+  .grid-cell {
+    animation: cell-reveal 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  @keyframes cell-reveal {
+    0% { opacity: 0; transform: translateY(48px) scale(0.96); filter: blur(8px); }
+    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  }
+  .grid-cell:nth-child(1) { animation-delay: 0.45s; }
+  .grid-cell:nth-child(2) { animation-delay: 0.60s; }
+  .grid-cell:nth-child(3) { animation-delay: 0.75s; }
+  .grid-cell:nth-child(4) { animation-delay: 0.90s; }
+  .grid-cell:nth-child(5) { animation-delay: 1.05s; }
+  .grid-cell:nth-child(6) { animation-delay: 1.20s; }
+
+  .grid-cell {
+    box-shadow: 0 10px 30px -18px hsl(340 75% 40% / 0.5);
+  }
+  .grid-cell:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-6px) scale(1.015);
+  }
+
+  /* Ambient drifting hearts behind everything */
+  .hearts {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .hearts span {
+    position: absolute;
+    bottom: -10vh;
+    font-size: 1.6rem;
+    color: hsl(340deg 80% 70%);
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: heart-float linear infinite;
+    filter: drop-shadow(0 2px 6px hsl(340deg 80% 60% / 0.5));
+  }
+  @keyframes heart-float {
+    0% { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
+    12% { opacity: 0.55; }
+    88% { opacity: 0.55; }
+    100% { transform: translateY(-118vh) scale(1.05) rotate(28deg); opacity: 0; }
+  }
+  .main { position: relative; z-index: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .header-title { animation: title-rise 0.01s both; }
+    .grid-cell { animation: none; }
+    .hearts { display: none; }
+    .grid-cell:hover { transform: none; }
+  }
+</style>
+
+<script>
+  if (!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    const layer = document.querySelector(".hearts");
+    if (layer) {
+      const glyphs = ["❤", "🤍", "♥", "🧡"];
+      const COUNT = 14;
+      for (let i = 0; i < COUNT; i++) {
+        const s = document.createElement("span");
+        s.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+        s.style.left = Math.random() * 100 + "vw";
+        s.style.fontSize = 0.9 + Math.random() * 1.8 + "rem";
+        s.style.animationDuration = 11 + Math.random() * 12 + "s";
+        s.style.animationDelay = -Math.random() * 20 + "s";
+        layer.appendChild(s);
+      }
+    }
+  }
+</script>

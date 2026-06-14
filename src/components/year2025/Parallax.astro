@@ -1,0 +1,17 @@
+---
+// Parallax layer. The page's scroll script translates it vertically by
+// scrollY * speed. Negative speed moves it the opposite way.
+interface Props {
+  speed?: number;
+  class?: string;
+}
+const { speed = 0.5, class: className = "" } = Astro.props;
+---
+<div
+  class:list={["will-change-transform", className]}
+  data-parallax
+  data-parallax-speed={speed}
+  style="transition: transform 0.1s linear;"
+>
+  <slot />
+</div>
