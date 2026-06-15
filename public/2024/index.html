@@ -145,7 +145,7 @@
                     var dy = 28 + Math.random() * 28;
                     var sc = 0.5 + Math.random() * 0.5;
                     s.style.cssText = 'position:fixed;left:' + e.clientX + 'px;top:' + e.clientY + 'px;font-size:' + (0.8 + Math.random() * 0.7) + 'rem;color:rgba(219,112,147,0.9);pointer-events:none;z-index:9999;';
-                    document.body.appendChild(s);
+                    (document.querySelector('.container') || document.body).appendChild(s);
                     var anim = s.animate([
                         { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
                         { transform: 'translate(-50%,-50%) translateY(-' + dy + 'px) scale(' + sc + ')', opacity: 0 }

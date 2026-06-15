@@ -133,6 +133,7 @@ li::before{
         background-position: 54% 50%;
         z-index: -1;
         transform: translateZ(-10px) scale(2);
+        top: -57px;
     }
     .hero-text-small {
         font-size: 2.25rem;
@@ -375,7 +376,7 @@ li::before{
 .petals {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: 1000;
     pointer-events: none;
     overflow: hidden;
 }
@@ -448,9 +449,13 @@ h1 {
     .petals { display: none; }
 }
 
-/* Header: warm-pink so the "pink-to-green" wave transition makes sense */
-header {
-    background: linear-gradient(to bottom, #fde8f0, #f9d5e4);
+/* Header: warm-pink only on tablet/desktop.
+   On mobile the header uses a 3D parallax background image (translateZ behind header);
+   a background color here would cover it. */
+@media (width >= 500px) {
+    header {
+        background: linear-gradient(to bottom, #fde8f0, #f9d5e4);
+    }
 }
 
 /* Footer + closing signature sit on the same ocean-blue as the wave fill (#2081ec) */
@@ -464,6 +469,13 @@ h1.final-name {
     text-align: center;
     margin: 0;
     padding: 0.5rem 1rem 5rem;
+}
+
+/* Mobile: .extra-space adds margin-bottom that creates a white gap before h1.final-name */
+@media (width < 500px) {
+    .footer.extra-space {
+        margin-bottom: 0;
+    }
 }
 
 /* White glow reads better on the blue background */
