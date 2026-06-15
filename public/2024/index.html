@@ -5,11 +5,14 @@
         <link rel="icon" type="image/x-icon" href="../favicon.ico">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="2024.css">
         <title>30/09/2024</title>
     </head>
     <body>
+        <div class="grain" aria-hidden="true"></div>
+        <a href="/" class="back-home">&#8592; início</a>
+        <div class="petals" aria-hidden="true"></div>
         <div class="container">
             <header>
                 <div class="hero-img-small"></div>
@@ -109,5 +112,47 @@
             </div>
             <h1 class="final-name">Dri</h1>
         </div>
+        <script>
+            (function () {
+                var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (reduce) return;
+
+                /* Ambient floating petals */
+                var petalsEl = document.querySelector('.petals');
+                if (petalsEl) {
+                    var pGlyphs = ['❤', '🌸', '✦', '💕', '✿', '🌺', '♡'];
+                    for (var i = 0; i < 14; i++) {
+                        var sp = document.createElement('span');
+                        sp.textContent = pGlyphs[Math.floor(Math.random() * pGlyphs.length)];
+                        sp.style.left = (Math.random() * 100) + 'vw';
+                        sp.style.fontSize = (0.8 + Math.random() * 1.3) + 'rem';
+                        sp.style.animationDuration = (14 + Math.random() * 12) + 's';
+                        sp.style.animationDelay = (-Math.random() * 24) + 's';
+                        petalsEl.appendChild(sp);
+                    }
+                }
+
+                /* Cursor sparkles */
+                var lastSparkle = 0;
+                var spGlyphs = ['❤', '✦', '🌸', '✿', '♡', '✻', '🌺'];
+                document.addEventListener('mousemove', function (e) {
+                    var now = Date.now();
+                    if (now - lastSparkle < 110) return;
+                    if (Math.random() > 0.55) return;
+                    lastSparkle = now;
+                    var s = document.createElement('span');
+                    s.textContent = spGlyphs[Math.floor(Math.random() * spGlyphs.length)];
+                    var dy = 28 + Math.random() * 28;
+                    var sc = 0.5 + Math.random() * 0.5;
+                    s.style.cssText = 'position:fixed;left:' + e.clientX + 'px;top:' + e.clientY + 'px;font-size:' + (0.8 + Math.random() * 0.7) + 'rem;color:rgba(219,112,147,0.9);pointer-events:none;z-index:9999;';
+                    document.body.appendChild(s);
+                    var anim = s.animate([
+                        { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+                        { transform: 'translate(-50%,-50%) translateY(-' + dy + 'px) scale(' + sc + ')', opacity: 0 }
+                    ], { duration: 900, easing: 'ease' });
+                    anim.onfinish = function () { if (s.parentNode) s.parentNode.removeChild(s); };
+                });
+            })();
+        </script>
     </body>
 </html>

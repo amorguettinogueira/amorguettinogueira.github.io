@@ -1,0 +1,2 @@
+$p=(Get-NetTCPConnection -LocalPort 4321 -EA SilentlyContinue).OwningProcess; if($p){Stop-Process -Id $p -Force; "Killed $p"}; Remove-Item node_modules/.vite,node_modules/.astro -Recurse -Force -EA SilentlyContinue; "Cache cleared"
+$p=(Get-NetTCPConnection -LocalPort 4322 -EA SilentlyContinue).OwningProcess; if($p){Stop-Process -Id $p -Force; "Killed $p"}; Remove-Item node_modules/.vite,node_modules/.astro -Recurse -Force -EA SilentlyContinue; "Cache cleared"

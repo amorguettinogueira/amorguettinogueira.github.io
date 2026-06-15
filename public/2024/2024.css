@@ -360,3 +360,126 @@ li::before{
     .bottom-img-text { animation: none; opacity: 1; }
     .final-name { animation: none; }
 }
+
+/* === Beautification additions === */
+
+.grain {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+}
+
+.petals {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+.petals span {
+    position: absolute;
+    bottom: -10vh;
+    opacity: 0;
+    will-change: transform, opacity;
+    animation: petal-float linear infinite;
+    filter: drop-shadow(0 2px 4px rgba(219, 112, 147, 0.25));
+}
+@keyframes petal-float {
+    0%   { transform: translateY(0) rotate(0deg) scale(0.7); opacity: 0; }
+    15%  { opacity: 0.45; }
+    85%  { opacity: 0.45; }
+    100% { transform: translateY(-118vh) rotate(30deg) scale(1.1); opacity: 0; }
+}
+
+.back-home {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 999;
+    padding: 0.45rem 1.25rem;
+    background: rgba(255, 240, 250, 0.86);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(219, 112, 147, 0.28);
+    border-radius: 999px;
+    color: #b84d6a;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s, box-shadow 0.25s, transform 0.2s;
+    box-shadow: 0 2px 16px rgba(219, 112, 147, 0.12);
+    line-height: 1.5;
+    display: inline-block;
+}
+.back-home:hover {
+    background: rgba(219, 112, 147, 0.12);
+    box-shadow: 0 4px 24px rgba(219, 112, 147, 0.28);
+    transform: translateX(-2px);
+}
+
+.hero-text-small {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+}
+
+/* top of section MUST match wave fill color to avoid seam — use to-bottom gradient */
+.section-01 { background: linear-gradient(to bottom, #a7d781 0%, #94cc6a 100%); }
+.section-02 { background: linear-gradient(to bottom, #a2d2f3 0%, #80bfea 100%); }
+.section-03 { background: linear-gradient(to bottom, #e3bde1 0%, #cda4ca 100%); }
+.section-04 { background: linear-gradient(to bottom, #fdd8af 0%, #f9bc7c 100%); }
+
+.img266 {
+    border-radius: unset !important;
+    box-shadow: none !important;
+    mix-blend-mode: multiply; /* white PNG bg dissolves into section color */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .petals { display: none; }
+}
+
+/* Header: warm-pink so the "pink-to-green" wave transition makes sense */
+header {
+    background: linear-gradient(to bottom, #fde8f0, #f9d5e4);
+}
+
+/* Footer + closing signature sit on the same ocean-blue as the wave fill (#2081ec) */
+.footer {
+    background: #2081ec;
+    color: #fff;
+}
+h1.final-name {
+    background: #2081ec;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0.5rem 1rem 5rem;
+}
+
+/* White glow reads better on the blue background */
+@keyframes name-pulse {
+    0%, 100% { text-shadow: 0 0 8px rgba(255, 255, 255, 0.28); }
+    50%      { text-shadow: 0 0 28px rgba(255, 255, 255, 0.65); }
+}
+
+/* Soften the original hard offset drop-shadow on the hero photos */
+@media (width >= 500px) {
+    .hero-img-small {
+        filter: drop-shadow(0 4px 18px rgba(140, 0, 200, 0.22));
+    }
+}
+@media (width > 1200px) {
+    .footer-hero > img {
+        filter: drop-shadow(0 6px 22px rgba(140, 0, 200, 0.18));
+    }
+}

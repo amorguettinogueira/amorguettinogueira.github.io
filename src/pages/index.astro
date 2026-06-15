@@ -1,9 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// The gallery of years. To add a new year, drop a new entry at the top of this
-// list and create src/pages/<year>/index.astro (see 2025 for a worked example).
-// `href` may be an internal route ("/2026/") or an external link (a video, etc.).
 const years = [
   { year: "2025", age: "43 anos", href: "/2025/", img: "/2025.jpg" },
   { year: "2024", age: "42 anos", href: "/2024/index.html", img: "/2024.jpg" },
@@ -17,250 +14,218 @@ const years = [
 <BaseLayout
   title="À Michelle Nogueira"
   description="Uma homenagem à Michelle Nogueira, ano a ano."
-  fontsHref="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Rowdies:wght@300;400;700&display=swap"
+  fontsHref="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Pinyon+Script&family=Quicksand:wght@300;400;500;600;700&display=swap"
   ogImage="/2025.jpg"
 >
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="sparkles-layer" aria-hidden="true"></div>
   <div class="hearts" aria-hidden="true"></div>
+
   <div class="main">
     <div class="content-wrapper">
+
       <header class="page-header">
         <div class="header-content">
-          <div class="header-center">
-            <h1 class="header-title">À Michelle Nogueira</h1>
-            <div class="header-bars">
-              <span class="bar bar-primary"></span>
-              <span class="bar bar-secondary"></span>
-              <span class="bar bar-accent"></span>
-            </div>
+          <p class="header-pre">com amor, sempre</p>
+          <h1 class="header-title">À Michelle Nogueira</h1>
+          <div class="ornament-wrap" aria-hidden="true">
+            <svg class="ornament" viewBox="0 0 500 36" xmlns="http://www.w3.org/2000/svg">
+              <line x1="0" y1="18" x2="185" y2="18" stroke="currentColor" stroke-width="0.75" opacity="0.45"/>
+              <circle cx="198" cy="18" r="1.5" fill="currentColor" opacity="0.35"/>
+              <circle cx="210" cy="18" r="2.5" fill="currentColor" opacity="0.55"/>
+              <circle cx="222" cy="18" r="1.5" fill="currentColor" opacity="0.35"/>
+              <text x="250" y="25" text-anchor="middle" font-size="18" fill="currentColor" opacity="0.85" font-family="serif">❤</text>
+              <circle cx="278" cy="18" r="1.5" fill="currentColor" opacity="0.35"/>
+              <circle cx="290" cy="18" r="2.5" fill="currentColor" opacity="0.55"/>
+              <circle cx="302" cy="18" r="1.5" fill="currentColor" opacity="0.35"/>
+              <line x1="315" y1="18" x2="500" y2="18" stroke="currentColor" stroke-width="0.75" opacity="0.45"/>
+            </svg>
           </div>
+          <p class="header-sub">uma homenagem, ano a ano</p>
         </div>
       </header>
+
       <div class="grid-container">
-        {
-          years.map((y) => (
-            <div class="grid-cell">
-              <a href={y.href} class={y.year}>
-                <img src={y.img} alt={`Michelle em ${y.year}`} />
-                <div class="photo-title">
-                  <span class="big-text">{y.year}</span>
-                  {y.age}
-                </div>
-              </a>
-            </div>
-          ))
-        }
+        {years.map((y) => (
+          <div class="grid-cell">
+            <a href={y.href}>
+              <img src={y.img} alt={`Michelle em ${y.year}`} loading="lazy" />
+              <div class="card-overlay" aria-hidden="true"></div>
+              <div class="photo-title">
+                <span class="big-text">{y.year}</span>
+                <span class="age-text">{y.age}</span>
+              </div>
+              <div class="card-frame" aria-hidden="true"></div>
+            </a>
+          </div>
+        ))}
       </div>
+
+      <footer class="site-footer">
+        <svg class="footer-ornament" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="12" x2="192" y2="12" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+          <circle cx="204" cy="12" r="1.5" fill="currentColor" opacity="0.4"/>
+          <circle cx="216" cy="12" r="2" fill="currentColor" opacity="0.5"/>
+          <text x="250" y="17" text-anchor="middle" font-size="13" fill="currentColor" opacity="0.65" font-family="serif">✦</text>
+          <circle cx="284" cy="12" r="2" fill="currentColor" opacity="0.5"/>
+          <circle cx="296" cy="12" r="1.5" fill="currentColor" opacity="0.4"/>
+          <line x1="308" y1="12" x2="500" y2="12" stroke="currentColor" stroke-width="0.75" opacity="0.4"/>
+        </svg>
+        <p class="footer-message">uma história que cresce a cada ano</p>
+        <p class="footer-signature">Dri</p>
+        <div class="footer-hearts-row" aria-hidden="true">
+          <span class="fh fh1">♡</span>
+          <span class="fh fh2">❤</span>
+          <span class="fh fh3">♡</span>
+        </div>
+      </footer>
+
     </div>
   </div>
 </BaseLayout>
 
 <style is:global>
   :root {
-    --gradient-dreamy: radial-gradient(circle at 50% 30%, hsl(340deg 75% 68% / 80%) 0%, hsl(280deg 60% 85% / 80%) 70%);
-    --tw-translate-x: 0;
-    --tw-translate-y: 0;
-    --tw-rotate: 0;
-    --tw-skew-x: 0;
-    --tw-skew-y: 0;
-    --tw-scale-x: 1.1;
-    --tw-scale-y: 1.1;
-    --tw-ring-offset-shadow: 0 0 #0000;
-    --tw-ring-shadow: 0 0 #0000;
-    --shadow-hover: 0 8px 30px -8px hsl(340 75% 68% / 0.4);
+    --blush: hsl(340 85% 73%);
+    --mauve: hsl(320 35% 55%);
+    --deep-rose: hsl(340 60% 38%);
+    --ornament-color: hsl(340 45% 60%);
+    --shadow-card: 0 4px 24px -8px hsl(340 60% 50% / 0.2), 0 1px 4px hsl(340 60% 50% / 0.08);
+    --shadow-hover: 0 24px 60px -14px hsl(340 70% 50% / 0.45), 0 8px 24px -8px hsl(340 60% 50% / 0.2);
   }
-  *, *:before, *:after {
-    box-sizing: border-box;
-  }
+
+  *, *:before, *:after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
   body {
-    margin: 0px;
-    font-family: "Rowdies", serif;
-    font-weight: 700;
-  }
-  .main {
-    background-image: var(--gradient-dreamy);
+    margin: 0;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    /* Rich multi-layer watercolour gradient */
+    background:
+      radial-gradient(ellipse 130% 70% at 10%  5%,  hsl(340 90% 85% / 0.60) 0%, transparent 55%),
+      radial-gradient(ellipse  80% 60% at 88% 18%,  hsl(290 55% 83% / 0.45) 0%, transparent 50%),
+      radial-gradient(ellipse 100% 65% at 50% 95%,  hsl(340 75% 82% / 0.40) 0%, transparent 55%),
+      radial-gradient(ellipse  60% 50% at 72% 55%,  hsl( 30 70% 92% / 0.50) 0%, transparent 45%),
+      linear-gradient(155deg, hsl(335 90% 95%) 0%, hsl(320 50% 92%) 40%, hsl(35 80% 96%) 100%);
     min-height: 100vh;
   }
+
+  /* ── Grain texture ── */
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.055'/></svg>");
+    background-size: 200px 200px;
+    mix-blend-mode: multiply;
+    opacity: 0.9;
+  }
+
+  /* ── Main shell ── */
+  .main { position: relative; z-index: 1; min-height: 100vh; }
+
   .content-wrapper {
-    width: min(100%, 1600px);
-    margin: 0 auto;
-    padding: 0 min(10%, 160px) 0 min(10%, 160px);
     max-width: 1600px;
     width: 100%;
     margin: 0 auto;
-  }
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 622px);
-    gap: 32px;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-  .grid-cell {
-    position: relative;
-    overflow: hidden;
-    border-radius: 1.5rem;
-    animation-delay: 0.2s;
-    animation-fill-mode: both;
-    animation-duration: 300ms;
-    transition-duration: 300ms;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fade-in 0.4s ease-out;
-  }
-  .grid-cell > a {
-    width: 100%;
-    position: relative;
-    color: rgba(255, 255, 255, 0.4);
-    text-decoration: none;
-    aspect-ratio: 622 / 415;
-    border-radius: 1.5rem;
-    overflow: hidden;
-  }
-  .grid-cell > a > img {
-    width: 100%;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-    box-sizing: border-box;
-    display: block;
-  }
-  .grid-cell > a:hover > img,
-  .grid-cell > a > img:hover {
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-  .grid-cell > a:hover {
-    color: rgba(255, 255, 255, 1);
-    text-shadow: 1px 1px gray;
-    transform: translateY(0);
-  }
-  .photo-title {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0 1.5rem 0 1.5rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-    border-radius: 1.5rem;
-    color: #fff;
-    font-size: min(2cqw, 2rem);
-    font-weight: 600;
-    transform: translateY(100%);
-    opacity: 0;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .grid-cell:hover .photo-title {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  .big-text {
-    font-size: min(8cqw, 102.4px);
-    text-align: left;
-  }
-  .photo-title span + text,
-  .photo-title span + * {
-    text-align: right;
-    margin-left: auto;
-  }
-  @media (width <= 1600px) {
-    .grid-container {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2vw;
-    }
-  }
-  @media (width <= 800px) {
-    .grid-container {
-      grid-template-columns: 1fr;
-      gap: 4vw;
-    }
-    .photo-title {
-      font-size: min(3cqw, 2rem);
-    }
-  }
-  .page-header {
-    position: relative;
-    overflow: hidden;
-  }
-  .header-content {
-    position: relative;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem 5rem 1.5rem;
-    z-index: 1;
-  }
-  .header-center {
-    text-align: center;
-    animation: fade-in 1s;
-  }
-  .header-title {
-    font-family: "Quicksand", sans-serif;
-    font-size: 2.5rem;
-    font-weight: bold;
-    background: linear-gradient(180deg, #c50000, #991799);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .header-desc {
-    color: #a78bfa;
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin: 1rem auto 0 auto;
-  }
-  .header-bars {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    padding-top: 1.5rem;
-  }
-  .bar {
-    display: inline-block;
-    width: 3rem;
-    height: 0.25rem;
-    border-radius: 9999px;
-    animation: glow 2s infinite alternate;
-  }
-  .bar-primary { background: #f7b6d2; animation-delay: 0s; }
-  .bar-secondary { background: #d1c4e9; animation-delay: 0.5s; }
-  .bar-accent { background: #f8bbd0; animation-delay: 1s; }
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes glow {
-    from { box-shadow: 0 0 8px 0 #f7b6d2; }
-    to { box-shadow: 0 0 24px 4px #f7b6d2; }
+    padding: 0 min(8%, 140px);
   }
 
-  /* --- Romantic & dramatic enhancements --- */
+  /* ── Header ── */
+  .page-header { position: relative; }
+
+  .header-content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 4rem;
+    text-align: center;
+  }
+
+  .header-pre {
+    font-family: "Pinyon Script", cursive;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--mauve);
+    margin: 0 0 0.1rem;
+    opacity: 0;
+    animation: rise-in 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both;
+  }
+
   .header-title {
-    background: linear-gradient(110deg, #c50000, #991799, #ff6fae, #991799, #c50000);
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.6rem, 6vw, 5.2rem);
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.05;
+    margin: 0 0 1.1rem;
+    background: linear-gradient(115deg,
+      hsl(340 70% 38%),
+      hsl(330 60% 48%),
+      hsl(340 80% 60%),
+      hsl(320 60% 50%),
+      hsl(340 70% 38%));
     background-size: 300% auto;
     -webkit-background-clip: text;
-    background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: title-rise 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both,
-               title-shimmer 7s ease-in-out infinite 1.4s;
+    background-clip: text;
+    opacity: 0;
+    animation:
+      rise-in  1.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s both,
+      shimmer  8s ease-in-out infinite 2.2s;
   }
-  @keyframes title-rise {
-    0% { opacity: 0; transform: translateY(28px) scale(0.94); letter-spacing: 0.18em; filter: blur(6px); }
-    100% { opacity: 1; transform: translateY(0) scale(1); letter-spacing: normal; filter: blur(0); }
+
+  .ornament-wrap {
+    opacity: 0;
+    animation: rise-in 1s ease 0.9s both;
   }
-  @keyframes title-shimmer {
-    0%, 100% { background-position: 0% center; }
-    50% { background-position: 100% center; }
+  .ornament {
+    width: min(90%, 380px);
+    color: var(--ornament-color);
+    display: block;
+    margin: 0 auto 1rem;
+  }
+
+  .header-sub {
+    font-family: "Quicksand", sans-serif;
+    font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: hsl(340 28% 52%);
+    margin: 0;
+    opacity: 0;
+    animation: rise-in 1s ease 1.15s both;
+  }
+
+  @keyframes rise-in {
+    from { opacity: 0; transform: translateY(28px) scale(0.96); filter: blur(5px); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0);  }
+  }
+  @keyframes shimmer {
+    0%, 100% { background-position:   0% center; }
+    50%       { background-position: 100% center; }
+  }
+
+  /* ── Grid ── */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(14px, 2.5vw, 36px);
+    width: 100%;
   }
 
   .grid-cell {
-    animation: cell-reveal 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
-  @keyframes cell-reveal {
-    0% { opacity: 0; transform: translateY(48px) scale(0.96); filter: blur(8px); }
-    100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    container-type: inline-size;
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    /* base resting state; hover overridden per nth-child below */
+    transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.55s ease;
+    animation: cell-reveal 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    will-change: transform;
+    background: hsl(340 30% 85%); /* placeholder colour while image loads */
   }
   .grid-cell:nth-child(1) { animation-delay: 0.45s; }
   .grid-cell:nth-child(2) { animation-delay: 0.60s; }
@@ -269,15 +234,161 @@ const years = [
   .grid-cell:nth-child(5) { animation-delay: 1.05s; }
   .grid-cell:nth-child(6) { animation-delay: 1.20s; }
 
-  .grid-cell {
-    box-shadow: 0 10px 30px -18px hsl(340 75% 40% / 0.5);
-  }
-  .grid-cell:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-6px) scale(1.015);
+  /* Alternating tilt – feels like picking up a photo */
+  .grid-cell:nth-child(odd):hover  { transform: translateY(-10px) scale(1.025) rotate(-0.5deg); box-shadow: var(--shadow-hover); }
+  .grid-cell:nth-child(even):hover { transform: translateY(-10px) scale(1.025) rotate( 0.5deg); box-shadow: var(--shadow-hover); }
+
+  @keyframes cell-reveal {
+    from { opacity: 0; transform: translateY(50px) scale(0.95); filter: blur(8px); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0);  }
   }
 
-  /* Ambient drifting hearts behind everything */
+  .grid-cell > a {
+    display: block;
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    text-decoration: none;
+    color: white;
+  }
+
+  .grid-cell > a > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .grid-cell:hover > a > img { transform: scale(1.09); }
+
+  /* Warm rose gradient overlay – slides in on hover */
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    background: linear-gradient(
+      to top,
+      hsl(340 65% 20% / 0.88) 0%,
+      hsl(330 50% 28% / 0.45) 40%,
+      transparent 72%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .grid-cell:hover .card-overlay { opacity: 1; }
+
+  .photo-title {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 1rem 1.4rem 1.25rem;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .grid-cell:hover .photo-title { transform: translateY(0); opacity: 1; }
+
+  .big-text {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(2.5rem, 10cqw, 7rem);
+    line-height: 0.9;
+    color: white;
+    text-shadow: 0 2px 18px hsl(340 80% 25% / 0.5);
+    letter-spacing: -0.02em;
+  }
+
+  .age-text {
+    font-family: "Quicksand", sans-serif;
+    font-size: clamp(0.75rem, 2.5cqw, 1.05rem);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: hsl(35 90% 88%);
+    text-align: right;
+    white-space: nowrap;
+    margin-bottom: 0.35rem;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.45);
+  }
+
+  /* Inner rose-gold frame that materialises on hover */
+  .card-frame {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    border: 1.5px solid transparent;
+    box-shadow: inset 0 0 0 0 transparent;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .grid-cell:hover .card-frame {
+    border-color: hsl(340 70% 78% / 0.45);
+    box-shadow: inset 0 0 28px hsl(340 80% 72% / 0.13);
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    text-align: center;
+    padding: 5.5rem 2rem 6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-ornament {
+    display: block;
+    width: min(80%, 380px);
+    margin: 0 auto 2.8rem;
+    color: var(--ornament-color);
+  }
+
+  .footer-message {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+    color: hsl(340 32% 46%);
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.01em;
+  }
+
+  .footer-signature {
+    font-family: "Pinyon Script", cursive;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    color: hsl(340 58% 44%);
+    margin: 0 0 1.6rem;
+    line-height: 1;
+    display: inline-block;
+    animation: sig-pulse 5s ease-in-out infinite;
+  }
+  @keyframes sig-pulse {
+    0%, 100% { transform: scale(1)    rotate(-1deg); }
+    40%       { transform: scale(1.05) rotate( 0deg); }
+    80%       { transform: scale(0.98) rotate(-1.5deg); }
+  }
+
+  .footer-hearts-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .fh { color: var(--blush); font-size: 1.25rem; display: inline-block; }
+  .fh1, .fh3 { opacity: 0.45; font-size: 1rem; animation: bob 3.2s ease-in-out infinite; }
+  .fh2  { animation: bob 3.2s ease-in-out 0.4s infinite; }
+  .fh3  { animation-delay: 0.8s; }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0)   scale(1);    }
+    50%       { transform: translateY(-7px) scale(1.12); }
+  }
+
+  /* ── Ambient floating particles ── */
   .hearts {
     position: fixed;
     inset: 0;
@@ -288,44 +399,121 @@ const years = [
   .hearts span {
     position: absolute;
     bottom: -10vh;
-    font-size: 1.6rem;
-    color: hsl(340deg 80% 70%);
     opacity: 0;
     will-change: transform, opacity;
-    animation: heart-float linear infinite;
-    filter: drop-shadow(0 2px 6px hsl(340deg 80% 60% / 0.5));
+    animation: float-up linear infinite;
+    filter: drop-shadow(0 2px 4px hsl(340 80% 60% / 0.3));
   }
-  @keyframes heart-float {
-    0% { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
-    12% { opacity: 0.55; }
-    88% { opacity: 0.55; }
-    100% { transform: translateY(-118vh) scale(1.05) rotate(28deg); opacity: 0; }
+  @keyframes float-up {
+    0%   { transform: translateY(0)     scale(0.6) rotate(-10deg); opacity: 0;   }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.38; }
+    100% { transform: translateY(-120vh) scale(1.1) rotate( 25deg); opacity: 0;   }
   }
-  .main { position: relative; z-index: 1; }
+
+  /* ── Sparkle particles ── */
+  .sparkles-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .sparkle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, white 0%, hsl(37 100% 82%) 45%, transparent 70%);
+    animation: sparkle-pop 2s ease-out forwards;
+    pointer-events: none;
+  }
+  @keyframes sparkle-pop {
+    0%   { opacity: 0;   transform: scale(0)   rotate(  0deg); }
+    30%  { opacity: 0.9; transform: scale(1)   rotate( 45deg); }
+    100% { opacity: 0;   transform: scale(0.3) rotate( 90deg); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .grid-container { grid-template-columns: 1fr; }
+    .content-wrapper { padding: 0 min(5%, 20px); }
+    .grid-cell:nth-child(odd):hover,
+    .grid-cell:nth-child(even):hover { transform: translateY(-6px) scale(1.02) rotate(0); }
+  }
 
   @media (prefers-reduced-motion: reduce) {
-    .header-title { animation: title-rise 0.01s both; }
-    .grid-cell { animation: none; }
-    .hearts { display: none; }
-    .grid-cell:hover { transform: none; }
+    .header-pre, .header-title, .ornament-wrap, .header-sub,
+    .grid-cell, .footer-signature { animation: none !important; opacity: 1 !important; }
+    .hearts, .sparkles-layer, .grain-overlay { display: none; }
+    .grid-cell:nth-child(odd):hover,
+    .grid-cell:nth-child(even):hover { transform: none; }
   }
 </style>
 
 <script>
-  if (!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
-    const layer = document.querySelector(".hearts");
-    if (layer) {
-      const glyphs = ["❤", "🤍", "♥", "🧡"];
-      const COUNT = 14;
-      for (let i = 0; i < COUNT; i++) {
+  const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    // Ambient floating particles
+    const heartsLayer = document.querySelector(".hearts");
+    if (heartsLayer) {
+      const glyphs  = ["❤", "🤍", "♡", "♥", "✦", "✧", "🌸", "🌺", "💕"];
+      const colors  = [
+        "hsl(340 80% 70%)", "hsl(320 65% 74%)", "hsl(350 75% 78%)",
+        "hsl(37 80% 72%)", "hsl(340 55% 82%)",
+      ];
+      for (let i = 0; i < 20; i++) {
         const s = document.createElement("span");
         s.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
-        s.style.left = Math.random() * 100 + "vw";
-        s.style.fontSize = 0.9 + Math.random() * 1.8 + "rem";
-        s.style.animationDuration = 11 + Math.random() * 12 + "s";
-        s.style.animationDelay = -Math.random() * 20 + "s";
-        layer.appendChild(s);
+        s.style.left   = Math.random() * 100 + "vw";
+        s.style.fontSize = (0.65 + Math.random() * 1.9) + "rem";
+        s.style.color  = colors[Math.floor(Math.random() * colors.length)];
+        s.style.animationDuration  = (13 + Math.random() * 14) + "s";
+        s.style.animationDelay     = (-Math.random() * 25)     + "s";
+        heartsLayer.appendChild(s);
       }
     }
+
+    // Periodic ambient sparkles
+    const sparkleLayer = document.querySelector(".sparkles-layer");
+    function spawnSparkle(x, y) {
+      if (!sparkleLayer) return;
+      const el  = document.createElement("div");
+      el.className = "sparkle";
+      const size = 7 + Math.random() * 16;
+      el.style.cssText =
+        `width:${size}px;height:${size}px;left:${x}px;top:${y}px;position:absolute;`;
+      sparkleLayer.appendChild(el);
+      setTimeout(() => el.remove(), 2100);
+    }
+    // Random ambient sparkles
+    setInterval(() => {
+      spawnSparkle(
+        Math.random() * window.innerWidth,
+        Math.random() * window.innerHeight,
+      );
+    }, 750);
+    // Burst on load
+    for (let i = 0; i < 8; i++)
+      setTimeout(() =>
+        spawnSparkle(Math.random() * window.innerWidth, Math.random() * window.innerHeight),
+        900 + i * 130
+      );
+
+    // Cursor sparkles (throttled)
+    let last = 0;
+    document.addEventListener("mousemove", (e) => {
+      const now = Date.now();
+      if (now - last < 110) return;
+      last = now;
+      if (Math.random() > 0.45) return; // only ~55% of moves
+      const el = document.createElement("div");
+      el.className = "sparkle";
+      const size = 4 + Math.random() * 10;
+      el.style.cssText =
+        `position:fixed;width:${size}px;height:${size}px;`
+        + `left:${e.clientX - size / 2}px;top:${e.clientY - size / 2}px;`
+        + `pointer-events:none;z-index:9999;`;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 2100);
+    }, { passive: true });
   }
 </script>

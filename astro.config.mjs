@@ -13,4 +13,12 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
+  vite: {
+    resolve: {
+      // The repo lives under an NTFS junction (C:\GitHub → D:\moved-from-C\GitHub).
+      // Without this, Vite follows the junction via fs.realpath() and generates
+      // /@fs/D:/moved-from-C/... URLs that its own sandbox then blocks.
+      preserveSymlinks: true,
+    },
+  },
 });

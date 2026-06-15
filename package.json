@@ -6,6 +6,7 @@
   "description": "Tribute site for Michelle Nogueira (michellenogueira.info)",
   "scripts": {
     "dev": "astro dev",
+    "dev:fresh": "node scripts/dev-fresh.mjs && astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

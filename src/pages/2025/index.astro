@@ -21,7 +21,7 @@ const nicknames = [
 ---
 
 <BaseLayout
-  title="Feliz aniversário Mi"
+  title="30/09/2025"
   description="Carta de feliz aniversário para Michelle, ano 2025"
   fontsHref="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
   ogImage="/2025.jpg"
@@ -30,6 +30,9 @@ const nicknames = [
   <div
     class="relative min-h-screen bg-background overflow-hidden before:content-[''] before:fixed before:inset-0 before:z-0 before:pointer-events-none before:bg-gradient-to-r before:from-[#f7c5c8] before:to-[#fdefec] before:w-full before:h-full"
   >
+    <!-- Back home link -->
+    <a href="/" class="back-home" aria-label="Voltar ao início">← início</a>
+
     <!-- Scroll progress -->
     <div class="fixed top-0 left-0 w-full h-1 z-50 bg-muted/20">
       <div id="scroll-progress-bar" class="h-full bg-gradient-romantic transition-all duration-200" style="width: 0%"></div>
@@ -313,4 +316,61 @@ const nicknames = [
     document.body.appendChild(layer);
     window.setTimeout(() => layer.remove(), 6000);
   }
+
+  // Cursor sparkles
+  if (!reduce) {
+    let lastSparkle = 0;
+    const spGlyphs = ["❤", "✦", "🌸", "✿", "♡", "✻", "🌺", "💕"];
+    document.addEventListener("mousemove", (e) => {
+      const now = Date.now();
+      if (now - lastSparkle < 110) return;
+      if (Math.random() > 0.55) return;
+      lastSparkle = now;
+      const s = document.createElement("span");
+      s.textContent = spGlyphs[Math.floor(Math.random() * spGlyphs.length)];
+      const dy = 28 + Math.random() * 28;
+      const sc = 0.5 + Math.random() * 0.5;
+      s.style.cssText = `position:fixed;left:${e.clientX}px;top:${e.clientY}px;font-size:${0.8 + Math.random() * 0.7}rem;color:hsl(350 65% 55%);pointer-events:none;z-index:9999;`;
+      document.body.appendChild(s);
+      const anim = s.animate(
+        [
+          { transform: "translate(-50%,-50%) scale(1)", opacity: 1 },
+          { transform: `translate(-50%,-50%) translateY(-${dy}px) scale(${sc})`, opacity: 0 },
+        ],
+        { duration: 900, easing: "ease" }
+      );
+      anim.onfinish = () => s.remove();
+    });
+  }
 </script>
+
+<style is:global>
+  /* Back-home pill — rendered above Tailwind so specificity is fine */
+  .back-home {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.25rem;
+    z-index: 200;
+    font-family: "Dancing Script", cursive;
+    font-size: 1.1rem;
+    color: hsl(350 55% 48%);
+    text-decoration: none;
+    background: hsl(0 0% 100% / 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.4rem 1.1rem;
+    border-radius: 9999px;
+    border: 1px solid hsl(350 55% 72% / 0.38);
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 2px 12px hsl(350 55% 60% / 0.12);
+  }
+  .back-home:hover {
+    background: hsl(350 60% 52%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 20px hsl(350 60% 50% / 0.3);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .back-home { transition: none; }
+  }
+</style>
