@@ -401,23 +401,23 @@ li::before{
     left: 1.2rem;
     z-index: 999;
     padding: 0.45rem 1.25rem;
-    background: rgba(255, 240, 250, 0.86);
+    background: rgba(255, 240, 245, 0.84);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(219, 112, 147, 0.28);
     border-radius: 999px;
     color: #b84d6a;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-style: italic;
+    font-family: 'Lobster', cursive;
     font-size: 1rem;
     text-decoration: none;
     transition: background 0.3s, box-shadow 0.25s, transform 0.2s;
-    box-shadow: 0 2px 16px rgba(219, 112, 147, 0.12);
+    box-shadow: 0 2px 16px rgba(219, 112, 147, 0.15);
     line-height: 1.5;
     display: inline-block;
 }
+
 .back-home:hover {
-    background: rgba(219, 112, 147, 0.12);
+    background: rgba(219, 112, 147, 0.14);
     box-shadow: 0 4px 24px rgba(219, 112, 147, 0.28);
     transform: translateX(-2px);
 }
