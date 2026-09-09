@@ -1,0 +1,529 @@
+/* =========================================================================
+   Carta de 2026 — michellenogueira.info
+   Escopo: importada apenas por src/pages/2026/index.astro.
+   Sem Tailwind (o tailwind.config.mjs restringe o conteúdo ao ano de 2025).
+
+   Conceito: é uma carta endereçada às filhas que a Michelle lê por cima do
+   ombro delas. Uma só família tipográfica, porque é a letra de uma pessoa só.
+   As vozes se distinguem por medida de coluna, alinhamento e destinatário.
+
+   Temperatura: a carta abre e fecha em faixas quentes (é aniversário) e
+   atravessa o miolo em papel claro (é testemunho). O 2041 é noite.
+
+   Tipo: corpo em 19px no celular. A leitora usa óculos para perto — nada
+   de informação real abaixo do tamanho do corpo.
+   ========================================================================= */
+
+:root {
+  /* Papel: branco-rosado quente, não creme. */
+  --papel: hsl(14 60% 97.5%);
+  --papel-fundo: hsl(12 48% 94%);
+  /* Faixas de celebração — abertura e fecho. */
+  --papel-quente: hsl(9 62% 92%);
+
+  /* Tinta: marrom-ameixa escuro, não preto acinzentado. */
+  --tinta: hsl(330 24% 15%);
+  --tinta-media: hsl(330 15% 34%);
+  --tinta-fraca: hsl(330 12% 46%);
+
+  /* O fio rosa que liga esta página ao resto do acervo — mais grave. */
+  --rosa: hsl(340 52% 39%);
+  --rosa-claro: hsl(340 42% 64%);
+
+  /* 2041: a página muda de hemisfério. */
+  --noite: hsl(268 27% 12%);
+  --noite-tinta: hsl(30 24% 88%);
+  --noite-media: hsl(300 12% 64%);
+  --noite-rosa: hsl(342 55% 72%);
+
+  --linha: hsl(340 24% 84%);
+  --linha-quente: hsl(9 40% 82%);
+
+  --medida: 34rem;       /* a carta */
+  --medida-nota: 28rem;  /* mais estreita — os bilhetes para a Mi */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+  /* 19px no celular, 21px em tela grande. */
+  font-size: clamp(1.1875rem, 1.09rem + 0.45vw, 1.3125rem);
+  line-height: 1.68;
+  font-variant-numeric: tabular-nums;
+  overflow-x: hidden;
+}
+
+/* ── Voltar ────────────────────────────────────────────────────────────── */
+
+.voltar {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  z-index: 5;
+  color: var(--tinta-media);
+  font-size: 1.0625rem;
+  font-style: italic;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+
+.voltar:hover,
+.voltar:focus-visible {
+  color: var(--rosa);
+  border-bottom-color: var(--rosa-claro);
+}
+
+/* ── Estrutura ─────────────────────────────────────────────────────────── */
+
+.carta {
+  position: relative;
+}
+
+.faixa {
+  padding-inline: 1.25rem;
+}
+
+.coluna {
+  max-width: var(--medida);
+  margin-inline: auto;
+}
+
+.coluna--nota {
+  max-width: var(--medida-nota);
+}
+
+.corpo > p {
+  margin: 0 0 1.3em;
+  text-wrap: pretty;
+}
+
+.corpo > p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Abertura: faixa quente ────────────────────────────────────────────── */
+
+.abertura {
+  background: linear-gradient(
+    170deg,
+    var(--papel-quente) 0%,
+    hsl(14 58% 95%) 55%,
+    var(--papel) 100%
+  );
+  padding-block: clamp(5.5rem, 18vh, 8rem) clamp(3.5rem, 9vh, 5rem);
+  text-align: center;
+}
+
+.abertura__data {
+  margin: 0 0 1.5rem;
+  color: var(--rosa);
+  font-size: 1.1875rem;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+.abertura__frase {
+  margin: 0;
+  font-size: clamp(2.75rem, 13vw, 4.5rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+/* ── Contador ──────────────────────────────────────────────────────────── */
+
+.contador {
+  display: block;
+  margin-inline: auto;
+}
+
+.contador__dias {
+  display: block;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--rosa);
+  font-variant-numeric: tabular-nums;
+}
+
+.contador__nota {
+  display: block;
+  color: var(--tinta-media);
+  font-style: italic;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.contador--abertura {
+  margin-top: clamp(3rem, 9vh, 4.5rem);
+  text-align: center;
+}
+
+.contador--abertura .contador__dias {
+  font-size: 2.125rem;
+}
+
+.contador--abertura .contador__nota {
+  margin-top: 0.5rem;
+}
+
+.contador--fecho {
+  text-align: center;
+}
+
+.contador--fecho .contador__dias {
+  font-size: clamp(3.5rem, 17vw, 5rem);
+}
+
+.contador--fecho .contador__nota {
+  margin-top: 0.85rem;
+}
+
+.contador__marco {
+  display: block;
+  margin-top: 1.5rem;
+  color: var(--tinta-media);
+  font-size: 1.125rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* ── Destinatário ──────────────────────────────────────────────────────── */
+
+.secao {
+  padding-block: clamp(3.25rem, 9vh, 5rem);
+}
+
+.secao + .secao {
+  border-top: 1px solid var(--linha);
+}
+
+.para {
+  margin: 0 0 1.9rem;
+  font-size: clamp(1.875rem, 7.5vw, 2.5rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--rosa);
+  letter-spacing: -0.015em;
+}
+
+.para__quando {
+  display: block;
+  margin-top: 0.45rem;
+  color: var(--tinta-fraca);
+  font-size: 1.0625rem;
+  font-style: normal;
+  letter-spacing: 0.01em;
+}
+
+/* A tese: fundo levemente mais denso. É o argumento, não a narrativa. */
+.secao--tese {
+  background: var(--papel-fundo);
+}
+
+/* Despedida de cada filha. */
+.despedida {
+  margin: 2rem 0 0;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--rosa);
+}
+
+/* ── Citação do vídeo de 2020 ──────────────────────────────────────────── */
+
+.citacao {
+  margin: 1.8em 0;
+  padding-left: 1.15rem;
+  border-left: 2px solid var(--rosa-claro);
+  font-style: italic;
+  color: var(--tinta);
+}
+
+.citacao p {
+  margin: 0;
+}
+
+.citacao__fonte {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--tinta-media);
+  font-size: 1rem;
+  font-style: normal;
+  text-decoration-color: var(--rosa-claro);
+  text-underline-offset: 3px;
+}
+
+.citacao__fonte:hover,
+.citacao__fonte:focus-visible {
+  color: var(--rosa);
+}
+
+/* ── Áudio da Rafa ─────────────────────────────────────────────────────── */
+
+.audio {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.25rem 0 0;
+  padding: 1rem 1.15rem;
+  background: var(--papel-quente);
+  border: 1px solid var(--linha-quente);
+  border-radius: 2px;
+}
+
+.audio[hidden] {
+  display: none;
+}
+
+.audio__botao {
+  flex: 0 0 auto;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 1px solid var(--rosa);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--rosa);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.audio__botao:hover,
+.audio__botao:focus-visible {
+  background: var(--rosa);
+  color: var(--papel);
+}
+
+.audio__botao svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+}
+
+.audio__texto {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.audio__rotulo {
+  display: block;
+  font-size: 1.0625rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.audio__trilho {
+  display: block;
+  height: 2px;
+  margin-top: 0.6rem;
+  background: var(--linha-quente);
+  overflow: hidden;
+}
+
+.audio__progresso {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--rosa);
+}
+
+/* ── 2041: a página muda de hemisfério ─────────────────────────────────── */
+
+.tempo {
+  position: relative;
+}
+
+.selo {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  padding: 0.6rem 1.25rem;
+  background: var(--noite);
+  color: var(--noite-rosa);
+  font-size: 1rem;
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 0.03em;
+  transition: background-color 0.9s ease, color 0.9s ease;
+}
+
+.selo.agora {
+  background: var(--papel);
+  color: var(--rosa);
+  box-shadow: 0 1px 0 var(--linha);
+}
+
+.futuro {
+  background: var(--noite);
+  color: var(--noite-tinta);
+  padding-block: clamp(3rem, 8vh, 4.5rem) clamp(4rem, 12vh, 6.5rem);
+}
+
+.futuro .para {
+  color: var(--noite-rosa);
+}
+
+.futuro .para__quando {
+  color: var(--noite-media);
+}
+
+/* ── A revelação ───────────────────────────────────────────────────────── */
+
+.revelacao {
+  padding-block: clamp(3.5rem, 10vh, 5.5rem) clamp(3.5rem, 10vh, 5rem);
+}
+
+/* ── O fecho: a faixa de aniversário ───────────────────────────────────── */
+
+.fecho {
+  background: linear-gradient(
+    185deg,
+    var(--papel) 0%,
+    hsl(12 58% 95%) 30%,
+    var(--papel-quente) 100%
+  );
+  padding-block: clamp(3.5rem, 10vh, 5rem) clamp(4.5rem, 14vh, 7rem);
+  text-align: center;
+}
+
+.fecho__parabens {
+  margin: 0 0 2.75rem;
+  font-size: clamp(1.75rem, 6.8vw, 2.375rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--rosa);
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+
+.assinatura {
+  margin: 3rem 0 0;
+}
+
+.assinatura__amor {
+  margin: 0;
+  font-size: 1.375rem;
+  font-style: italic;
+  color: var(--tinta-media);
+}
+
+.assinatura__nome {
+  margin: 0.15rem 0 0;
+  font-size: 3.25rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--rosa);
+  line-height: 1.1;
+}
+
+/* ── Foco visível ──────────────────────────────────────────────────────── */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--rosa);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+.futuro a:focus-visible {
+  outline-color: var(--noite-rosa);
+}
+
+/* ── Telas maiores ─────────────────────────────────────────────────────── */
+
+@media (min-width: 48rem) {
+  .faixa {
+    padding-inline: 2.5rem;
+  }
+
+  .voltar {
+    top: 1.75rem;
+    left: 2rem;
+  }
+
+  .selo {
+    padding-block: 0.75rem;
+  }
+}
+
+/* ── Desktop: o destinatário vai para a margem ─────────────────────────────
+   A coluna de texto sobe para ~64 caracteres (em ch, então acompanha o corpo)
+   e o nome de quem recebe a carta fica preso na lateral esquerda enquanto se
+   lê aquela seção. Usa a largura da tela sem esticar a linha de leitura.
+   ------------------------------------------------------------------------ */
+
+@media (min-width: 64rem) {
+  /* Largura explícita e idêntica em todas as seções: a coluna de texto começa
+     sempre no mesmo ponto, seja o bilhete de duas linhas ou a carta inteira. */
+  .secao > .coluna,
+  .futuro .coluna,
+  .revelacao .coluna {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 64ch);
+    column-gap: 4rem;
+    max-width: none;
+    width: min(100%, calc(14rem + 4rem + 64ch));
+    margin-inline: auto;
+  }
+
+  .para {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 3rem;
+    align-self: start;
+    margin: 0;
+    text-align: right;
+  }
+
+  .para__quando {
+    margin-top: 0.6rem;
+  }
+
+  .corpo,
+  .citacao,
+  .despedida,
+  .audio {
+    grid-column: 2;
+  }
+
+  .despedida {
+    margin-top: 2.5rem;
+  }
+
+  /* A revelação não tem destinatário: só ocupa a coluna do texto. */
+  .revelacao .corpo {
+    grid-column: 2;
+  }
+
+  .secao {
+    padding-block: clamp(4rem, 8vh, 5.5rem);
+  }
+}
+
+/* ── Movimento reduzido ────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .selo {
+    transition: none;
+  }
+}

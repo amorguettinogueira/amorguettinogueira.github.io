@@ -1,0 +1,526 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/2026.css";
+
+// Namoro oficializado. Base de todas as contas da página.
+const INICIO = "2012-03-14";
+// Marcos futuros, em ordem. O contador mostra o próximo que ainda não passou.
+const MARCOS = [
+  { data: "2026-12-05", dias: 5379, texto: "quando você terá vivido dois dias sem mim para cada um comigo" },
+  { data: "2041-08-27", dias: 10758, texto: "quando você terá vivido mais tempo comigo do que sem mim" },
+];
+---
+
+<BaseLayout
+  title="30/09/2026"
+  description="Carta de feliz aniversário para Michelle, ano 2026"
+  fontsHref="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&display=swap"
+  ogImage="/2026.jpg"
+  lang="pt-BR"
+>
+  <a href="/" class="voltar">← início</a>
+
+  <main class="carta">
+    <!-- ── Abertura ───────────────────────────────────────────────── -->
+    <header class="abertura faixa">
+      <div class="coluna coluna--nota">
+        <p class="abertura__data">30 de setembro de 2026</p>
+        <p class="abertura__frase">Não é só para você.</p>
+
+        <p class="contador contador--abertura">
+          <span class="contador__dias" data-contador-dias>—</span>
+          <span class="contador__nota" data-contador-nota>dias desde 14 de março de 2012</span>
+        </p>
+      </div>
+    </header>
+
+    <!-- ── Bilhete para a Mi ──────────────────────────────────────── -->
+    <section class="secao faixa">
+      <div class="coluna">
+        <h2 class="para">Mi,</h2>
+        <div class="corpo">
+          <p>
+            Esse ano o aniversário é seu, mas a carta é “sabor para você”. Essa carta é
+            direcionada para as nossas filhas, para que elas tenham registro de quem é a
+            mãe delas e possam, minimamente, conhecê-la através dos meus olhos.
+          </p>
+          <p>
+            Então alce voo e seja a mosquinha que vai ler isso enquanto sobrevoa os cabelos
+            das nossas babies, porque é sobre você, mas não é para você...
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Chamada às duas ────────────────────────────────────────── -->
+    <section class="secao faixa">
+      <div class="coluna">
+        <h2 class="para">Gab e Rafa,</h2>
+        <div class="corpo">
+          <p>
+            Eu sei que vocês amam a Mi, e tenho certeza de que o fazem pelos méritos dela
+            mesma; mas será que vocês realmente a conhecem em toda a extensão que eu a
+            conheço? Em todos os pormenores e detalhes que eu tive o prazer e o privilégio
+            de ver ela demonstrar vez sim, vez também? Vamos descobrir...
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Gabriela ───────────────────────────────────────────────── -->
+    <section class="secao faixa">
+      <div class="coluna">
+        <h2 class="para">
+          Para a Gabriela
+          <span class="para__quando">27 anos</span>
+        </h2>
+
+        <div class="corpo">
+          <p>
+            Gab, vou começar com você porque você veio primeiro. Você sabia que em 2014,
+            quando a gente planejou a viagem para a Disney, ela era para ser a nossa lua de mel?
+          </p>
+          <p>
+            Deixe-me começar a desmistificar tudo aqui pelo “a gente”, porque aqui ele não
+            passa de um coletivo financeiro; nós aqui é “nós” porque “a gente” rachou a conta.
+            Porém, escolher o destino, executar em cima e planejar foi, na verdade, tudo ideia
+            da Mi — seria desonesto da minha parte clamar qualquer mérito, além do financeiro,
+            nessa viagem.
+          </p>
+          <p>
+            Se você lembrar bem e puxar pela memória — afinal, já contamos essa história
+            algumas vezes —, nós tentamos te levar conosco para essa viagem. Sim, é verdade:
+            a Mi fez questão de querer te levar para a nossa lua de mel.
+          </p>
+          <p>
+            Ela me fez falar com a sua mãe (com quem eu não tinha a menor vontade de falar
+            naquela época) só para garantir que haveria anuência para que você pudesse ir; na
+            real, ela queria ela mesma falar, mas achou que a sua mãe pudesse negar o pedido se
+            ele viesse dela (sei lá, praticar alguma forma de sanção), então fez das tripas
+            coração para me convencer a ser fachada para o pedido.
+          </p>
+          <p>
+            A gente já sabe o desfecho desse episódio, e não é para provocar mal-estar em você
+            que estou escrevendo; na verdade, é para criar palco para uma pergunta (está mais
+            abaixo, continue lendo).
+          </p>
+          <p>
+            Deixe-me te dar perspectiva do que foi a viagem no momento em que ela foi para a
+            gente. Nessa época, Mi e eu juntos estávamos começando a vida e, como todo casal,
+            tínhamos contraído um belo mar de dívidas; para efeito ilustrativo, vamos dizer que
+            o salário combinado dos dois fosse R$ X por mês.
+          </p>
+          <p>
+            Nós tínhamos feito financiamento para comprar a casa de Osasco por 13X, tínhamos
+            gastado 3X com reforma, outros 1,5X com o casamento e mais a lua de mel, que
+            custaria 1,5X — esqueça os custos mensais; estou falando apenas de dívida adquirida
+            ou a adquirir. Por que isso é importante?
+          </p>
+          <p>
+            Porque muitas pessoas sob a mesma perspectiva financeira tentariam conter gastos:
+            uma viagem a dois custa menos que uma viagem a três. Mas essa não é a sua mãe Mi,
+            não. Desde o planejamento, o discurso dela era focado: “Dri, a gente tem que levar
+            ela, ela vai aproveitar muito; é o aniversário de 15 anos dela! Vai ser inesquecível.
+            Ela vai lembrar dessa viagem que você proporcionou a ela para sempre.” Repare no
+            sujeito a quem ela atribui, altruistamente, o proporcionar a experiência: ela queria
+            que você ficasse grata a mim pela viagem! Arquiteta social ou só excesso de amor? Na
+            real, faz diferença? Ela só queria nos aproximar, nos ver como família.
+          </p>
+          <p>
+            Mas, enfim, para que essa história, né? Bom, tudo para despertar uma única
+            curiosidade em você; uma que talvez jamais tenha despontado espontaneamente:
+          </p>
+          <p>
+            Se essa fosse a sua história; e você e o seu parceiro estivessem com quase vinte
+            vezes o R$ X mensal de salário de ambos em dívidas; e ele tivesse uma enteada, você
+            lutaria para tentar levá-la com vocês em sua LUA DE MEL?
+          </p>
+          <p>
+            Talvez sim — eu acredito na sua bondade e generosidade, assim como testemunho a
+            dela —, mas não tenho certeza se outras pessoas na mesma condição fariam a mesma
+            coisa. Pelo sim, pelo não, de uma coisa eu estou certo: certamente ninguém com quem
+            eu tenha me envolvido antes dela faria isso.
+          </p>
+          <p>
+            E eu sei que você já sabe que a sua mãe Mi é assim. Em 2020 nós ouvimos da sua boca,
+            mesmo você não tendo ido com a gente 6 anos antes, que ela foi uma mãe para você. Em
+            suas próprias palavras:
+          </p>
+
+          <blockquote class="citacao">
+            <p>
+              “Quero dizer que você só não me deu leite, porque mãe, você foi de todas as formas”
+            </p>
+            <a
+              class="citacao__fonte"
+              href="https://youtu.be/gbf-Ln3W1r8?si=LedDCjxQD2KrUDhX&t=244"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Ouvir no vídeo de 2020</a>
+          </blockquote>
+
+          <p>
+            Essa sua declaração é a prova que dispensa todas as outras, a mais linda que vocês
+            duas já entregaram uma à outra:
+          </p>
+          <p>
+            De um lado, a filha (não enteada) recebendo amor de mãe, verdadeiro, real, sem
+            distinção, só carinho (de graça) dedicado à sua mera existência. De outro, a mãe
+            (não madrasta) recebendo uma demonstração de amor que qualquer mãe espera de uma
+            filha.
+          </p>
+        </div>
+
+        <p class="despedida">Te amo, Gab!</p>
+      </div>
+    </section>
+
+    <!-- ── Rafaela ────────────────────────────────────────────────── -->
+    <section class="secao faixa">
+      <div class="coluna">
+        <h2 class="para">
+          Para a Rafaela
+          <span class="para__quando">9 anos hoje — para reler mais tarde</span>
+        </h2>
+
+        <div class="corpo">
+          <p>Rafa, agora só sobrou você debaixo do holofote.</p>
+          <p>
+            Eu vou escrever para você hoje, mas não sei quanto do que escrevo vai de fato ser
+            absorvido hoje; portanto, volte aqui de tempos em tempos e releia a carta do papai.
+            Cada vez você vai ter uma visão mais completa sobre quem é a sua mãe. Ou deixe para
+            reler de novo quando estiver próxima da idade que a mana tem hoje — vai ser uma data
+            especial para nós também, explico melhor abaixo.
+          </p>
+          <p>
+            Rafa, lembra de uma ocasião em que a mamãe estava jogando Dixit com vocês na casa da
+            Juju? Naquela partida houve alguns episódios em que você pôde testemunhar, talvez sem
+            perceber, a super-heroína em que se transforma sua mãe quando ela detecta que há
+            alguém “em perigo”. Ok, eu sei que ela não colocou literalmente nenhuma capa e foi
+            salvar alguém, mas essa é uma metáfora que busca chamar a sua atenção para a
+            diferença entre a mamãe padrão (aquela em voo de cruzeiro, que a gente vê distraída,
+            olhando o celular) e aquela superfocada, tentando dar um exemplo ou ensinar algo —
+            quando ela vê a oportunidade, ela de fato se comporta como uma super-heroína, no
+            sentido de não protelar e sair imediatamente em busca de quem precisa.
+          </p>
+          <p>
+            Enfim, naquele dia você e a Juju, em momentos diferentes, azedaram por não estarem em
+            primeiro ou por terem perdido a partida anterior e estarem novamente atrás do bando
+            de coelhinhos. Não que eu fosse, na sua idade, a suprassumidade da paz e não fizesse
+            a mesma coisa — para ser sincero, talvez eu fizesse pior, mas enfim...
+          </p>
+          <p>
+            Para cada uma de vocês, e em cada um dos episódios, a mamãe se transformou e começou
+            a lembrar vocês das outras ocasiões em que jogamos Dixit no sítio ou em casa, em que
+            ela não ganhava ou estava em último e, nem por isso, deixava de se divertir.
+          </p>
+          <p>
+            Porém, nenhuma de vocês aceitou o argumento e continuou insistindo no mesmo ponto,
+            como que querendo dizer que “a menos que eu ganhe, não tem graça”. Até a Helo entrou
+            para dissuadir vocês e tentar desemaranhar o novelo de emoções negativas que tomou
+            conta de vocês duas.
+          </p>
+          <p>
+            Mas tudo o que a mamãe disse naquele dia, naquela mesa, naquele jogo, continua a ser
+            a mais pura verdade. Talvez o seu estado de espírito, ou o momento emocionalmente
+            carregado, tenha te atrapalhado a receber ou a decodificar a mensagem.
+          </p>
+          <p>
+            A mamãe só tem olhos para o bem, Rafa. Eu sei que, vindo de mim, soa como uma
+            afirmação enviesada, mas eu te garanto que não há lado negativo na palavra viés. Viés
+            é sinônimo de tendência e, ao longo de 14 anos, de fato a sua mãe teve muito mais
+            tendência para o otimismo e a positividade do que para o pessimismo e a negatividade
+            — esse se parece mais com o papai — e, portanto, enviesada ou não, o que eu te
+            escrevo é resultado de 14 anos de observação empírica, não uma fofoca. A sua mãe se
+            alimenta da alegria dos outros, e não do resultado do placar: quanto mais gente feliz
+            por perto, mais realizada ela estará. Esse otimismo é poeticamente bonito — enquanto
+            quem joga deposita seu humor no resultado da partida (como vocês fizeram), ela o
+            deposita no bem-estar coletivo.
+          </p>
+          <p>
+            Agora, imagine se você pudesse aprender a ser assim... Ser capaz de ficar feliz se as
+            pessoas ao seu redor estiverem felizes. Imagine como seria se, cada vez que você
+            ouvisse uma reclamação — meu suco está ruim, minha cadeira está desconfortável, estou
+            entediada, não me deixaram falar, pegaram mais batata do que eu, não quero ouvir essa
+            música —, você, na verdade, ouvisse “tenho uma oportunidade para ficar feliz” e fosse
+            feliz de fato. Sua mãe não ouve a mesma coisa que a maior parte das pessoas ouve: um
+            “meu suco está ruim” não é uma reclamação para ela, é só uma oportunidade para ajudar
+            alguém a se sentir mais à vontade, mais confortável, mais alegre. E se ela conseguir
+            elevar o humor daquela pessoa ou daquele grupo, aí sim ela vai ficar feliz...
+          </p>
+          <p>
+            O papai entende a mecânica de como ela é, entende o conceito por trás da motivação
+            dela, mas o papai falha feio na execução. Porque eu mesmo aprendi com ela que ser
+            assim era uma possibilidade viável, mas, como aprendi bem mais tarde na vida (minhas
+            aulas começaram quando eu tinha 33 anos), ainda é difícil para mim mudar alguns
+            velhos hábitos e agir como ela. Porém, não é esse o seu caso: sua mãe te ensina desde
+            que você nasceu, e ela não se cansa de te ensinar. Aproveite as aulas!
+          </p>
+          <p>
+            Por isso é que o papai te provoca vez ou outra com a pergunta: “Você quer ser igual
+            ao papai ou igual à mamãe?”
+          </p>
+        </div>
+
+        <div class="audio" data-audio hidden>
+          <button class="audio__botao" type="button" data-audio-botao aria-label="Tocar o áudio da Rafa">
+            <svg viewBox="0 0 24 24" aria-hidden="true" data-audio-icone>
+              <path d="M8 5v14l11-7z" fill="currentColor"></path>
+            </svg>
+          </button>
+          <span class="audio__texto">
+            <span class="audio__rotulo">A Rafa, aos 9 anos, falando da mãe</span>
+            <span class="audio__trilho"><span class="audio__progresso" data-audio-progresso></span></span>
+          </span>
+          <audio preload="metadata" data-audio-elemento src="/2026/rafa-9-anos.mp3"></audio>
+        </div>
+
+        <p class="despedida">Te amo, Rafa!</p>
+      </div>
+    </section>
+
+    <!-- ── A tese ─────────────────────────────────────────────────── -->
+    <section class="secao secao--tese faixa">
+      <div class="coluna">
+        <h2 class="para">Para as duas</h2>
+        <div class="corpo">
+          <p>
+            Cada uma de vocês ganhou uma história, uma passagem, uma ocasião que mostra de forma
+            diferente o mesmo lado da Mi.
+          </p>
+          <p>
+            A Disney e o Dixit são só duas fachadas do mesmo comportamento, do mesmo desejo, da
+            mesma vocação: gerar felicidade. Eu testemunhei a Mi passar por poucas e boas,
+            principalmente com dois tios meus, no começo do nosso relacionamento. Trocavam o nome
+            dela pelo de uma ex, intencionalmente, e a comparavam com a mesma ex só para causar
+            mal-estar. Até eu, em alguns episódios, fiquei com vontade de mandar um deles para
+            aquele lugar.
+          </p>
+          <p>
+            E a Mi não se deixava abalar: eu testemunhei ela servir salgadinho a eles em mais de
+            uma festa e até buscar cerveja para eles ela foi, mesmo com toda a torta de climão
+            que eles faziam. E o tempo passou, e eu vi despontar nesses mesmos personagens
+            sentimentos de arrependimento ou até admiração. Não reconheceram isso abertamente
+            para mim, mas falaram para minha mãe, sabendo que ela comentaria comigo — na prática,
+            a consciência pesou a ponto de quererem mandar o recado.
+          </p>
+          <p>
+            E eu sei que a Mi não paparicou os dois esperando essa mudança; viesse ela ou não,
+            ela continuaria a tratá-los da mesma forma até hoje. Na falha alheia, ela viu uma
+            oportunidade de trazer-lhes alegria, sabendo que, se conseguisse, ela também seria
+            mais alegre com eles. É genuinamente ter prazer no prazer do outro.
+          </p>
+          <p>
+            Se há um só superpoder que eu gostaria que vocês aprendessem, é esse: apaixonem-se
+            pela oportunidade de fazer alguém feliz, de fazer a diferença para alguém, de
+            transformar um sentimento negativo em alegria.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2041 e a volta ─────────────────────────────────────────── -->
+    <div class="tempo">
+      <p class="selo" data-selo aria-live="polite">27 de agosto de 2041</p>
+
+      <section class="futuro faixa">
+        <div class="coluna">
+          <h2 class="para">
+            Mi,
+            <span class="para__quando">daqui a quinze anos</span>
+          </h2>
+          <div class="corpo">
+            <p>
+              Quem encerra sou eu, mas do futuro; mais precisamente, o seu marido em 27 de agosto
+              de 2041.
+            </p>
+            <p>
+              Hoje é um dia especial, meu amor: hoje você completa ao meu lado 10.758 dias,
+              exatamente o mesmo volume de dias que você passou desde que nasceu até um dia antes
+              de nos conhecermos. De hoje em diante, você terá passado mais da metade da sua vida
+              comigo! Ou seja, terá passado mais dias comigo do que sem mim, o que para mim já
+              seria motivo suficiente para celebrarmos.
+            </p>
+            <p>
+              Em maio, enquanto comemorávamos as nossas Bodas de Hematita, a gente enfim levou a
+              sério e marcou a nossa renovação de votos para 2043! Eita que 30 anos de casados
+              merece de fato uma bagunça; até bolo eu acho que vou comer dessa vez. Tony já disse
+              que casa a gente, e a Gy disse que entra tocando violino; resta saber se Gab, Rafa e
+              a adolescente da família Barros animam o povo cantando — vamos torcer (e continuar
+              pressionando).
+            </p>
+            <p>
+              Por falar nas meninas: a Gab fez aniversário de 42 anos há um mês e meio, e o mais
+              novo dela, apesar de ser um terrorzinho, te adora — é vó Mi para cá, vó Mi para lá;
+              onde quer que você esteja, lá estará a figurinha... Até que enfim um menino na
+              família, meu Deus!
+            </p>
+            <p>
+              Rafinha, no auge dos seus 24 anos, mesmo elétrica como é, parou ontem para reler a
+              cartinha que eu mandei para ela no seu aniversário de 44 anos. Depois me mandou
+              mensagem dizendo que nós somos lindos juntos, mas não me respondeu se vai cantar na
+              nossa renovação de votos. Ai, ai... ela está certa: nós somos lindos há 29 anos
+              juntos! Meu Deus, você merecia uma medalha por me aguentar tanto tempo...
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="revelacao faixa" data-revelacao>
+        <div class="coluna">
+          <div class="corpo">
+            <p>
+              Só que nada disso aconteceu ainda, Lindula: hoje ainda é 30 de setembro de 2026, e
+              tudo o que você leu nos parágrafos anteriores representa, na verdade, a minha
+              pretensão, o meu desejo ou, melhor, a nossa história projetada segundo as regras da
+              minha mente — você só recebeu um convite para espiar um pouquinho os bastidores.
+            </p>
+            <p>
+              O que eu posso te prometer com data marcada é bem mais perto: no dia 5 de dezembro
+              deste ano — sim, um dia depois do meu aniversário — completaremos 5.379 dias juntos,
+              exatamente metade da quantidade de dias que você já tinha vivido sem mim; ou seja,
+              daqui a três meses você terá vivido dois dias “sem migo” para cada um comigo.
+            </p>
+            <p>Hoje é dia de eu te desejar um feliz aniversário.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── O fecho: a faixa de aniversário ────────────────────────── -->
+    <section class="fecho faixa">
+      <div class="coluna coluna--nota">
+        <p class="fecho__parabens">
+          Parabéns pelos 44 anos, pelas conquistas e vitórias, e obrigado pela maravilhosa
+          companhia.
+        </p>
+
+        <p class="contador contador--fecho">
+          <span class="contador__dias" data-contador-dias>—</span>
+          <span class="contador__nota" data-contador-nota>dias desde 14 de março de 2012</span>
+          <span class="contador__marco" data-contador-marco></span>
+        </p>
+
+        <div class="assinatura">
+          <p class="assinatura__amor">Te amo,</p>
+          <p class="assinatura__nome">Dri</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script define:vars={{ INICIO, MARCOS }}>
+  (function () {
+    const DIA = 86400000;
+    const inicio = new Date(INICIO + "T00:00:00");
+
+    /* ── Contador ao vivo ─────────────────────────────────────────── */
+    const campos = document.querySelectorAll("[data-contador-dias]");
+    const notas = document.querySelectorAll("[data-contador-nota]");
+    const marco = document.querySelector("[data-contador-marco]");
+
+    function doisDigitos(n) {
+      return String(n).padStart(2, "0");
+    }
+
+    function atualizar() {
+      const agora = new Date();
+      const decorrido = agora - inicio;
+      const dias = Math.floor(decorrido / DIA);
+      const resto = decorrido - dias * DIA;
+      const h = Math.floor(resto / 3600000);
+      const m = Math.floor((resto % 3600000) / 60000);
+      const s = Math.floor((resto % 60000) / 1000);
+
+      campos.forEach((el) => {
+        el.textContent = dias.toLocaleString("pt-BR");
+      });
+      notas.forEach((el) => {
+        el.textContent =
+          "dias e " + doisDigitos(h) + ":" + doisDigitos(m) + ":" + doisDigitos(s) +
+          " desde 14 de março de 2012";
+      });
+
+      if (marco) {
+        const proximo = MARCOS.find((mk) => new Date(mk.data + "T00:00:00") > agora);
+        if (proximo) {
+          const faltam = Math.ceil((new Date(proximo.data + "T00:00:00") - agora) / DIA);
+          marco.textContent =
+            "Faltam " + faltam.toLocaleString("pt-BR") + " dias para o dia " +
+            proximo.dias.toLocaleString("pt-BR") + ", " + proximo.texto + ".";
+        } else {
+          marco.textContent = "Já passamos de todos os marcos que eu sabia contar.";
+        }
+      }
+    }
+
+    atualizar();
+    setInterval(atualizar, 1000);
+
+    /* ── O selo vira de 2041 para 2026 quando a revelação chega ───── */
+    const selo = document.querySelector("[data-selo]");
+    const revelacao = document.querySelector("[data-revelacao]");
+
+    if (selo && revelacao && "IntersectionObserver" in window) {
+      // Dispara nas duas bordas da seção. O sinal de boundingClientRect.top diz
+      // de que lado estamos, então voltar a subir devolve a data de 2041.
+      const LINHA = 64;
+      const observador = new IntersectionObserver(
+        function (entradas) {
+          entradas.forEach(function (entrada) {
+            const passou = entrada.boundingClientRect.top <= LINHA;
+            selo.classList.toggle("agora", passou);
+            selo.textContent = passou ? "30 de setembro de 2026" : "27 de agosto de 2041";
+          });
+        },
+        { rootMargin: "-" + LINHA + "px 0px 0px 0px", threshold: 0 }
+      );
+      observador.observe(revelacao);
+    }
+
+    /* ── Áudio da Rafa (some sozinho se o arquivo não existir) ─────── */
+    const caixa = document.querySelector("[data-audio]");
+    const som = document.querySelector("[data-audio-elemento]");
+    const botao = document.querySelector("[data-audio-botao]");
+    const icone = document.querySelector("[data-audio-icone]");
+    const progresso = document.querySelector("[data-audio-progresso]");
+
+    const PLAY = "M8 5v14l11-7z";
+    const PAUSE = "M6 4h4v16H6zM14 4h4v16h-4z";
+
+    if (caixa && som && botao && icone && progresso) {
+      som.addEventListener("loadedmetadata", function () {
+        caixa.hidden = false;
+      });
+      som.addEventListener("error", function () {
+        caixa.hidden = true;
+      });
+
+      botao.addEventListener("click", function () {
+        if (som.paused) {
+          som.play();
+        } else {
+          som.pause();
+        }
+      });
+
+      function marcarEstado() {
+        const tocando = !som.paused && !som.ended;
+        icone.firstElementChild.setAttribute("d", tocando ? PAUSE : PLAY);
+        botao.setAttribute("aria-label", tocando ? "Pausar o áudio da Rafa" : "Tocar o áudio da Rafa");
+      }
+
+      som.addEventListener("play", marcarEstado);
+      som.addEventListener("pause", marcarEstado);
+      som.addEventListener("timeupdate", function () {
+        if (!som.duration) return;
+        progresso.style.width = (som.currentTime / som.duration) * 100 + "%";
+      });
+      som.addEventListener("ended", function () {
+        progresso.style.width = "0%";
+        marcarEstado();
+      });
+    }
+  })();
+</script>

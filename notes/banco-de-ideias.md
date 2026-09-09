@@ -1,10 +1,14 @@
 # Banco de ideias — michellenogueira.info
 
-> **REGRA Nº 1: este arquivo nunca pode ir para `public/`.**
-> Tudo que está em `public/` é copiado literalmente para a raiz do site pelo Astro
-> e fica acessível por URL direta em michellenogueira.info.
-> Este arquivo também está no `.gitignore` — ele é **local**, não vai para o GitHub.
-> Se um dia quiser versionar isso, use um repositório **privado** (ver "Pendências" no fim).
+> **REGRA Nº 1: nada aqui pode ir para `public/`.**
+> Tudo que está em `public/` é copiado literalmente para a raiz do site pelo Astro e fica
+> acessível por URL direta em michellenogueira.info. Este arquivo mora em `notes/`, que o
+> Astro não publica.
+>
+> **REGRA Nº 2: este arquivo está versionado num repositório GitHub público.**
+> Decisão consciente: melhor ter backup do que sigilo absoluto. Consequência: quem achar o
+> repositório lê tudo. Não escrever aqui nada que não possa ser lido por qualquer pessoa da
+> família — inclusive as meninas.
 
 ---
 
@@ -15,14 +19,16 @@ O objetivo aqui é **não esquecer que existem** e **não perder de onde estão*
 
 | Material | Onde está | Do que se trata |
 |---|---|---|
-| `Perguntas de casais 1` e `Perguntas de casais 2` | Gravador de áudio do iPhone (Voice Memos) | Eu e a Michelle respondendo, em áudio, perguntas de um desafio de casais. As duas vozes. Material de altíssimo valor: é a voz dela hoje, respondendo sobre nós. |
+| `Perguntas de casais 1.mp4`<br>`Perguntas de casais 2.mp4` | `C:\Users\adria\Downloads\` ✅ *já exportados do iPhone* | Eu e a Michelle respondendo, em áudio, perguntas de um desafio de casais. As duas vozes. Material de altíssimo valor: é a voz dela hoje, respondendo sobre nós. |
 | `níver-mi-44-anos-2026.mp3` | `C:\Users\adria\OneDrive\Documents\Audacity4\` | Rafaela, 9 anos, respondendo perguntas sobre a mãe. Gravado para a carta de 2026. |
 | Vídeos 2014 / 2015 / 2020 | YouTube (links no `src/pages/index.astro`) | Transcritos em `public/<ano>/video-text.txt`. |
 | Retrospectiva em fotos 2012–2020 | Dentro do vídeo de 2020 | Usada como fecho do vídeo daquele ano. |
 
-> ⚠️ **Os áudios do iPhone precisam sair do iPhone.** Voice Memos se perde em troca de
-> aparelho, restauração de backup e falta de espaço. Exportar para o OneDrive junto com
-> o mp3 da Rafa — é o mesmo tipo de descuido que fez as cartas físicas sumirem nas mudanças.
+> ⚠️ **`Downloads\` não é lugar de guardar nada.** É a primeira pasta que a gente limpa
+> quando falta espaço. Mover os dois `.mp4` para o OneDrive, junto com o mp3 da Rafa.
+>
+> 📝 Os arquivos saíram como `.mp4`. Se um dia forem para uma página, provavelmente vale
+> extrair só o áudio (`.m4a` ou `.mp3`) — fica muito menor e toca melhor no celular.
 
 ---
 
@@ -36,58 +42,93 @@ A cronologia real:
 
 - **14/03/2012** — namoro oficializado
 - **04/05/2013** — casamento no civil, cerimônia fechada, só os pais
-- **out–nov/2013** — meu pai adoece
+- **out–nov/2013** — meu pai adoece e é internado
 - **dez/2013** — meu pai falece
-- religioso, que seria no fim de 2013, é remanejado
+- o casamento religioso, que seria no fim de 2013, é remanejado
 - **maio/2014** — a viagem para a Disney acontece como lua de mel; o pacote não admitia
   cancelamento nem troca (estávamos com ~19X de dívida, ver carta 2026)
 - **20/09/2014** — casamento religioso, quatro meses *depois* da lua de mel
 
 **Por que isso é uma carta:** aos olhos de todo mundo nós fizemos a lua de mel antes de
-casar. A verdade é que um pai morreu no meio, e a única coisa que não pôde ser adiada
-foi a viagem. Tem luto, tem dívida, tem uma promessa cumprida fora de ordem, e tem a
-Michelle segurando tudo isso em pé — inclusive querendo levar a Gabriela junto.
+casar. A verdade é que um pai morreu no meio, e a única coisa que não pôde ser adiada foi a
+viagem. Tem luto, tem dívida, tem uma promessa cumprida fora de ordem, e tem a Michelle
+segurando tudo isso em pé — inclusive querendo levar a Gabriela junto.
 
-**O que falta para escrever:** o que ela fez por mim entre outubro e dezembro de 2013.
-Isso é o coração da carta e só eu tenho. **Anotar antes que a memória edite.**
+**Cuidado:** é a carta mais pesada do acervo. Aniversário talvez não seja a ocasião certa —
+pode caber melhor num aniversário de casamento, ou na renovação de votos de 2043.
 
-**Cuidado:** é a carta mais pesada do acervo. Aniversário talvez não seja a ocasião certa
-— pode caber melhor num aniversário de casamento, ou na renovação de votos.
+---
 
-#### O que a Mi fez por mim de outubro e dezembro de 2013
-Nesse período o meu pai esteve internado no hospital beneficência portuguesa e nós
-morávamos em Osasco - há 25km de distância, algo que se traduz em mais de 1h de trânsito
-de carro.
-Minha mãe estava morando em casa comigo e eu peguei férias do trabalho para poder
-ficar com o meu pai e ela no hospital, então íamos todos os dias de manhã para o hospital
-e voltávamos só à noite depois do último horário de visitas da UTI - nós não perdíamos 
-nenhuma visita, eram duas ou três por dia.
-A Mi e eu trabalhávamos em Alphaville na época que era extremo oposto do hospital então
-ela ia trabalhar de uber ou taxi e eu ia para o hospital de carro com a minha mãe. 
-A Mi todos os dias, durante todo o tempo que meu pai esteve internado, saia de Alphaville
-de trêm até a Barra Funda, baldeava para metrô, e ia até a estação Vergueiro para nos
-encontrar no hospital e participar da última visita. Detalhe importante, a quantidade de
-pessoas que podiam acessar a UTI era limitada, então algumas vezes ela ainda cedia o lugar
-dela para deixar a minha mãe e eu ver o meu pai - ou seja, ela saia de Alphaville para
-o hospital e acabava nem vendo o meu pai. Ia lá mais para confortar a gente, estar com a
-gente, dar forças e rezar. Rezávamos muito para ele se recuperar e tínhamos fé que
-tudo estava indo na direção certa para isso, porém, ele teve septicemia e acabou não
-aguentando a carga de antibioticos e morreu.
-Quando ele morreu a Mi não estava no hospital, ele morreu de manhã antes do horário de
-visitas e coube a mim consolar a minha mãe, fazer os devidos procedimentos no hospital,
-cartório, funerária e ligar para todas as pessoas para avisar. A Mi foi uma das primeiras
-e abandonou o trabalho no mesmo instante da ligação para nos encontrar no hospital.
-Foi uma verdadeira máquina de fé ajudando a consolar o coração da minha mãe, o meu e dos meus
-irmãos que estavam em fragalhos na ocasião.
-Depois de tudo isso organizado ainda viajamos de São Paulo para o interior, Ipaussu, onde
-o meu pai seria enterrado - são 365km mais ou menos e no carro estavámos minha mãe, Mi, 
-meus irmãos e eu. A viagem foi longa e qualquer coisa era motivo de choro ou lembrança dele.
-Todo mundo muito abalado.
-No enterro a Mi chorava com todos copiosamente, me lembro dela confortar e se entregar ao 
-conforto. Todos ainda no descredito do havia acabado de acontecer.
-Ela pegou alguns dias de férias para ficar conosco no interior, na casa da minha mãe, por
-pelo menos uma semana até termos certeza que ela (minha mãe) estava bem o suficiente para
-voltarmos.
+#### O que a Mi fez por mim entre outubro e dezembro de 2013
+
+*(anotado em set/2026, do que a memória ainda entrega)*
+
+**A logística.** Meu pai ficou internado no Hospital Beneficência Portuguesa. Nós morávamos
+em Osasco, a uns 25 km — mais de uma hora de trânsito de carro. Minha mãe estava morando
+comigo. Eu tirei férias do trabalho para poder ficar com os dois no hospital: íamos de manhã
+e voltávamos só à noite, depois do último horário de visitas da UTI. Não perdíamos nenhuma
+visita; eram duas ou três por dia.
+
+A Mi e eu trabalhávamos em Alphaville na época, extremo oposto do hospital. Ela ia trabalhar
+de Uber ou táxi, porque eu levava minha mãe de carro para o hospital.
+
+**O que ela fazia todo dia.** Todos os dias, durante todo o tempo em que meu pai esteve
+internado, a Mi saía de Alphaville de trem até a Barra Funda, baldeava para o metrô e ia até
+a estação Vergueiro para nos encontrar no hospital e participar da última visita.
+
+**O detalhe que é a carta inteira.** A quantidade de pessoas que podiam entrar na UTI era
+limitada. Algumas vezes ela cedeu o lugar dela para que minha mãe e eu pudéssemos ver o meu
+pai. Ou seja: ela atravessava a cidade inteira depois de um dia de trabalho, chegava ao
+hospital e **não via o meu pai**. Ia para confortar a gente, estar com a gente, dar forças e
+rezar.
+
+Rezávamos muito para ele se recuperar, e tínhamos fé de que tudo estava indo na direção
+certa. Mas ele teve septicemia e não aguentou a carga de antibióticos.
+
+**O dia.** Ele morreu de manhã, antes do horário de visitas — a Mi não estava no hospital.
+Coube a mim consolar a minha mãe, resolver os procedimentos do hospital, do cartório e da
+funerária, e ligar para todo mundo avisando. A Mi foi uma das primeiras ligações, e
+abandonou o trabalho no mesmo instante para nos encontrar no hospital. Foi uma verdadeira
+máquina de fé, ajudando a consolar o coração da minha mãe, o meu e o dos meus irmãos, que
+estavam em frangalhos.
+
+**O enterro.** Depois de tudo organizado, viajamos de São Paulo para Ipaussu, no interior,
+onde meu pai seria enterrado — uns 365 km. No carro estavam minha mãe, a Mi, meus irmãos e
+eu. A viagem foi longa e qualquer coisa era motivo de choro ou de lembrança dele. Todo mundo
+muito abalado. No enterro a Mi chorava copiosamente com todos; me lembro dela confortar e se
+entregar ao conforto. Todos ainda no descrédito do que havia acabado de acontecer.
+
+**Depois.** Ela tirou alguns dias das próprias férias para ficar conosco no interior, na casa
+da minha mãe, por pelo menos uma semana — até termos certeza de que minha mãe estava bem o
+suficiente para a gente voltar.
+
+---
+
+##### Notas editoriais (para quando for escrever)
+
+**1. Não falta material. O que está aqui já basta.** A preocupação com "não lembrar de nada
+mais específico" é improcedente: o episódio da UTI sozinho sustenta uma carta inteira.
+Michelle atravessou a cidade todos os dias, por semanas, e algumas vezes fez isso inteiro
+para **não** ver o doente. Ela não foi lá pelo meu pai. Foi lá pelos vivos.
+
+**2. Este episódio é a terceira prova do mesmo teorema da carta de 2026.** Disney, Dixit e
+UTI são o mesmo ato: ela converte recurso próprio — dinheiro, lua de mel, vitória no jogo,
+tempo, o lugar dela na fila da UTI, os dias de férias dela — em bem-estar de outra pessoa, e
+some com a assinatura. Se um dia isto virar carta, **é essa a tese**, e ela já está provada
+três vezes.
+
+**3. Onde recuperar detalhe, se quiser mais:** minha mãe, meus irmãos, a Gyselle e — a
+melhor fonte — a própria Michelle, que se lembra do que eu bloqueei. Também: fotos e
+WhatsApp de out–dez/2013, e o registro das férias no RH da empresa da época (dá a data exata
+da internação e do afastamento).
+
+**4. O que ainda vale anotar antes que suma:** o nome do médico ou da enfermeira que dava a
+notícia; o que ela levava na bolsa; se ela comia alguma coisa antes de pegar o trem; a
+primeira frase que ela disse ao chegar no hospital no dia da morte. Um detalhe físico vale
+mais que dez adjetivos.
+
+**5. Cuidado de leitura:** a carta não pode virar a história do meu luto. A protagonista é
+ela. Toda vez que o texto explicar o que **eu** sentia, ele está saindo do eixo.
 
 ---
 
@@ -106,8 +147,8 @@ Reler 2014 → 2026 e reportar o que mudou. O arco documentado é real:
 | 2026 | **Paro de falar dela e falo dela para as filhas.** |
 
 **A virada:** "Em 2014 eu queria te transformar em diamante. Reli tudo e descobri que a
-diamantada foi minha. Achei que essas cartas fossem sobre você — são o prontuário do
-que você fez de mim."
+diamantada foi minha. Achei que essas cartas fossem sobre você — são o prontuário do que
+você fez de mim."
 
 **As cartas perdidas são parte do conceito, não um buraco nele.** Existiram cartas físicas
 que sumiram nas mudanças. Ela leu, chorou, e hoje ninguém sabe onde estão. Isso é a coisa
@@ -224,8 +265,10 @@ Rafaela (filha minha e da Michelle): 9 em 2026.
 
 ## 5. Pendências
 
-- [ ] Exportar `Perguntas de casais 1 e 2` do iPhone para o OneDrive
-- [ ] Escrever, enquanto está fresco, o que a Michelle fez por mim entre out/2013 e dez/2013 (ver 2.1)
+- [x] ~~Exportar `Perguntas de casais 1 e 2` do iPhone~~ — feito, estão em `Downloads\`
+- [x] ~~Mover os dois `.mp4` de `Downloads\` para o OneDrive (Downloads é pasta de passagem)~~
+- [x] ~~Escrever o que a Michelle fez por mim entre out/2013 e dez/2013~~ — feito, ver 2.1
+- [ ] Anotar os quatro detalhes da nota editorial nº 4 (enquanto der para lembrar)
+- [ ] Perguntar para a Michelle e para a minha mãe o que eu bloqueei de out–dez/2013
 - [ ] Procurar as cartas físicas perdidas nas mudanças (podem estar em alguma caixa)
-- [ ] Decidir se este arquivo vai para um repositório privado (hoje é local, fora do git)
-- [ ] Apagar `public/2026/raw-text-v3.txt` e `raw-text-v4.txt` (rascunhos superados)
+- [x] ~~Apagar `public/2026/raw-text-v3.txt` e `raw-text-v4.txt`~~ — feito
