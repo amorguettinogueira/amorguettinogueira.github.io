@@ -7,6 +7,8 @@ Read this file first, then `notes/banco-de-ideias.md`, which is the *content*
 memory: raw material, unused concepts, verified dates and numbers, pendências.
 This file is the *working* memory: who the reader is, how Adriano likes to work,
 the rules that must not be broken, and what was learned building past pages.
+Pending UI/UX and repo-structure work lives in `notes/backlog-melhorias.md`,
+one checkbox per item, meant to be tackled one session at a time.
 
 ---
 
