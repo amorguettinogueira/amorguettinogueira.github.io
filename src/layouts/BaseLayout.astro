@@ -19,6 +19,9 @@ const {
   ogImage,
   lang = "pt-BR",
 } = Astro.props;
+
+// Open Graph requires an absolute URL; WhatsApp drops the preview image otherwise.
+const ogImageUrl = ogImage && new URL(ogImage, Astro.site).href;
 ---
 
 <!doctype html>
@@ -34,7 +37,7 @@ const {
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
     <meta property="og:type" content="website" />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
 
     {
       fontsHref && (

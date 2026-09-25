@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const years = [
+  { year: "2026", age: "44 anos", href: "/2026/", img: "/2026.jpg" },
   { year: "2025", age: "43 anos", href: "/2025/", img: "/2025.jpg" },
   { year: "2024", age: "42 anos", href: "/2024/index.html", img: "/2024.jpg" },
   { year: "2023", age: "41 anos", href: "/2023/index.html", img: "/2023.jpg" },
@@ -15,7 +16,7 @@ const years = [
   title="À Michelle Nogueira"
   description="Uma homenagem à Michelle Nogueira, ano a ano."
   fontsHref="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Pinyon+Script&family=Quicksand:wght@300;400;500;600;700&display=swap"
-  ogImage="/2025.jpg"
+  ogImage="/2026.jpg"
 >
   <div class="grain-overlay" aria-hidden="true"></div>
   <div class="sparkles-layer" aria-hidden="true"></div>
@@ -46,8 +47,8 @@ const years = [
       </header>
 
       <div class="grid-container">
-        {years.map((y) => (
-          <div class="grid-cell">
+        {years.map((y, i) => (
+          <div class="grid-cell" style={`--i: ${i}`}>
             <a
               href={y.href}
               target={y.external ? "_blank" : undefined}
@@ -235,15 +236,17 @@ const years = [
     /* base resting state; hover overridden per nth-child below */
     transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.55s ease;
     animation: cell-reveal 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    /* staggered by position (--i is set inline), so any number of years works */
+    animation-delay: calc(0.45s + var(--i, 0) * 0.15s);
     will-change: transform;
     background: hsl(340 30% 85%); /* placeholder colour while image loads */
   }
-  .grid-cell:nth-child(1) { animation-delay: 0.45s; }
-  .grid-cell:nth-child(2) { animation-delay: 0.60s; }
-  .grid-cell:nth-child(3) { animation-delay: 0.75s; }
-  .grid-cell:nth-child(4) { animation-delay: 0.90s; }
-  .grid-cell:nth-child(5) { animation-delay: 1.05s; }
-  .grid-cell:nth-child(6) { animation-delay: 1.20s; }
+  /* Odd number of years: centre the last card instead of leaving it orphaned on the left */
+  .grid-cell:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - clamp(14px, 2.5vw, 36px)) / 2);
+  }
 
   /* Alternating tilt – feels like picking up a photo */
   .grid-cell:nth-child(odd):hover  { transform: translateY(-10px) scale(1.025) rotate(-0.5deg); box-shadow: var(--shadow-hover); }
@@ -484,6 +487,7 @@ const years = [
   /* ── Responsive ── */
   @media (max-width: 768px) {
     .grid-container { grid-template-columns: 1fr; }
+    .grid-cell:last-child:nth-child(odd) { justify-self: stretch; width: auto; }
     .content-wrapper { padding: 0 min(5%, 20px); }
     .grid-cell:nth-child(odd):hover,
     .grid-cell:nth-child(even):hover { transform: translateY(-6px) scale(1.02) rotate(0); }

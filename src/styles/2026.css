@@ -527,3 +527,41 @@ button:focus-visible {
     transition: none;
   }
 }
+
+/* ── Fotos ─────────────────────────────────────────────────────────────────
+   Não ilustram parágrafos: marcam a passagem de uma história para a outra,
+   no lugar do fio que separa as seções. Moldura de papel levemente torta,
+   como foto solta dentro de uma carta — sem legenda, com a borda de baixo
+   mais larga, como uma polaroide.                                          */
+
+.foto__moldura {
+  width: min(100%, 24rem);
+  margin: 0 auto;
+  padding: 0.7rem 0.7rem 2.4rem;
+  background: #fff;
+  box-shadow:
+    0 1px 2px hsl(330 24% 15% / 0.08),
+    0 14px 34px -14px hsl(330 24% 15% / 0.32);
+  transform: rotate(-1.6deg);
+}
+
+.foto--direita .foto__moldura {
+  transform: rotate(1.4deg);
+}
+
+.foto__moldura img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* No fecho a foto abre a faixa de aniversário. */
+.foto--fecho {
+  margin-bottom: 2.75rem;
+}
+
+.foto--fecho .foto__moldura {
+  transform: rotate(-1deg);
+}
