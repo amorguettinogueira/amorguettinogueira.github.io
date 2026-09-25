@@ -37,13 +37,16 @@ Pull requests run `npm run verificar` (`.github/workflows/verificar.yml`).
 
 ```
 src/pages/index.astro         the gallery
-src/pages/<ano>/index.astro   each year from 2025 on
-src/styles/<ano>.css          plain CSS per year (Tailwind is only for 2025)
+src/pages/<ano>/index.astro   route of each letter: metadata only, renders the letter
+src/anos/<ano>/               each letter: Carta.astro, estilo.css, fotos/, componentes/
+src/pages/[video]/            the video years (2014, 2015, 2020)
+src/components/               shared: NavAnos, VoltarInicio
+src/data/                     anos.ts (the list of years), transcricoes/
 src/layouts/BaseLayout.astro  shared <head>
 public/                       copied verbatim to the site root — paths are URLs
   <ano>.jpg                   covers, also the WhatsApp preview image
+  <ano>/                      only files that need a fixed URL (raw-text.txt, mp3)
   2023/ 2024/                 older hand-written pages, preserved as-is
-  2014/ 2015/ 2020/           transcripts of the video years
 scripts/                      dev-fresh.mjs, verificar-site.mjs
 notes/                        idea bank and backlog (public on purpose)
 ```

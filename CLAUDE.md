@@ -143,9 +143,17 @@ This is the rule most easily broken by an agent being helpful.
 - **Tailwind is scoped to the 2025 page only**, via the content globs in
   `tailwind.config.mjs`. It runs as a plain PostCSS plugin in
   `astro.config.mjs` (`@astrojs/tailwind` stopped at Astro 5); no base styles
-  are injected — 2025.css carries its own `@tailwind base`.
-  New year pages should use **plain CSS** in `src/styles/<ano>.css`, imported
-  by the page. Do not widen the Tailwind globs.
+  are injected — `src/anos/2025/estilo.css` carries its own `@tailwind base`.
+  New year pages should use **plain CSS** in `src/anos/<ano>/estilo.css`,
+  imported by the letter. Do not widen the Tailwind globs.
+- **Each year lives in one folder** (REPO-07, 26/09/2026):
+  `src/pages/<ano>/index.astro` is only the route — `BaseLayout` with the
+  page's metadata around `<Carta />`. The letter itself is
+  `src/anos/<ano>/Carta.astro`, with `estilo.css`, `fotos/` (imported, so
+  they get hashed `/_astro/` URLs) and, if needed, `componentes/`.
+  `public/<ano>/` keeps only what must have a fixed URL (`raw-text.txt`,
+  the mp3), and the cover stays at `public/<ano>.jpg`. Shared pieces live in
+  `src/components/` (`NavAnos`, `VoltarInicio`).
 - **`src/layouts/BaseLayout.astro`** is the document shell. Props:
   `title`, `description`, `fontsHref` (a Google Fonts URL), `ogImage`
   (absolute path from site root), `ogImageAlt`, `ogImageWidth`/`Height`
@@ -215,8 +223,10 @@ This is the rule most easily broken by an agent being helpful.
 1. Cover image at `public/<ano>.jpg` — also the Open Graph image, so the
    WhatsApp link preview depends on it. Keep it in the ~100–300 KB range like
    the others.
-2. `src/pages/<ano>/index.astro` + `src/styles/<ano>.css`. End the letter
-   with `<NavAnos ano={<ano>} />` (`src/components/NavAnos.astro`).
+2. The letter in `src/anos/<ano>/` (`Carta.astro` + `estilo.css` + `fotos/`)
+   and a thin route `src/pages/<ano>/index.astro` that wraps `<Carta />` in
+   `BaseLayout` — copy 2026's. End the letter with `<NavAnos ano={<ano>} />`
+   and start it with `<VoltarInicio />` (`src/components/`).
 3. Body text at `public/<ano>/raw-text.txt`, kept **paired with what the page
    publishes**. Page chrome (headings, captions, counter labels) does *not*
    need to match — he confirmed this. Only the letter body does.
@@ -260,7 +270,7 @@ deliberately held in reserve there (§2.7).
 
 ## 7. The 2026 page — design decisions and why
 
-`src/pages/2026/index.astro` + `src/styles/2026.css`. Worth reading before
+`src/anos/2026/Carta.astro` + `src/anos/2026/estilo.css`. Worth reading before
 building 2027; worth reusing where it earned its keep.
 
 **Concept.** A letter addressed to the daughters that Michelle reads over their
@@ -305,7 +315,7 @@ longer (his daughters found the text tiring), but the text-only page felt
 look: *"muito melhor com as fotos."* The rule that worked: **three photos, one
 per story, placed *between* sections as chapter breaks — replacing the hairline
 divider — never inside a paragraph.** Slightly tilted white polaroid frame, no
-caption. `public/2026/foto1–3.jpg`: the three women (before Gabriela), Rafa and
+caption. `src/anos/2026/fotos/foto1–3.jpg`: the three women (before Gabriela), Rafa and
 Mi (before Rafaela), the couple (in the closing band). When in doubt about a
 visual choice, build a toggleable preview and let him see it on his phone.
 
@@ -321,7 +331,8 @@ ending quietly contradicts.
 - Letter, page and CSS are written, committed and live at
   `michellenogueira.info/2026/`.
 - `public/2026.jpg` added (622×415, same as every other cover).
-- Three photos inside the letter (`public/2026/foto1–3.jpg`), final, always on.
+- Three photos inside the letter (`src/anos/2026/fotos/foto1–3.jpg` since
+  REPO-07; they were in `public/2026/`), final, always on.
 - The 2026 card is in `src/pages/index.astro` and safe to push: it is held
   back by the date filter until `release.yml` rebuilds the site on 29/09/2026.
 - Page body verified paragraph by paragraph against `raw-text.txt`; the only
@@ -461,13 +472,24 @@ deserves a decision of his in a later session. Delete an entry once decided.
   three bobbing footer hearts, which the suggestion did not list. They are
   the next thing to cut if the home still feels busy.
 
+### REPO-07 (each year in one folder), 26/09/2026
+
+- **Verified against a build of `main` before the move**: same list of
+  pages, byte-identical CSS (same hashes) and photos; the HTML differs only
+  in indentation and in one real improvement — each letter's `<script>` used
+  to be emitted *after* `</html>` (it sat outside the layout in the page
+  file) and now sits inside `<body>`.
+- **The 2026 photos changed URL**, from `/2026/foto1.jpg` to a hashed
+  `/_astro/foto1.<hash>.jpg`. They are imported and rendered with `.src`,
+  like 2025's photos, so the files are the same bytes. Switching to
+  `<Picture>` (AVIF/WebP, `srcset`) is UX-18, once larger originals exist.
+- **Names**: `Carta.astro`, `estilo.css`, `fotos/`, `componentes/` — in
+  Portuguese, like `anos.ts`, `transcricoes/` and `VoltarInicio`.
+
 ### Backlog items not done in this round, and why
 
 - **UX-18 (retina photos)** needs the original photos in higher resolution,
   which are only on his devices. Blocked on him.
-- **REPO-07 (each year in one folder)** moves 2026's CSS and photos. Safe
-  now that `npm run verificar` exists, but it would conflict with every open
-  PR. Do it after they are merged.
 - **REPO-08 (2023/2024 into Astro)** is big and optional; the nav and
   sharing tags were copied into their HTML instead. Revisit if the copies
   start to drift.
