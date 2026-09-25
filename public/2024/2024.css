@@ -7,20 +7,23 @@
     }
 }
 body{
-    line-height: 2;
+    line-height: 1.8;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    /* 19px no celular (CLAUDE.md §3); era 16px. */
+    font-size: clamp(1.1875rem, 1rem + 0.5vw, 1.3125rem);
     margin: 0;
 }
 p{
     margin: 0.5rem 0;
 }
+/* The document scrolls, not a 100vh box (backlog UX-12): the box kept the
+   phone's address bar from collapsing and broke tap-to-top. The 3D parallax
+   that needed it is replaced by a small script in index.html. */
 .container{
-    height: 100vh;
-    overflow-y: auto;
+    position: relative;
+    z-index: 1;
     overflow-x: hidden;
-    perspective: 10px;
 }
 p, li, .img266{
     animation: fade 2s linear both;
@@ -81,7 +84,8 @@ li::before{
         font-size: 1.2rem;
         margin: 0.5rem 0;
     }
-    body{
+    /* Long paragraphs read left-aligned; only titles stay centred (UX-13). */
+    h1, .hero-text-small, .x-margin {
         text-align: center;
     }
     .curve {
@@ -114,35 +118,37 @@ li::before{
     .img266{
         margin-top: 2rem;
     }
+    section{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
     header{
         position: relative;
         display: flex;
         justify-content: center;
         align-items: end;
         height: 540px;
-        transform-style: preserve-3d;
-        z-index: -1;
-        top: -100px;
+        overflow: hidden;
     }
     .hero-img-small {
         position: absolute;
+        inset: 0;
         background-image: url('./top.jpg');
-        height: 530px;
-        width: 100%;
-        object-fit: cover;
-        background-position: 54% 50%;
-        z-index: -1;
-        transform: translateZ(-10px) scale(2);
-        top: -57px;
+        background-size: cover;
+        background-position: 54% 30%;
+        will-change: transform;
     }
+    /* Era #4bb4ff sobre a foto (1,8:1): agora azul escuro sobre fundo claro. */
     .hero-text-small {
-        font-size: 2.25rem;
+        position: relative;
+        font-size: 2.5rem;
         font-weight: 700;
-        color: #4bb4ff;
-        text-shadow: 1px 1px 0px #291b1b;
-        margin-bottom: -1.5rem;
-        transform: translateZ(-5px) scale(1.5);
-        line-height: 1;
+        color: #175a8f;
+        background: rgba(255, 255, 255, 0.86);
+        border-radius: 999px;
+        padding: 0.35rem 1.25rem;
+        margin-bottom: 7rem;
+        line-height: 1.1;
     }
     .footer{
         position: relative;
@@ -152,7 +158,7 @@ li::before{
         margin-top: 1.5rem;
     }
     .bottom-img-text{
-        font-size: 1.1rem;
+        font-size: 1.25rem;
     }
     .extra-space{
         margin-bottom: 2rem;
@@ -238,8 +244,7 @@ li::before{
     .hero-text-small {
         font-size: 2rem;
         font-weight: 700;
-        color: #4bb4ff;
-        text-shadow: 1px 1px 0px #291b1b;
+        color: #175a8f;
         width: 100%;
         display: flex;
         align-content: center;
@@ -364,10 +369,12 @@ li::before{
 
 /* === Beautification additions === */
 
+/* Grain and petals sit below the letter (z-index 0 < .container's 1):
+   on top, they turned into grey smudges over the words (UX-14). */
 .grain {
     position: fixed;
     inset: 0;
-    z-index: 500;
+    z-index: 0;
     pointer-events: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     mix-blend-mode: multiply;
@@ -376,7 +383,7 @@ li::before{
 .petals {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 0;
     pointer-events: none;
     overflow: hidden;
 }
@@ -460,6 +467,7 @@ h1 {
 
 /* Footer + closing signature sit on the same ocean-blue as the wave fill (#2081ec) */
 .footer {
+    position: relative; /* its wave anchors here, not at the top of the page */
     background: #2081ec;
     color: #fff;
 }
