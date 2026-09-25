@@ -10,13 +10,28 @@ const years = [
   { year: "2015", age: "33 anos", href: "https://youtu.be/iaZs_Lzxa48", img: "/2015.jpg" },
   { year: "2014", age: "32 anos", href: "https://youtu.be/Gb7v0Ki5Dm4", img: "/2014.jpg" },
 ].map((y) => ({ ...y, external: y.href.startsWith("http") }));
+
+// Release switch: a year's card only appears from 29/09 of that year, Brasília
+// time. Checked at build time, so the site must be rebuilt that day — the
+// scheduled .github/workflows/release.yml does it (see CLAUDE.md §4).
+// `npm run dev` shows every card for local preview.
+const hoje = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
+const visiveis = years.filter((y) => import.meta.env.DEV || hoje >= `${y.year}-09-29`);
+
+for (const y of years.filter((y) => !visiveis.includes(y))) {
+  console.warn(
+    `[galeria] Card de ${y.year} escondido até ${y.year}-09-29 (hoje: ${hoje}). ` +
+      `Confira se o agendamento está ativo: gh workflow list --all (release.yml deve estar "active"; ` +
+      `se estiver "disabled_inactivity", rode gh workflow enable release.yml).`
+  );
+}
 ---
 
 <BaseLayout
   title="À Michelle Nogueira"
   description="Uma homenagem à Michelle Nogueira, ano a ano."
   fontsHref="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Pinyon+Script&family=Quicksand:wght@300;400;500;600;700&display=swap"
-  ogImage="/2026.jpg"
+  ogImage={visiveis[0].img}
 >
   <div class="grain-overlay" aria-hidden="true"></div>
   <div class="sparkles-layer" aria-hidden="true"></div>
@@ -47,7 +62,7 @@ const years = [
       </header>
 
       <div class="grid-container">
-        {years.map((y, i) => (
+        {visiveis.map((y, i) => (
           <div class="grid-cell" style={`--i: ${i}`}>
             <a
               href={y.href}

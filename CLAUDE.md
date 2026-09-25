@@ -27,7 +27,9 @@ The couple's own start date, the base of every count on the site, is
 **14/03/2012** (when the relationship was made official). Civil marriage
 04/05/2013; religious ceremony 20/09/2014.
 
-Michelle **does not know** the page exists until the day. See §4.
+Michelle **does not know** the page exists until the day. See §4 — including
+the yearly step of re-enabling the release schedule, which must be done
+before 29/09 or the new card never goes live.
 
 ---
 
@@ -92,10 +94,31 @@ This is the rule most easily broken by an agent being helpful.
   at `michellenogueira.info/2026/raw-text.txt` since 08/09/2026. He knows and
   accepts this: *"a Mi não vai ficar googlando ou procurando pelo texto no site
   via URL direta, isso não me preocupa."* Do not propose `robots.txt` changes.
-- **The one thing that spoils the surprise is the gallery card.** The year's
-  entry in `src/pages/index.astro` must only be added on **29 or 30 September**.
-  The page itself may be published and shared as a direct URL for testing well
-  before that. Treat the card as the release switch.
+- **The one thing that spoils the surprise is the gallery card.** Since
+  25/09/2026 the card releases itself: `src/pages/index.astro` only renders a
+  year's card when the build runs on or after **29/09 of that year, Brasília
+  time** (`npm run dev` shows every card). So the card can be added, committed
+  and pushed at any time. The page itself may be shared as a direct URL for
+  testing well before that.
+- **The release only happens if the site is rebuilt on 29/09.** The date check
+  runs at build time, and builds only run on push — so
+  `.github/workflows/release.yml` triggers the deploy on its own on 29 and 30
+  September at 03:15 UTC (00:15 in Brasília).
+
+> **⚠ Every year, as soon as work on the new page starts** (the moment Adriano
+> asks for help with the visual part at the latest): GitHub **disables
+> scheduled workflows after 60 days without repository activity**, and this
+> repo sleeps most of the year. A new commit does **not** re-enable it. Run
+> `gh workflow list --all`; if `Release year card` shows `disabled_inactivity`
+> (or anything but `active`), run `gh workflow enable release.yml` and tell
+> Adriano it was done. Without this the card never appears on the 29th. The
+> build log repeats the reminder (`[galeria] Card de <ano> escondido…`) while
+> a card is being held back. If it fails anyway, the fallback is Actions →
+> "Deploy to GitHub Pages" → "Run workflow", which works from the GitHub app
+> on a phone.
+>
+> The schedule lives in its own file on purpose: a disabled `release.yml` must
+> not take the push-triggered `deploy.yml` down with it.
 - **The dev toolbar is dev-only.** The "bregueço" at the bottom of the page in
   local preview is the Astro Dev Toolbar. It is absent from `dist/`; nothing
   needs to be done about it. Verified with
@@ -132,11 +155,14 @@ This is the rule most easily broken by an agent being helpful.
 3. Body text at `public/<ano>/raw-text.txt`, kept **paired with what the page
    publishes**. Page chrome (headings, captions, counter labels) does *not*
    need to match — he confirmed this. Only the letter body does.
-4. **Last, on 29/30 September:** in `src/pages/index.astro`, prepend to the
-   `years` array
-   `{ year: "<ano>", age: "<N> anos", href: "/<ano>/", img: "/<ano>.jpg" },`
-   and point the landing page's `ogImage` at `/<ano>.jpg` too, so a shared
-   link to the home page previews the new year.
+4. In `src/pages/index.astro`, prepend to the `years` array
+   `{ year: "<ano>", age: "<N> anos", href: "/<ano>/", img: "/<ano>.jpg" },`.
+   This can be done any time: the card stays hidden on the live site until
+   29/09 (see §4). The landing page's `ogImage` follows the newest visible
+   card on its own.
+5. **Re-enable the release schedule** — `gh workflow list --all`, then
+   `gh workflow enable release.yml` if it is not `active`. See the warning in
+   §4. Do not skip this; it is the step nobody will remember.
 
 The gallery needs nothing else. Since 2026 the card entrance delay is computed
 from each card's index, and an odd count centres the last card instead of
@@ -230,9 +256,8 @@ ending quietly contradicts.
   `michellenogueira.info/2026/`.
 - `public/2026.jpg` added (622×415, same as every other cover).
 - Three photos inside the letter (`public/2026/foto1–3.jpg`), final, always on.
-- **The 2026 card is in `src/pages/index.astro` in the working tree, not yet
-  pushed.** Adriano will commit and push everything at once. The push itself is
-  now the release switch: pushed before 29/09, the surprise is out early.
+- The 2026 card is in `src/pages/index.astro` and safe to push: it is held
+  back by the date filter until `release.yml` rebuilds the site on 29/09/2026.
 - Page body verified paragraph by paragraph against `raw-text.txt`; the only
   difference is the YouTube URL, which the page renders as a link.
 - Open items live in `notes/banco-de-ideias.md` §5. The two that decay with

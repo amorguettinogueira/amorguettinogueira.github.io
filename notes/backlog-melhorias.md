@@ -11,10 +11,9 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
 
 **Legenda de esforço:** **P** = pequeno (até ~30 min) · **M** = médio (1–2 h) · **G** = grande (meio dia ou mais).
 
-> ⚠️ **Publicação.** Nada deve ser *pushed* antes de 29/09/2026: o commit
-> `66d5e48` (card de 2026 na galeria) está só no `main` local, e qualquer push
-> o publica junto. Até lá, resolver e commitar localmente à vontade. O item
-> **REPO-02** acaba com esse problema nos próximos anos.
+> ✅ **Publicação.** Desde 25/09/2026 (REPO-02) pode-se fazer push à vontade: o
+> card de cada ano só aparece no site a partir de 29/09 daquele ano, e o
+> `release.yml` reconstrói o site sozinho nesse dia. Ver CLAUDE.md §4.
 
 > **Como a auditoria foi feita** (para repetir e comparar depois): `npm run build`
 > + `npx astro preview`, Edge sem janela controlado por script, emulando iPhone
@@ -256,22 +255,21 @@ quebrado antes do push.
     sem janela, celular e desktop), para comparar antes/depois visualmente.
   - Opcional: rodar o `verificar` também no `deploy.yml`, antes de publicar.
 
-- [ ] **REPO-02 · Chave de lançamento no código, não no push** — P · *alto valor*
-  - **Problema:** hoje o card da galeria **é** a chave de lançamento. Por isso não
-    se pode fazer push de nada entre o card entrar no código e o dia 29 — como agora.
-  - **Correção:** cada ano ganha um campo (ex.: `naGaleria: false`). A home mostra o
-    card se `naGaleria` for verdadeiro **ou** se estiver rodando em `npm run dev`
-    (`import.meta.env.DEV`). Assim o card aparece no preview local, não aparece no
-    site, e o lançamento vira trocar `false` por `true` no dia 29/30.
-  - **Depende de:** REPO-03 (ou fazer direto no array atual da home).
-  - Atualizar o CLAUDE.md §4 e §5 ("Adding a year") quando fizer.
+- [x] **REPO-02 · Chave de lançamento no código, não no push** — P · *alto valor*
+  - Feito em 25/09/2026, por **data** em vez de booleano: a home só mostra o card
+    se o build rodar em ou depois de 29/09 do ano do card (fuso de Brasília);
+    `npm run dev` mostra todos. O `.github/workflows/release.yml` dispara o deploy
+    nos dias 29 e 30/09. O `ogImage` da home segue o card mais recente visível.
+  - **Atenção anual:** o GitHub desliga o agendamento depois de 60 dias sem
+    atividade. Religar com `gh workflow enable release.yml` antes de 29/09 —
+    CLAUDE.md §4 e §5.
 
 - [ ] **REPO-03 · Lista de anos num arquivo só** — P
   - **Problema:** o array `years` mora dentro de `src/pages/index.astro`, com a
     idade digitada à mão.
-  - **Correção:** `src/data/anos.ts` com `{ ano, href, capa, tipo: "carta" | "video" | "legado", conceito, naGaleria }`;
+  - **Correção:** `src/data/anos.ts` com `{ ano, href, capa, tipo: "carta" | "video" | "legado", conceito }`;
     idade calculada (`ano - 1982`). Home, navegação (UX-09), linha do tempo (UX-23)
-    e chave de lançamento (REPO-02) leem daqui.
+    leem daqui (o filtro de data do REPO-02 continua valendo sobre essa lista).
   - Risco baixo: só código dentro de `src/`.
 
 - [ ] **REPO-04 · Limpar a raiz: três jeitos de fazer a mesma coisa** — P

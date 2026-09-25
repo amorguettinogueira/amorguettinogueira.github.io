@@ -1,0 +1,28 @@
+name: Release year card
+
+# The gallery card for each year is filtered by date at build time
+# (src/pages/index.astro), so the site must be rebuilt on 29/09 for the new
+# card to appear. This triggers the deploy on 29 and 30 September, ~00:15
+# Brasília time (03:15 UTC). The 30th is only a second chance.
+#
+# Kept apart from deploy.yml on purpose: GitHub disables scheduled workflows
+# after 60 days without repository activity, and disabling this file must not
+# take the push-triggered deploy down with it. Re-enable it every year before
+# 29/09 — see CLAUDE.md §4.
+
+on:
+  schedule:
+    - cron: "15 3 29,30 9 *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deploy
+        run: gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY" --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}
