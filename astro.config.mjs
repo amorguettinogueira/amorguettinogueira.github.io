@@ -15,9 +15,11 @@ export default defineConfig({
   ],
   vite: {
     resolve: {
-      // The repo lives under an NTFS junction (C:\GitHub → D:\moved-from-C\GitHub).
-      // Without this, Vite follows the junction via fs.realpath() and generates
-      // /@fs/D:/moved-from-C/... URLs that its own sandbox then blocks.
+      // Added when the repo lived under an NTFS junction (C:\GitHub →
+      // D:\moved-from-C\GitHub): without it, Vite followed the junction via
+      // fs.realpath() and generated /@fs/D:/... URLs that its own sandbox then
+      // blocked. The repo is now on X:\. Only remove after checking on that
+      // machine that `npm run dev` and `npm run build` still work (REPO-05).
       preserveSymlinks: true,
     },
   },

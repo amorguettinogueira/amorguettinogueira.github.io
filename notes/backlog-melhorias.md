@@ -242,7 +242,7 @@ quebrado antes do push.
 
 ### Itens
 
-- [ ] **REPO-01 · Rede de segurança antes de reorganizar** — M · *fazer primeiro*
+- [x] **REPO-01 · Rede de segurança antes de reorganizar** — M · *fazer primeiro* ✅ 25/09/2026 (PR "Repo")
   - **Por quê:** é o que tira o medo. Hoje o build só falha se um `import` estiver
     errado; arquivo sumido de `public/` ou link interno quebrado passa em silêncio.
   - **O quê:** um `scripts/verificar-site.mjs` + `npm run verificar` que, depois do
@@ -272,7 +272,7 @@ quebrado antes do push.
     leem daqui (o filtro de data do REPO-02 continua valendo sobre essa lista).
   - Risco baixo: só código dentro de `src/`.
 
-- [ ] **REPO-04 · Limpar a raiz: três jeitos de fazer a mesma coisa** — P
+- [x] **REPO-04 · Limpar a raiz: três jeitos de fazer a mesma coisa** — P ✅ 25/09/2026 (PR "Repo")
   - `run.bat`, `kill-zombie-process.ps1` e `scripts/dev-fresh.mjs` fazem quase o
     mesmo (matar a porta 4321 e limpar o cache). O `.ps1` também cuida da porta
     4322 (a do `preview`); o `.mjs`, não.
@@ -280,14 +280,14 @@ quebrado antes do push.
     `run.bat` e `kill-zombie-process.ps1`; usar só `npm run dev:fresh`.
   - Risco zero para o site: nenhum dos três entra no build.
 
-- [ ] **REPO-05 · Referências a pastas que não existem mais** — P
+- [x] **REPO-05 · Referências a pastas que não existem mais** — P ✅ 25/09/2026 (PR "Repo") — `preserveSymlinks` mantido, ver CLAUDE.md §5
   - `.gitignore` cita `2025-src/`; `tsconfig.json` exclui `2025-src` e
     `birthday-scroll-src`. Sobras da migração para o Astro. Apagar as linhas.
   - `astro.config.mjs`: o comentário do `preserveSymlinks` fala da junção
     `C:\GitHub → D:\…`, mas o repo agora está em `X:\`. É inofensivo; remover só
     depois do REPO-01, testando com `npm run dev` e `npm run build`.
 
-- [ ] **REPO-06 · README desatualizado e duplicado** — P
+- [x] **REPO-06 · README desatualizado e duplicado** — P ✅ 25/09/2026 (PR "Repo")
   - O `README.md` não menciona 2026, diz que o jeito de começar um ano é copiar a
     página de 2025 (o CLAUDE.md diz o contrário: CSS puro, sem Tailwind) e mostra
     uma árvore de pastas antiga.
@@ -320,7 +320,7 @@ quebrado antes do push.
   - Só vale a pena se for mexer nos itens UX-10 a UX-14; senão, deixar preservado.
   - **Depende de:** REPO-01 (conferir que imagens relativas como `./image01.png` continuam resolvendo).
 
-- [ ] **REPO-09 · Tailwind: congelar, não atualizar** — P (congelar) / G (remover)
+- [x] **REPO-09 · Tailwind: congelar, não atualizar** — P (congelar) / G (remover) ✅ 25/09/2026 (PR "Repo") — congelado; remoção continua opcional
   - O Tailwind (3 pacotes + config) existe só para a página de 2025. A integração
     `@astrojs/tailwind` foi descontinuada para o Tailwind 4, e o
     `tailwind.config.mjs` usa `require` dentro de um arquivo ESM, o que só funciona
@@ -330,7 +330,7 @@ quebrado antes do push.
   - **Um dia, opcional:** converter 2025 para CSS puro, como 2026, e remover o
     Tailwind do projeto. Risco de a página mudar visualmente: comparar capturas antes/depois.
 
-- [ ] **REPO-10 · Mesma versão de Node local e no deploy** — P
+- [x] **REPO-10 · Mesma versão de Node local e no deploy** — P ✅ 25/09/2026 (PR "Repo") — falta atualizar o Node local
   - O deploy usa Node 22; a máquina local tem 20.16. Criar `.nvmrc` com `22` e
     `"engines": { "node": ">=22" }` no `package.json`, e atualizar o Node local.
 
