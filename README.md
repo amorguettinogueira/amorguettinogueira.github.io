@@ -46,7 +46,6 @@ src/layouts/BaseLayout.astro  shared <head>
 public/                       copied verbatim to the site root — paths are URLs
   <ano>.jpg                   covers, also the WhatsApp preview image
   <ano>/                      only files that need a fixed URL (raw-text.txt, mp3)
-  2023/ 2024/                 older hand-written pages, preserved as-is
 scripts/                      dev-fresh.mjs, verificar-site.mjs
 notes/                        idea bank and backlog (public on purpose)
 ```

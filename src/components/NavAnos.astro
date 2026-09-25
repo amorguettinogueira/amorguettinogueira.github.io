@@ -1,8 +1,9 @@
 ---
 // "← 2024 · todas as cartas · 2026 →" at the end of each letter (backlog UX-09).
+// A page can set --nav-anos-cor (text colour, light tone) and --nav-anos-topo
+// (the gap above) on an ancestor; 2023 and 2024 do.
 // Plain CSS on purpose: it must look the same on the Tailwind page (2025) and
-// on the plain-CSS pages. The legacy HTML pages (2023, 2024) carry a hand-made
-// copy of this markup — keep them in step if this changes.
+// on the plain-CSS pages.
 import { vizinhos } from "../data/anos";
 
 interface Props {
@@ -36,7 +37,8 @@ const { anterior, proximo } = vizinhos(ano);
     align-items: center;
     gap: 0.5rem;
     width: min(100%, 36rem);
-    margin: 3.5rem auto 0;
+    /* A page can tighten the gap above with --nav-anos-topo (2024 does). */
+    margin: var(--nav-anos-topo, 3.5rem) auto 0;
     font-family: inherit;
     font-size: 1.1875rem; /* 19px: nada com informação abaixo do corpo (CLAUDE.md §3) */
     font-style: italic;
@@ -63,6 +65,6 @@ const { anterior, proximo } = vizinhos(ano);
   .nav-anos__ano:first-child { justify-self: start; }
   .nav-anos__ano:last-child { justify-self: end; }
   .nav-anos__todas { text-align: center; }
-  .nav-anos--claro { color: hsl(340 45% 32%); }
+  .nav-anos--claro { color: var(--nav-anos-cor, hsl(340 45% 32%)); }
   .nav-anos--escuro { color: hsl(30 40% 96%); }
 </style>
