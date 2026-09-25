@@ -186,7 +186,7 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
     "Para a Mi — 30/09/2026" diz mais.
   - **Arquivo:** `src/layouts/BaseLayout.astro` (+ `title` em cada página).
 
-- [ ] **UX-21 · Home com movimento o tempo todo** — P · *decisão de gosto, sua*
+- [x] **UX-21 · Home com movimento o tempo todo** — P · *decisão de gosto, sua* ✅ 26/09/2026 — feito como sugerido
   - 20 partículas subindo, brilhos a cada 750 ms, título cintilando, assinatura
     pulsando e corações quicando — tudo em loop infinito. No celular gasta bateria
     e compete com as fotos. Sugestão: manter a entrada animada e a chuva leve de

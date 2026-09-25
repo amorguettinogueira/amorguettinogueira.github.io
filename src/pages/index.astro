@@ -191,9 +191,9 @@ for (const y of ANOS.filter((y) => !visiveis.includes(y))) {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     opacity: 0;
-    animation:
-      rise-in  1.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s both,
-      shimmer  8s ease-in-out infinite 2.2s;
+    /* Enters once and stays still (UX-21: the endless shimmer competed with
+       the photos and kept the phone busy for nothing). */
+    animation: rise-in 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s both;
   }
 
   .ornament-wrap {
@@ -222,10 +222,6 @@ for (const y of ANOS.filter((y) => !visiveis.includes(y))) {
   @keyframes rise-in {
     from { opacity: 0; transform: translateY(28px) scale(0.96); filter: blur(5px); }
     to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0);  }
-  }
-  @keyframes shimmer {
-    0%, 100% { background-position:   0% center; }
-    50%       { background-position: 100% center; }
   }
 
   /* ── Grid ── */
@@ -477,12 +473,8 @@ for (const y of ANOS.filter((y) => !visiveis.includes(y))) {
     margin: 0 0 1.6rem;
     line-height: 1;
     display: inline-block;
-    animation: sig-pulse 5s ease-in-out infinite;
-  }
-  @keyframes sig-pulse {
-    0%, 100% { transform: scale(1)    rotate(-1deg); }
-    40%       { transform: scale(1.05) rotate( 0deg); }
-    80%       { transform: scale(0.98) rotate(-1.5deg); }
+    /* The slight tilt of a hand signature, without the old endless pulse (UX-21). */
+    transform: rotate(-1deg);
   }
 
   .footer-hearts-row {
@@ -591,7 +583,8 @@ for (const y of ANOS.filter((y) => !visiveis.includes(y))) {
       }
     }
 
-    // Periodic ambient sparkles
+    // Sparkles: one burst on load, then only where the mouse goes. The endless
+    // random ones every 750 ms are gone (UX-21).
     const sparkleLayer = document.querySelector(".sparkles-layer");
     function spawnSparkle(x, y) {
       if (!sparkleLayer) return;
@@ -603,13 +596,6 @@ for (const y of ANOS.filter((y) => !visiveis.includes(y))) {
       sparkleLayer.appendChild(el);
       setTimeout(() => el.remove(), 2100);
     }
-    // Random ambient sparkles
-    setInterval(() => {
-      spawnSparkle(
-        Math.random() * window.innerWidth,
-        Math.random() * window.innerHeight,
-      );
-    }, 750);
     // Burst on load
     for (let i = 0; i < 8; i++)
       setTimeout(() =>
