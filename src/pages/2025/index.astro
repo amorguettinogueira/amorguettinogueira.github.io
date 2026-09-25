@@ -78,7 +78,7 @@ const nicknames = [
         </p>
         <Parallax speed={-0.1}>
           <div class="relative rounded-2xl overflow-hidden shadow-deep">
-            <img src={miEDri.src} alt="Garden of Love" class="w-full h-auto border-2 border-rose/40 rounded-2xl" />
+            <img src={miEDri.src} alt="Michelle e Adriano numa selfie, sorrindo, num salão de teto dourado com esculturas" class="w-full h-auto border-2 border-rose/40 rounded-2xl" />
             <div class="absolute inset-0 bg-gradient-romantic opacity-20"></div>
           </div>
         </Parallax>
@@ -173,28 +173,30 @@ const nicknames = [
       </AnimatedSection>
 
       <AnimatedSection animation="fade-up" delay={900} class="text-center py-20">
-        <div class="inline-block p-8 bg-gradient-romantic rounded-3xl shadow-glow">
+        <!-- Opaque, darker card: cream text on the translucent gradient read at 2.4:1 (UX-15). -->
+        <div class="inline-block p-8 rounded-3xl shadow-glow" style="background: linear-gradient(135deg, hsl(350 58% 36%), hsl(18 55% 36%));">
           <Floating>
-            <Heart filled class="w-20 h-20 text-cream mx-auto mb-6 animate-heartbeat" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)" />
+            <Heart filled class="w-20 h-20 text-cream mx-auto mb-6 animate-heartbeat" style="text-shadow: 0 1px 3px rgba(0,0,0,.3)" />
           </Floating>
-          <h2 class="font-script text-5xl md:text-7xl text-cream mb-6" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)">
+          <h2 class="font-script text-5xl md:text-7xl text-cream mb-6" style="text-shadow: 0 1px 3px rgba(0,0,0,.3)">
             Feliz Aniversário meu amor
           </h2>
-          <p class="font-serif text-2xl text-cream mb-4" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)">
+          <p class="font-serif text-2xl text-cream mb-4" style="text-shadow: 0 1px 3px rgba(0,0,0,.3)">
             Minha querida, minha obra-prima, meu amor para sempre
           </p>
-          <p class="font-serif text-xl text-cream max-w-2xl mx-auto" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)">
+          <p class="font-serif text-xl text-cream max-w-2xl mx-auto" style="text-shadow: 0 1px 3px rgba(0,0,0,.3)">
             Aproveite seu dia. Você completou mais um ano, cheio de conquistas e histórias para compartilhar.
             Com uma família que te admira, te ama e te respeita. Que cada novo dia seja mais uma pincelada
             de alegria nesse quadro que Deus nos permite pintar a quatro mãos.
           </p>
-          <p class="font-script text-3xl md:text-4xl text-cream mt-8" style="text-shadow: 1px 1px 0 rgba(0,0,0,.9)">
+          <p class="font-script text-3xl md:text-4xl text-cream mt-8" style="text-shadow: 0 1px 3px rgba(0,0,0,.3)">
             Para sempre seu, e com todo meu amor, Dri.
           </p>
         </div>
       </AnimatedSection>
 
-      <div class="fixed bottom-10 right-10 animate-heartbeat">
+      <!-- Only on wide screens: on a phone it sat on top of the words (UX-16). -->
+      <div class="fixed bottom-10 right-10 animate-heartbeat hidden xl:block">
         <Floating><Heart filled class="w-16 h-16 text-rose" /></Floating>
       </div>
     </div>
@@ -216,11 +218,10 @@ const nicknames = [
       const speed = parseFloat(el.dataset.parallaxSpeed || "0");
       el.style.transform = `translateY(${scrolled * speed}px)`;
     }
+    // Once per visit: scrolling back to the end does not fire it again (UX-15).
     if (progress > 95 && !atEnd) {
       atEnd = true;
       celebrate();
-    } else if (progress < 95) {
-      atEnd = false;
     }
   }
   window.addEventListener("scroll", onScroll, { passive: true });
@@ -264,7 +265,9 @@ const nicknames = [
   function spawnConfetti() {
     const colors = ["hsl(350, 65%, 55%)", "hsl(40, 80%, 65%)", "hsl(350, 70%, 70%)", "hsla(143, 53%, 48%, 1.00)", "hsl(199, 100%, 50%)"];
     const layer = document.createElement("div");
-    layer.className = "fixed inset-0 pointer-events-none z-50";
+    // Behind the letter (content is z-10): the party frames the final card instead of covering it.
+    layer.className = "fixed inset-0 pointer-events-none";
+    layer.style.zIndex = "5";
     for (let i = 0; i < 200; i++) {
       const p = document.createElement("div");
       p.className = "absolute w-3 h-3 animate-confetti";
@@ -284,7 +287,8 @@ const nicknames = [
     const rnd = (min: number, max: number) => Math.random() * (max - min) + min;
     const svgNS = "http://www.w3.org/2000/svg";
     const layer = document.createElement("div");
-    layer.className = "pointer-events-none fixed inset-0 z-50";
+    layer.className = "pointer-events-none fixed inset-0";
+    layer.style.zIndex = "5";
     for (let i = 0; i < 20; i++) {
       const size = rnd(160, 280);
       const color = COLORS[Math.floor(Math.random() * COLORS.length)];

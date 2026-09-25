@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="../favicon.ico">
@@ -15,7 +15,8 @@
             body{
                 background: linear-gradient(160deg, #f8cfe0 0%, #fadde9 20%, #fde8f0 45%, #fff2f8 70%, #fdf8f4 100%);
                 margin:7%;
-                color:#DB7093;
+                /* Era #DB7093 (2,2:1 sobre o rosa); #9B3358 dá 5:1 sem perder o tom. */
+                color:#9B3358;
                 font-family: 'Signika', sans-serif;
                 font-size: 24px;
                 position: relative;
@@ -28,7 +29,7 @@
                 font-family: Lobster, display !important;
                 font-size: 48px;
                 text-align: center;
-                color: #DB7093;
+                color: #A63D62;
                 text-shadow: 1px 1px #FFB6C1;
             }
             .left-top, .center-down{
@@ -221,6 +222,18 @@
                 animation: rotating 4.5s ease-in-out infinite !important;
             }
 
+            /* The avatar stays at the top of the page instead of following the
+               reader: fixed, it sat on top of the words (backlog UX-11). */
+            .float {
+                position: absolute;
+            }
+            @media (width <= 576px) {
+                .float {
+                    top: 20px;
+                    right: 0;
+                }
+            }
+
             /* Ambient drifting hearts behind the letter */
             .hearts {
                 position: fixed;
@@ -258,7 +271,7 @@
         <a href="/" class="back-home">&#8592; início</a>
         <div class="hearts" aria-hidden="true"></div>
         <img src="up-2.png" class="left-top" alt="">
-        <img src="mi.png" class="float">
+        <img src="mi.png" class="float" alt="Michelle sorrindo, de blusa rosa, entre flores">
         <p class="bold destaque" style="margin-top: 0;">Feliz aniversário Mi!</p>
         <p>As vezes a gente acha que já disse tudo, que o relacionamento está garantido, que não pairam mais dúvidas...</p>
         <p>Contudo, o tempo sempre traz aprendizado e o mais recente é que, como todo o resto, há que se ter manutenção constante; inclusive, nessa maravilhosa relação que estabelecemos há mais de 10 anos!</p>
