@@ -13,10 +13,12 @@ const MARCOS = [
 ---
 
 <BaseLayout
-  title="30/09/2026"
+  title="Para a Mi — 30/09/2026"
   description="Carta de feliz aniversário para Michelle, ano 2026"
   fontsHref="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&display=swap"
   ogImage="/2026.jpg"
+  ogImageAlt="Michelle e Adriano numa selfie, sorrindo"
+  themeColor="#f7e2de"
   lang="pt-BR"
 >
   <a href="/" class="voltar">← início</a>
@@ -285,7 +287,19 @@ const MARCOS = [
           </button>
           <span class="audio__texto">
             <span class="audio__rotulo">A Rafa, aos 9 anos, falando da mãe</span>
-            <span class="audio__trilho"><span class="audio__progresso" data-audio-progresso></span></span>
+            <span class="audio__linha">
+              <input
+                class="audio__barra"
+                type="range"
+                min="0"
+                max="1000"
+                step="1"
+                value="0"
+                aria-label="Posição no áudio"
+                data-audio-barra
+              />
+              <span class="audio__tempo" data-audio-tempo></span>
+            </span>
           </span>
           <audio preload="metadata" data-audio-elemento src="/2026/rafa-9-anos.mp3"></audio>
         </div>
@@ -502,19 +516,59 @@ const MARCOS = [
       observador.observe(revelacao);
     }
 
+    /* ── Barra do navegador: noite enquanto se lê 2041 ────────────────
+       Só o Chrome no Android pinta a barra; nos outros não faz nada. A cor
+       de dia vem do themeColor passado ao BaseLayout. */
+    const corDaBarra = document.querySelector('meta[name="theme-color"]');
+    const futuro = document.querySelector(".futuro");
+
+    if (corDaBarra && futuro && "IntersectionObserver" in window) {
+      const DIA = corDaBarra.getAttribute("content");
+      const NOITE = "#1e1627"; // --noite
+      // A raiz vira uma linha no topo da tela: "estou lendo 2041?"
+      new IntersectionObserver(
+        function (entradas) {
+          entradas.forEach(function (entrada) {
+            corDaBarra.setAttribute("content", entrada.isIntersecting ? NOITE : DIA);
+          });
+        },
+        { rootMargin: "0px 0px -99% 0px", threshold: 0 }
+      ).observe(futuro);
+    }
+
     /* ── Áudio da Rafa (some sozinho se o arquivo não existir) ─────── */
     const caixa = document.querySelector("[data-audio]");
     const som = document.querySelector("[data-audio-elemento]");
     const botao = document.querySelector("[data-audio-botao]");
     const icone = document.querySelector("[data-audio-icone]");
-    const progresso = document.querySelector("[data-audio-progresso]");
+    const barra = document.querySelector("[data-audio-barra]");
+    const tempo = document.querySelector("[data-audio-tempo]");
 
     const PLAY = "M8 5v14l11-7z";
     const PAUSE = "M6 4h4v16H6zM14 4h4v16h-4z";
 
-    if (caixa && som && botao && icone && progresso) {
+    function relogio(segundos) {
+      const s = Math.max(0, Math.floor(segundos || 0));
+      return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+    }
+
+    if (caixa && som && botao && icone && barra && tempo) {
+      // Duração à vista antes de tocar; durante, "0:12 / 0:42".
+      function mostrarTempo() {
+        const total = relogio(som.duration);
+        tempo.textContent = som.currentTime > 0 ? relogio(som.currentTime) + " / " + total : total;
+      }
+      function mostrarPosicao() {
+        const fracao = som.duration ? som.currentTime / som.duration : 0;
+        barra.value = String(Math.round(fracao * 1000));
+        barra.style.setProperty("--pos", fracao * 100 + "%");
+        barra.setAttribute("aria-valuetext", relogio(som.currentTime) + " de " + relogio(som.duration));
+      }
+
       som.addEventListener("loadedmetadata", function () {
         caixa.hidden = false;
+        mostrarTempo();
+        mostrarPosicao();
       });
       som.addEventListener("error", function () {
         caixa.hidden = true;
@@ -523,6 +577,8 @@ const MARCOS = [
       // "loadedmetadata" já passou: sem isto a caixa do áudio nunca aparece.
       if (som.readyState >= 1 && !som.error) {
         caixa.hidden = false;
+        mostrarTempo();
+        mostrarPosicao();
       }
 
       botao.addEventListener("click", function () {
@@ -543,10 +599,20 @@ const MARCOS = [
       som.addEventListener("pause", marcarEstado);
       som.addEventListener("timeupdate", function () {
         if (!som.duration) return;
-        progresso.style.width = (som.currentTime / som.duration) * 100 + "%";
+        mostrarTempo();
+        mostrarPosicao();
+      });
+      // Tocar ou arrastar na barra leva o áudio para aquele ponto.
+      barra.addEventListener("input", function () {
+        if (!som.duration) return;
+        som.currentTime = (Number(barra.value) / 1000) * som.duration;
+        mostrarTempo();
+        mostrarPosicao();
       });
       som.addEventListener("ended", function () {
-        progresso.style.width = "0%";
+        som.currentTime = 0;
+        mostrarTempo();
+        mostrarPosicao();
         marcarEstado();
       });
     }
