@@ -1,0 +1,75 @@
+---
+// The "← início" pill, one control on every year page. Styled after 2025, where
+// it was born; 2023 and 2024 (plain HTML in /public) carry a hand-made copy.
+// The page must load Lobster: add `family=Lobster` to its fontsHref.
+---
+
+<a href="/" class="back-home" aria-label="Voltar ao início">← início</a>
+
+<script>
+  // UX-10: the pill steps aside while reading down, back on the way up.
+  const pill = document.querySelector(".back-home");
+  if (pill) {
+    let ultimo = window.scrollY;
+    window.addEventListener(
+      "scroll",
+      () => {
+        const y = window.scrollY;
+        if (Math.abs(y - ultimo) < 8) return;
+        pill.classList.toggle("recolhido", y > ultimo && y > 80);
+        ultimo = y;
+      },
+      { passive: true }
+    );
+    pill.addEventListener("focus", () => pill.classList.remove("recolhido"));
+  }
+</script>
+
+<style is:global>
+  /* 18px, 44px touch target; hidden while reading down. */
+  .back-home {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 999;
+    display: inline-block;
+    padding: 0.6rem 1.25rem;
+    background: rgba(255, 240, 245, 0.84);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(219, 112, 147, 0.28);
+    border-radius: 999px;
+    box-shadow: 0 2px 16px rgba(219, 112, 147, 0.15);
+    color: #b84d6a;
+    font-family: "Lobster", cursive;
+    font-size: 1.125rem;
+    font-style: normal;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s, box-shadow 0.25s;
+  }
+  /* Safari before 18 (iOS 17 and older) only knows the prefixed name. In its
+     own rule because Astro 7's CSS pipeline keeps just one of the pair when
+     both sit in the same block. */
+  @supports not (backdrop-filter: blur(1px)) {
+    .back-home {
+      -webkit-backdrop-filter: blur(14px);
+    }
+  }
+  .back-home:hover {
+    background: rgba(219, 112, 147, 0.14);
+    box-shadow: 0 4px 24px rgba(219, 112, 147, 0.28);
+    transform: translateX(-2px);
+  }
+  .back-home:focus-visible {
+    outline: 2px solid #b84d6a;
+    outline-offset: 2px;
+  }
+  .back-home.recolhido {
+    transform: translateY(calc(-100% - 1.5rem));
+    opacity: 0;
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .back-home { transition: none; }
+  }
+</style>

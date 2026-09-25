@@ -29,7 +29,7 @@ export const idade = (ano: number) => ano - NASCIMENTO;
  * The concept lines under each card (UX-23) stay hidden on the live site until
  * this is true. Preview them any time with `?conceitos` at the end of the URL.
  */
-export const MOSTRAR_CONCEITOS = false;
+export const MOSTRAR_CONCEITOS = true;
 
 export const ANOS: Ano[] = [
   { ano: 2026, href: "/2026/", capa: "/2026.jpg", tipo: "carta", conceito: "a carta às filhas, lida por cima do ombro" },

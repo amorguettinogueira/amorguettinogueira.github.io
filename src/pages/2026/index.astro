@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NavAnos from "../../components/NavAnos.astro";
+import VoltarInicio from "../../components/VoltarInicio.astro";
 import "../../styles/2026.css";
 
 // Namoro oficializado. Base de todas as contas da página.
@@ -15,13 +16,13 @@ const MARCOS = [
 <BaseLayout
   title="Para a Mi — 30/09/2026"
   description="Carta de feliz aniversário para Michelle, ano 2026"
-  fontsHref="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&display=swap"
+  fontsHref="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..700;1,6..72,200..700&family=Lobster&display=swap"
   ogImage="/2026.jpg"
   ogImageAlt="Michelle e Adriano numa selfie, sorrindo"
   themeColor="#f7e2de"
   lang="pt-BR"
 >
-  <a href="/" class="voltar">← início</a>
+  <VoltarInicio />
 
   <main class="carta">
     <!-- ── Abertura ───────────────────────────────────────────────── -->

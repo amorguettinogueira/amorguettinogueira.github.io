@@ -1,12 +1,12 @@
 ---
 // The video years (2014, 2015, 2020) inside the site instead of a jump to
-// YouTube (backlog UX-24): the video embedded, plus the transcript that was
-// already public at /<ano>/video-text.txt.
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+// YouTube (backlog UX-24): the video embedded, plus the transcript that is
+// also public at /<ano>/video-text.txt (see video-text.txt.ts next door).
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NavAnos from "../../components/NavAnos.astro";
+import VoltarInicio from "../../components/VoltarInicio.astro";
 import { ANOS, idade, type Ano } from "../../data/anos";
+import { transcricao } from "../../data/transcricoes";
 
 export function getStaticPaths() {
   return ANOS.filter((a) => a.tipo === "video").map((a) => ({
@@ -17,24 +17,17 @@ export function getStaticPaths() {
 
 const { a } = Astro.props as { a: Ano };
 
-// Build runs from the repo root; the transcript stays where its URL already is.
-const texto = readFileSync(join(process.cwd(), "public", String(a.ano), "video-text.txt"), "utf8");
-const paragrafos = texto
-  .replace(/\r\n/g, "\n")
-  .split(/\n\s*\n/)
-  .map((p) => p.trim())
-  .filter(Boolean)
-  .map((p) => p.split("\n").map((l) => l.trim()));
+const paragrafos = transcricao(a.ano).map((linhas) => linhas.map((l) => l.trim()));
 ---
 
 <BaseLayout
   title={`Para a Mi — 30/09/${a.ano}`}
   description={`Vídeo de aniversário para a Michelle, ${a.ano}, com a transcrição.`}
-  fontsHref="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Quicksand:wght@500;600&display=swap"
+  fontsHref="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Literata:opsz,wght@7..72,400&family=Lobster&family=Quicksand:wght@500;600&display=swap"
   ogImage={a.capa}
   ogImageAlt={`Michelle em ${a.ano}`}
 >
-  <a href="/" class="voltar">← início</a>
+  <VoltarInicio />
 
   <main class="video-ano">
     <header class="cabeca">
@@ -79,27 +72,24 @@ const paragrafos = texto
     --papel: hsl(335 70% 97%);
     --tinta: hsl(330 25% 18%);
     --rosa: hsl(340 50% 34%);
-    --rosa-media: hsl(340 30% 40%);
   }
   *, *::before, *::after { box-sizing: border-box; }
   body {
     margin: 0;
     background: linear-gradient(170deg, hsl(335 80% 93%) 0%, var(--papel) 28rem);
     color: var(--tinta);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(1.3125rem, 1.2rem + 0.4vw, 1.4375rem); /* Cormorant runs small: ~21px */
-    line-height: 1.6;
+    /* Literata for the transcript: built for long reading on screens, with a
+       tall x-height and sturdy strokes. Cormorant (small, hairline, old-style
+       figures) was hard to read on a phone with reading glasses; it stays on
+       the italic headings, where it is large enough to hold up. */
+    font-family: "Literata", Georgia, serif;
+    font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.3125rem); /* 19px mobile, 21px desktop */
+    font-variant-numeric: lining-nums;
+    line-height: 1.65;
   }
-  .voltar {
-    position: absolute;
-    top: 0.25rem;
-    left: 0.5rem;
-    padding: 0.75rem;
-    color: var(--rosa-media);
-    font-style: italic;
-    text-decoration: none;
-  }
-  .voltar:hover, .voltar:focus-visible { color: var(--rosa); text-decoration: underline; }
+  .cabeca, .transcricao h2 { font-family: "Cormorant Garamond", Georgia, serif; }
+  /* Cormorant runs small: keep the date at ~21px so it is not demoted. */
+  .cabeca__data { font-size: clamp(1.3125rem, 1.2rem + 0.4vw, 1.4375rem); }
   .video-ano {
     width: min(100% - 2.5rem, 46rem);
     margin: 0 auto;

@@ -21,7 +21,7 @@ O objetivo aqui é **não esquecer que existem** e **não perder de onde estão*
 |---|---|---|
 | `Perguntas de casais 1.mp4`<br>`Perguntas de casais 2.mp4` | `C:\Users\adria\Downloads\` ✅ *já exportados do iPhone* | Eu e a Michelle respondendo, em áudio, perguntas de um desafio de casais. As duas vozes. Material de altíssimo valor: é a voz dela hoje, respondendo sobre nós. |
 | `níver-mi-44-anos-2026.mp3` | `C:\Users\adria\OneDrive\Documents\Audacity4\` | Rafaela, 9 anos, respondendo perguntas sobre a mãe. Gravado para a carta de 2026. |
-| Vídeos 2014 / 2015 / 2020 | YouTube (links no `src/pages/index.astro`) | Transcritos em `public/<ano>/video-text.txt`. |
+| Vídeos 2014 / 2015 / 2020 | YouTube (links no `src/pages/index.astro`) | Transcritos em `src/data/transcricoes/<ano>.txt`. Notas entre `[colchetes]` são só nossas: saem do site automaticamente. |
 | Retrospectiva em fotos 2012–2020 | Dentro do vídeo de 2020 | Usada como fecho do vídeo daquele ano. |
 
 > ⚠️ **`Downloads\` não é lugar de guardar nada.** É a primeira pasta que a gente limpa
