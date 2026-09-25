@@ -37,7 +37,7 @@ export const ANOS: Ano[] = [
   { ano: 2024, href: "/2024/index.html", capa: "/2024.jpg", tipo: "legado", conceito: "uma fábula, e a promessa das bodas de ouro" },
   { ano: 2023, href: "/2023/index.html", capa: "/2023.jpg", tipo: "legado", conceito: "o que ninguém vê, nos atos de todo dia" },
   { ano: 2020, href: "/2020/", capa: "/2020.jpg", tipo: "video", youtube: "gbf-Ln3W1r8", conceito: "outras vozes falando de você" },
-  { ano: 2015, href: "/2015/", capa: "/2015.jpg", tipo: "video", youtube: "iaZs_Lzxa48", conceito: "a origem das suas palavras" },
+  { ano: 2015, href: "/2015/", capa: "/2015.jpg", tipo: "video", youtube: "iaZs_Lzxa48", conceito: "a origem do seu nome" },
   { ano: 2014, href: "/2014/", capa: "/2014.jpg", tipo: "video", youtube: "Gb7v0Ki5Dm4", conceito: "tudo o que você toca se transforma" },
 ];
 
