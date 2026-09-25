@@ -12,6 +12,3 @@ node_modules/
 .env
 .env.*
 .DS_Store
-
-# leftover scaffolding from the old (pre-Astro) 2025 build
-2025-src/

@@ -1,0 +1,31 @@
+name: Verificar site
+
+# Runs on pull requests only: builds the site and runs scripts/verificar-site.mjs
+# (public URLs still exist, no broken internal links). Deliberately a separate
+# file — deploy.yml, which publishes on push to main, is left untouched.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and verify
+        run: npm run verificar

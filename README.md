@@ -1,63 +1,49 @@
 # michellenogueira.info
 
-A tribute site for Michelle Nogueira — one page per year, growing over time.
-Built with [Astro](https://astro.build) and deployed to GitHub Pages.
+One page per year for Michelle Nogueira, published on her birthday (30/09).
+Built with [Astro](https://astro.build) as a static site and deployed to GitHub
+Pages.
 
-## How it works
+**Details live in [`CLAUDE.md`](CLAUDE.md)**: who the reader is, the mobile and
+type-size rules, how the yearly release works, how to add a year, and what
+each year's page already did. Pending work is in
+[`notes/backlog-melhorias.md`](notes/backlog-melhorias.md).
 
-- **One stack, one build, one deploy.** Everything lives in this repo and is
-  built by a single GitHub Action on every push to `main`. There is no more
-  "build the React app and copy `dist/` by hand" step.
-- The site is **static HTML/CSS/JS** — fully native to GitHub Pages.
+## Running it
 
-## Project layout
-
-```
-src/
-  layouts/BaseLayout.astro      Shared <head>/meta/fonts shell for Astro pages
-  pages/
-    index.astro                 The gallery landing (the hub of years)
-    2025/index.astro            The 2025 letter (Astro + vanilla JS + Tailwind)
-    404.astro                   Friendly not-found page
-  components/year2025/          Small building blocks used only by the 2025 page
-  styles/2025.css               Romantic design tokens (scoped to 2025)
-  assets/2025/                  Images imported & optimized by Astro
-
-public/                         Copied to the site root verbatim
-  CNAME  robots.txt  favicon.ico
-  2014.jpg … 2025.jpg           Gallery cover images
-  2023/  2024/                  Older bespoke pages, preserved exactly as-is
-```
-
-Tailwind is used **only** by the 2025 page; it is scoped in
-`tailwind.config.mjs` so its reset and utilities never touch the other pages.
-
-## Local development
+Node 22 (see `.nvmrc`).
 
 ```bash
-npm install     # once
-npm run dev      # live-reloading preview at http://localhost:4321
-npm run build    # produce dist/ (what gets deployed)
-npm run preview  # serve the built dist/ locally
+npm install          # once
+npm run dev          # http://localhost:4321 — shows every year's card
+npm run dev -- --host   # same, reachable from a phone on the LAN
+npm run dev:fresh    # frees ports 4321/4322 and clears caches first (Windows)
+npm run build        # produces dist/
+npm run verificar    # build + check public URLs and internal links
+npm run preview      # serves dist/ at http://localhost:4322
 ```
 
-## Adding a new year
+## Publishing
 
-1. Add the cover image to `public/<year>.jpg`.
-2. Add an entry to the top of the `years` array in `src/pages/index.astro`.
-3. Create the page at `src/pages/<year>/index.astro`. Two easy options:
-   - **Simple/bespoke:** use `BaseLayout` and write plain HTML + a `<style>`
-     block (see `404.astro` for the pattern).
-   - **Rich/animated:** copy `src/pages/2025/index.astro` as a starting point.
-4. `git commit` and push to `main` — the Action builds and deploys.
+Every push to `main` builds and deploys (`.github/workflows/deploy.yml`).
+A year's gallery card only appears on the live site from 29/09 of that year;
+`.github/workflows/release.yml` rebuilds the site on 29 and 30 September so it
+does. **Re-enable that schedule every year** before 29/09 — GitHub turns it off
+after 60 days without activity. See `CLAUDE.md` §4.
 
-To preserve an old hand-written page exactly as-is, just drop its folder into
-`public/<year>/` (like `2023/` and `2024/`); it's served untouched.
+Pull requests run `npm run verificar` (`.github/workflows/verificar.yml`).
 
-## Deployment (one-time setup)
+## Layout
 
-This repo deploys via GitHub Actions (`.github/workflows/deploy.yml`).
-In **GitHub → Settings → Pages**, set **Source = "GitHub Actions"** (instead of
-"Deploy from a branch"). After that, every push to `main` publishes
-automatically. The custom domain (`michellenogueira.info`) is kept via
-`public/CNAME`.
+```
+src/pages/index.astro         the gallery
+src/pages/<ano>/index.astro   each year from 2025 on
+src/styles/<ano>.css          plain CSS per year (Tailwind is only for 2025)
+src/layouts/BaseLayout.astro  shared <head>
+public/                       copied verbatim to the site root — paths are URLs
+  <ano>.jpg                   covers, also the WhatsApp preview image
+  2023/ 2024/                 older hand-written pages, preserved as-is
+  2014/ 2015/ 2020/           transcripts of the video years
+scripts/                      dev-fresh.mjs, verificar-site.mjs
+notes/                        idea bank and backlog (public on purpose)
+```

@@ -145,6 +145,43 @@ This is the rule most easily broken by an agent being helpful.
   private-without: *"melhor ele público com backup do que sem."*
 - Shell here is PowerShell; `npm run dev` piped into `head` dies of SIGPIPE.
   Run it unpiped and in the background.
+- **`npm run verificar`** builds and then runs `scripts/verificar-site.mjs`:
+  every URL already public must still exist in `dist/`, and every internal
+  `href`/`src`/`url()` must resolve. Run it before and after moving anything
+  out of `public/` — that is the one change the build does not catch. The list
+  of public URLs is at the top of the script: covers are picked up on their
+  own, but add each new year's page and extra files (`raw-text.txt`, audio). Pull
+  requests run it automatically (`.github/workflows/verificar.yml`).
+- **`npm run dev:fresh`** frees ports 4321 (dev) and 4322 (preview) and
+  clears the Vite/Astro caches. It replaced `run.bat` and
+  `kill-zombie-process.ps1`. Windows-only (`netstat` + `taskkill`).
+- **Node 22** (`.nvmrc`, `engines`), the same as the deploy.
+- **Tailwind is frozen at 3.4.19** (exact versions in `package.json`). Do not
+  run `npm update` blindly and do not move to Tailwind 4: `@astrojs/tailwind`
+  does not support it and `tailwind.config.mjs` uses `require` in an ESM file.
+
+### Constraints found in the repo-hygiene PR (for Adriano to review)
+
+- **`preserveSymlinks` was kept (REPO-05).** Only its comment was updated.
+  Whether `X:\` is also a junction/`subst` cannot be tested from a cloud
+  session; remove it on the Windows machine, then run `npm run dev` and
+  `npm run build`.
+- **Local Node is still 20.16 (REPO-10).** `engines` only warns, it does not
+  block `npm install`. Update the local Node to 22 (`nvm install 22` /
+  `nvm use`), or `npm ci` will keep printing an engine warning.
+- **`dev-fresh.mjs` stays Windows-only.** It no-ops harmlessly elsewhere
+  (reports both ports free), which is what a cloud session sees.
+- **The first run of the checker found only false positives** — a
+  commented-out `<!--img src="./image07.jpg"/-->` in `public/2024/index.html`
+  and `url(%23n)` filter references inside inline SVG data URIs. Both are now
+  skipped. No real broken link exists on the site today.
+- **The optional screenshot script** from the audit (REPO-01) was not
+  recreated: it depended on Edge on his machine. The cloud sessions can use
+  the preinstalled Playwright Chromium instead; worth a `scripts/` version
+  when REPO-07/08 move files around.
+- **`verificar` was not added to `deploy.yml`** (the backlog marks that file
+  "não mexer"); it runs on pull requests instead. Commits pushed straight to
+  `main` are not checked — run `npm run verificar` locally first.
 
 ### Adding a year
 
