@@ -342,7 +342,10 @@ li::before{
     display: inline-block;
     animation: line-glow 1ms linear both;
     animation-timeline: view();
-    animation-range: entry 5% cover 35%;
+    /* Ends as soon as the line is fully on screen. It used to end at
+       "cover 35%", which this line never reaches: the page ends first, so
+       the fade froze at 10–30% opacity, shifted down under "Dri". */
+    animation-range: entry 0% entry 100%;
 }
 @keyframes line-glow {
     0%   { opacity: 0; transform: translateY(18px); text-shadow: none; }

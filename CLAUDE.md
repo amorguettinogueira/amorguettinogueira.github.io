@@ -173,10 +173,6 @@ This is the rule most easily broken by an agent being helpful.
 
 ### Constraints found in the repo-hygiene PR (for Adriano to review)
 
-- **`preserveSymlinks` was kept (REPO-05).** Only its comment was updated.
-  Whether `X:\` is also a junction/`subst` cannot be tested from a cloud
-  session; remove it on the Windows machine, then run `npm run dev` and
-  `npm run build`.
 - **Local Node is still 20.16 (REPO-10).** `engines` only warns, it does not
   block `npm install`. Update the local Node to 22 (`nvm install 22` /
   `nvm use`), or `npm ci` will keep printing an engine warning.
@@ -328,6 +324,13 @@ deserves a decision of his in a later session. Delete an entry once decided.
   no `frontend-design:frontend-design`; the P0 fixes were small enough to
   follow the audit's own prescriptions instead. Check again before designing
   2027.
+- **Screenshot with motion on, not only with `reducedMotion: "reduce"`.**
+  Reduced motion switches off every entrance animation, so it hides the bugs
+  where one freezes halfway. That is how the 2024 closing line shipped at
+  10–30% opacity and was found by Adriano, not by the checks: its
+  scroll-driven fade (`animation-range`) ended at "cover 35%", which the last
+  line of a page never reaches. Any `animation-timeline: view()` near the end
+  of a page must finish at `entry 100%` or earlier.
 - **Cloud screenshots render with fallback fonts.** Headless Chromium in the
   cloud container does not load Google Fonts through the proxy, so every
   screenshot there shows a generic serif/sans. Sizes and layout can be
@@ -377,10 +380,13 @@ deserves a decision of his in a later session. Delete an entry once decided.
 ### PR "Navegação" (REPO-03, UX-09, UX-10, UX-23, UX-24)
 
 - **The timeline lines under each card (UX-23) are my drafts, hidden.** They
-  are text Michelle reads, and §2 says the prose is his. They live in
-  `conceito` in `src/data/anos.ts`, stay hidden until `MOSTRAR_CONCEITOS` is
-  `true`, and can be previewed on the live site with `/?conceitos`. Rewrite
-  them before switching on.
+  are text Michelle reads, and §2 says the prose is his (he has already
+  rewritten 2015's). They live in `conceito` in `src/data/anos.ts`, stay
+  hidden until `MOSTRAR_CONCEITOS` is `true`, and can be previewed on the live
+  site with `/?conceitos`. Since 26/09 the line sits *inside* the card link
+  (`.card-foto` + `.card-conceito`): only the link's clip is rounded, so photo
+  and caption read as one piece. The first version put a rounded photo on a
+  square strip, and he read it as "done in a hurry".
 - **The video cards now open pages on the site** (`/2014/`, `/2015/`,
   `/2020/`) instead of YouTube in a new tab (UX-24), and the badge reads
   "Vídeo". The embed uses `youtube-nocookie.com`; it could not be played from
