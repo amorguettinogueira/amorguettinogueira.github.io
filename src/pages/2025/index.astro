@@ -4,6 +4,7 @@ import AnimatedSection from "../../components/year2025/AnimatedSection.astro";
 import Parallax from "../../components/year2025/Parallax.astro";
 import Floating from "../../components/year2025/Floating.astro";
 import Heart from "../../components/year2025/Heart.astro";
+import NavAnos from "../../components/NavAnos.astro";
 import bg from "../../assets/2025/background3.jpg";
 import miEDri from "../../assets/2025/mi_e_dri.jpg";
 import "../../styles/2025.css";
@@ -195,6 +196,8 @@ const nicknames = [
         </div>
       </AnimatedSection>
 
+      <NavAnos ano={2025} />
+
       <!-- Only on wide screens: on a phone it sat on top of the words (UX-16). -->
       <div class="fixed bottom-10 right-10 animate-heartbeat hidden xl:block">
         <Floating><Heart filled class="w-16 h-16 text-rose" /></Floating>
@@ -321,6 +324,23 @@ const nicknames = [
     window.setTimeout(() => layer.remove(), 6000);
   }
 
+  // UX-10: the "← início" pill steps aside while reading down, back on the way up.
+  const pill = document.querySelector(".back-home");
+  if (pill) {
+    let ultimo = window.scrollY;
+    window.addEventListener(
+      "scroll",
+      () => {
+        const y = window.scrollY;
+        if (Math.abs(y - ultimo) < 8) return;
+        pill.classList.toggle("recolhido", y > ultimo && y > 80);
+        ultimo = y;
+      },
+      { passive: true }
+    );
+    pill.addEventListener("focus", () => pill.classList.remove("recolhido"));
+  }
+
   // Cursor sparkles
   if (!reduce) {
     let lastSparkle = 0;
@@ -374,6 +394,17 @@ const nicknames = [
       background: rgba(219, 112, 147, 0.14);
       box-shadow: 0 4px 24px rgba(219, 112, 147, 0.28);
       transform: translateX(-2px);
+  }
+  /* UX-10: 18px, 44px touch target; hidden while reading down. */
+  .back-home {
+      font-size: 1.125rem;
+      padding: 0.6rem 1.25rem;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s, box-shadow 0.25s;
+  }
+  .back-home.recolhido {
+      transform: translateY(calc(-100% - 1.5rem));
+      opacity: 0;
+      pointer-events: none;
   }
   @media (prefers-reduced-motion: reduce) {
     .back-home { transition: none; }

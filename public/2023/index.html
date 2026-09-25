@@ -258,6 +258,47 @@
                 100% { transform: translateY(-118vh) scale(1.05) rotate(-26deg); opacity: 0; }
             }
 
+            /* UX-10: hidden while reading down, back on the way up (script at the end). */
+            .back-home {
+                font-size: 1.125rem;
+                padding: 0.6rem 1.25rem;
+                transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s, box-shadow 0.25s;
+            }
+            .back-home.recolhido {
+                transform: translateY(calc(-100% - 1.5rem));
+                opacity: 0;
+                pointer-events: none;
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .back-home { transition: none; }
+            }
+            /* "← ano · todas as cartas · ano →" — hand-made copy of src/components/NavAnos.astro (UX-09). */
+            .nav-anos {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                align-items: center;
+                gap: 0.5rem;
+                width: min(100%, 36rem);
+                margin: 3.5rem auto 0;
+                font-size: 1.1875rem;
+                font-style: italic;
+                line-height: 1.3;
+            }
+            .nav-anos a {
+                display: inline-block;
+                padding: 0.75rem 0.5rem;
+                white-space: nowrap;
+                color: inherit;
+                text-decoration: underline;
+                text-decoration-color: transparent;
+                text-underline-offset: 4px;
+            }
+            .nav-anos a:hover, .nav-anos a:focus-visible { text-decoration-color: currentColor; }
+            .nav-anos a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+            .nav-anos a:first-child { justify-self: start; }
+            .nav-anos a:last-child { justify-self: end; }
+            .nav-anos { color: #9B3358; margin-bottom: 1rem; }
+
             @media (prefers-reduced-motion: reduce) {
                 .reveal { opacity: 1; transform: none; filter: none; transition: none; }
                 .destaque { animation: none; }
@@ -290,7 +331,25 @@
         <p>Eu desejo que o dia de hoje chegue aos seus pés e seja tão alegre quanto é a minha vida graças à tua existência.</p>
         <p class="bold destaque">Eu te amo, Adriano.</p>
         <img src="bottom-2.png" class="center-down" alt="">
+        <nav class="nav-anos" aria-label="Outras cartas">
+            <a href="/2020/" rel="prev">← 2020</a>
+            <a href="/">todas as cartas</a>
+            <a href="/2024/index.html" rel="next">2024 →</a>
+        </nav>
         <script>
+            (function () {
+                // UX-10: the pill steps aside while reading down and comes back on the way up.
+                var pill = document.querySelector('.back-home');
+                if (!pill) return;
+                var ultimo = window.scrollY;
+                window.addEventListener('scroll', function () {
+                    var y = window.scrollY;
+                    if (Math.abs(y - ultimo) < 8) return;
+                    pill.classList.toggle('recolhido', y > ultimo && y > 80);
+                    ultimo = y;
+                }, { passive: true });
+                pill.addEventListener('focus', function () { pill.classList.remove('recolhido'); });
+            })();
             (function () {
                 var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

@@ -112,8 +112,26 @@
                 </div>
             </div>
             <h1 class="final-name">Dri</h1>
+            <nav class="nav-anos" aria-label="Outras cartas">
+                <a href="/2023/index.html" rel="prev">← 2023</a>
+                <a href="/">todas as cartas</a>
+                <a href="/2025/" rel="next">2025 →</a>
+            </nav>
         </div>
         <script>
+            (function () {
+                // UX-10: the pill steps aside while reading down and comes back on the way up.
+                var pill = document.querySelector('.back-home');
+                if (!pill) return;
+                var ultimo = window.scrollY;
+                window.addEventListener('scroll', function () {
+                    var y = window.scrollY;
+                    if (Math.abs(y - ultimo) < 8) return;
+                    pill.classList.toggle('recolhido', y > ultimo && y > 80);
+                    ultimo = y;
+                }, { passive: true });
+                pill.addEventListener('focus', function () { pill.classList.remove('recolhido'); });
+            })();
             (function () {
                 var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                 if (reduce) return;
