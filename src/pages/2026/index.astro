@@ -25,7 +25,7 @@ const MARCOS = [
     <header class="abertura faixa">
       <div class="coluna coluna--nota">
         <p class="abertura__data">30 de setembro de 2026</p>
-        <p class="abertura__frase">Não é só para você.</p>
+        <h1 class="abertura__frase">Não é só para você.</h1>
 
         <p class="contador contador--abertura">
           <span class="contador__dias" data-contador-dias>—</span>
@@ -425,6 +425,8 @@ const MARCOS = [
           <p class="assinatura__amor">Te amo,</p>
           <p class="assinatura__nome">Dri.</p>
         </div>
+
+        <a href="/" class="voltar-fim">← todas as cartas</a>
       </div>
     </section>
   </main>
@@ -516,6 +518,11 @@ const MARCOS = [
       som.addEventListener("error", function () {
         caixa.hidden = true;
       });
+      // Com o mp3 em cache, os metadados podem chegar antes deste script, e o
+      // "loadedmetadata" já passou: sem isto a caixa do áudio nunca aparece.
+      if (som.readyState >= 1 && !som.error) {
+        caixa.hidden = false;
+      }
 
       botao.addEventListener("click", function () {
         if (som.paused) {

@@ -61,29 +61,33 @@ body {
   /* 19px no celular, 21px em tela grande. */
   font-size: clamp(1.1875rem, 1.09rem + 0.45vw, 1.3125rem);
   line-height: 1.68;
-  font-variant-numeric: tabular-nums;
   overflow-x: hidden;
 }
 
 /* ── Voltar ────────────────────────────────────────────────────────────── */
 
+/* Área de toque de pelo menos 44×44px: o padding cresce para fora e a margem
+   negativa devolve o texto ao lugar de antes. */
 .voltar {
   position: absolute;
   top: 1rem;
   left: 1.25rem;
   z-index: 5;
+  display: inline-block;
+  margin: -0.75rem;
+  padding: 0.75rem;
   color: var(--tinta-media);
-  font-size: 1.0625rem;
+  font-size: 1.1875rem;
   font-style: italic;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 1px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
 }
 
 .voltar:hover,
 .voltar:focus-visible {
   color: var(--rosa);
-  border-bottom-color: var(--rosa-claro);
+  text-decoration-color: var(--rosa-claro);
 }
 
 /* ── Estrutura ─────────────────────────────────────────────────────────── */
@@ -164,6 +168,8 @@ body {
 .contador__nota {
   display: block;
   color: var(--tinta-media);
+  /* Muda a cada segundo: dígitos de largura fixa para a linha não tremer. */
+  font-variant-numeric: tabular-nums;
   font-style: italic;
   font-size: 1.125rem;
   line-height: 1.5;
@@ -227,7 +233,7 @@ body {
   display: block;
   margin-top: 0.45rem;
   color: var(--tinta-fraca);
-  font-size: 1.0625rem;
+  font-size: 1.1875rem;
   font-style: normal;
   letter-spacing: 0.01em;
 }
@@ -263,7 +269,7 @@ body {
   display: inline-block;
   margin-top: 0.7rem;
   color: var(--tinta-media);
-  font-size: 1rem;
+  font-size: 1.1875rem;
   font-style: normal;
   text-decoration-color: var(--rosa-claro);
   text-underline-offset: 3px;
@@ -325,7 +331,7 @@ body {
 
 .audio__rotulo {
   display: block;
-  font-size: 1.0625rem;
+  font-size: 1.1875rem;
   font-style: italic;
   line-height: 1.4;
 }
@@ -358,7 +364,7 @@ body {
   padding: 0.6rem 1.25rem;
   background: var(--noite);
   color: var(--noite-rosa);
-  font-size: 1rem;
+  font-size: 1.1875rem;
   font-style: italic;
   text-align: center;
   letter-spacing: 0.03em;
@@ -433,6 +439,25 @@ body {
   font-weight: 300;
   color: var(--rosa);
   line-height: 1.1;
+}
+
+/* Saída no fim da carta: são ~18 telas no celular até aqui. */
+.voltar-fim {
+  display: inline-block;
+  margin-top: 3.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--tinta-media);
+  font-size: 1.1875rem;
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-color: var(--linha-quente);
+  text-underline-offset: 4px;
+}
+
+.voltar-fim:hover,
+.voltar-fim:focus-visible {
+  color: var(--rosa);
+  text-decoration-color: var(--rosa-claro);
 }
 
 /* ── Foco visível ──────────────────────────────────────────────────────── */

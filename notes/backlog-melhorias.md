@@ -29,7 +29,7 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
 
 ### P0 · Antes de 30/09 (o que a Mi vê no celular no dia)
 
-- [ ] **UX-01 · Home: ano e idade invisíveis no celular** — M
+- [x] **UX-01 · Home: ano e idade invisíveis no celular** — M ✅ 25/09/2026 (PR "P0")
   - **Problema:** o rótulo `.photo-title` (ano + idade) só aparece com `:hover`.
     Celular não tem hover: a galeria vira sete fotos sem dizer de que ano são.
   - **Correção:** mostrar o rótulo sempre em `@media (hover: none)` (e com a
@@ -37,14 +37,14 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
     continuar aparecendo no hover.
   - **Arquivo:** `src/pages/index.astro`.
 
-- [ ] **UX-02 · Home: foco de teclado invisível nos cards** — P
+- [x] **UX-02 · Home: foco de teclado invisível nos cards** — P ✅ 25/09/2026 (PR "P0")
   - **Problema:** o `overflow: hidden` do `.grid-cell` corta o contorno de foco
     do link. Com teclado, não dá para saber qual card está selecionado.
   - **Correção:** aplicar em `:focus-visible` o mesmo efeito do hover (rótulo,
     overlay e a moldura `.card-frame`).
   - **Arquivo:** `src/pages/index.astro`. Faz par com o UX-01.
 
-- [ ] **UX-03 · Home: textos abaixo da regra dos óculos** — P
+- [x] **UX-03 · Home: textos abaixo da regra dos óculos** — P ✅ 25/09/2026 (PR "P0")
   - **Evidência (medida no iPhone):** "uma homenagem, ano a ano" em **11,2 px**,
     caixa-alta espaçada e contraste de 3,8:1; idade no card ("44 anos") em **12 px**;
     selo "Vídeo YouTube" em **10,5 px**.
@@ -52,14 +52,14 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
     Tirar a caixa-alta espaçada do subtítulo e escurecer a cor.
   - **Arquivo:** `src/pages/index.astro`.
 
-- [ ] **UX-04 · Home: as primeiras capas carregam por último** — P
+- [x] **UX-04 · Home: as primeiras capas carregam por último** — P ✅ 25/09/2026 (PR "P0")
   - **Problema:** todas as `<img>` usam `loading="lazy"`, inclusive as que estão
     na primeira tela, e isso atrasa o que ela vê primeiro.
   - **Correção:** `loading="eager"` + `fetchpriority="high"` para os dois
     primeiros cards (`i < 2`), `lazy` para o resto.
   - **Arquivo:** `src/pages/index.astro`.
 
-- [ ] **UX-05 · 2026: informação menor que o corpo do texto** — P
+- [x] **UX-05 · 2026: informação menor que o corpo do texto** — P ✅ 25/09/2026 (PR "P0")
   - **Evidência:** o corpo tem 19,2 px, mas o selo "27 de agosto de 2041 / 30 de
     setembro de 2026" (justamente a data que vira) está em **16 px**; "Ouvir no
     vídeo de 2020" em **16 px**; "27 anos", "9 anos hoje — para reler mais tarde" e
@@ -67,7 +67,7 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
   - **Correção:** subir todos para ≥ 18–19 px (regra do CLAUDE.md §3).
   - **Arquivo:** `src/styles/2026.css` (`.selo`, `.citacao__fonte`, `.para__quando`, `.voltar`).
 
-- [ ] **UX-06 · 2026: a carta termina sem saída** — P
+- [x] **UX-06 · 2026: a carta termina sem saída** — P ✅ 25/09/2026 (PR "P0")
   - **Problema:** são ~15.000 px no celular (≈ 18 telas). O "← início" só existe
     no topo, fora do fluxo, e tem área de toque de 58×31 px (o mínimo recomendado é 44×44).
   - **Correção:** acrescentar depois da assinatura um link discreto "← todas as
@@ -75,14 +75,14 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
   - **Arquivos:** `src/pages/2026/index.astro`, `src/styles/2026.css`.
     A versão completa (anterior/próxima em todos os anos) é o **UX-09**.
 
-- [ ] **UX-07 · 2026: a página não tem `<h1>`** — P
+- [x] **UX-07 · 2026: a página não tem `<h1>`** — P ✅ 25/09/2026 (PR "P0")
   - **Problema:** "Não é só para você." é um `<p>`; os títulos começam em `<h2>`.
     Leitor de tela e buscadores ficam sem o título principal.
   - **Correção:** trocar `<p class="abertura__frase">` por `<h1 class="abertura__frase">`
     (zerar a margem padrão). O visual não muda.
   - **Arquivo:** `src/pages/2026/index.astro`.
 
-- [ ] **UX-08 · 2026: números espaçados em itálico** — P
+- [x] **UX-08 · 2026: números espaçados em itálico** — P ✅ 25/09/2026 (PR "P0")
   - **Problema:** `font-variant-numeric: tabular-nums` está no `body`, e na frase
     do marco ("Faltam 71 dias para o dia 5.379…") os dígitos ficam com buracos em
     itálico.
