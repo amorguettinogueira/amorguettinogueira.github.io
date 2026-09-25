@@ -108,14 +108,14 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
   - **Arquivos:** `public/2023/index.html` (CSS inline), `public/2024/2024.css`,
     `src/pages/2025/index.astro` (`.back-home`).
 
-- [ ] **UX-11 · 2023: contraste do texto muito baixo** — P
+- [x] **UX-11 · 2023: contraste do texto muito baixo** — P ✅ 25/09/2026 (PR "Legado")
   - **Evidência:** texto `#DB7093` sobre fundo rosa ≈ **2,6:1** (o mínimo para
     leitura é 4,5:1). É a página mais difícil de ler do site para quem usa óculos.
   - **Correção:** `#A63D62` dá 5,0:1 sem perder o tom rosa. Também: o avatar
     `mi.png` fixo cobre palavras no celular (mover para o fluxo ou reduzir no celular).
   - **Arquivo:** `public/2023/index.html`.
 
-- [ ] **UX-12 · 2024: a página rola dentro de uma caixa** — M
+- [x] **UX-12 · 2024: a página rola dentro de uma caixa** — M ✅ 25/09/2026 (PR "Legado")
   - **Evidência:** o documento mede 844 px (uma tela); os 6.911 px de conteúdo
     rolam dentro de `.container { height: 100vh; overflow-y: auto; perspective }`,
     que existe por causa do parallax do topo.
@@ -125,13 +125,13 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
     parallax do topo de outro jeito ou abrir mão dele.
   - **Arquivo:** `public/2024/2024.css`.
 
-- [ ] **UX-13 · 2024: leitura cansativa no celular** — P
+- [x] **UX-13 · 2024: leitura cansativa no celular** — P ✅ 25/09/2026 (PR "Legado")
   - **Evidência:** corpo em **16 px** e parágrafos longos **centralizados** abaixo
     de 500 px (`body { text-align: center }`).
   - **Correção:** 19 px e parágrafos alinhados à esquerda; centralizar só títulos.
   - **Arquivo:** `public/2024/2024.css`.
 
-- [ ] **UX-14 · 2024: título ilegível e enfeites por cima do texto** — P
+- [x] **UX-14 · 2024: título ilegível e enfeites por cima do texto** — P ✅ 25/09/2026 (PR "Legado")
   - **Evidência:** "Feliz Aniversário!" em `#4bb4ff` sobre a foto clara ≈ **1,8:1**.
     As pétalas (`.petals`, z-index 1000) e a granulação (`.grain`, z-index 500,
     `mix-blend-mode: multiply`) passam **por cima** do texto e viram manchas cinzas.
@@ -139,7 +139,7 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
     com z-index abaixo do conteúdo.
   - **Arquivo:** `public/2024/2024.css`.
 
-- [ ] **UX-15 · 2025: a festa final cobre a mensagem final** — M
+- [x] **UX-15 · 2025: a festa final cobre a mensagem final** — M ✅ 25/09/2026 (PR "Legado")
   - **Evidência:** confete + 20 balões disparam a 95% da rolagem — exatamente
     quando ela lê o fecho. Balões e barbantes passam por cima do texto; o creme
     sobre o degradê claro dá ≈ **2,4:1**, com sombra preta dura. E dispara de novo
@@ -148,13 +148,13 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
     com o fundo do cartão mais escuro/opaco, e disparar uma vez só.
   - **Arquivo:** `src/pages/2025/index.astro`.
 
-- [ ] **UX-16 · 2025: coração fixo cobre o texto** — P
+- [x] **UX-16 · 2025: coração fixo cobre o texto** — P ✅ 25/09/2026 (PR "Legado")
   - **Evidência:** o coração vermelho fixo no canto inferior direito tampa
     palavras do texto no celular.
   - **Correção:** esconder abaixo de ~48rem ou tirar do `position: fixed`.
   - **Arquivo:** `src/pages/2025/index.astro` (último `div.fixed.bottom-10.right-10`).
 
-- [ ] **UX-17 · Acessibilidade básica do legado** — P
+- [x] **UX-17 · Acessibilidade básica do legado** — P ✅ 25/09/2026 (PR "Legado")
   - A foto de 2025 tem `alt="Garden of Love"` (em inglês e errado) → descrever a foto.
   - 2023 e 2024 não têm `<html lang="pt-BR">` → o Chrome no Android pode oferecer
     "Traduzir esta página?".

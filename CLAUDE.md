@@ -138,8 +138,10 @@ This is the rule most easily broken by an agent being helpful.
 - **`src/layouts/BaseLayout.astro`** is the document shell. Props:
   `title`, `description`, `fontsHref` (a Google Fonts URL), `ogImage`
   (absolute path from site root), `lang` (defaults `pt-BR`).
-- **Legacy pages 2023 and 2024** are hand-written HTML preserved untouched
-  under `public/<ano>/`; they do not use BaseLayout. 2014/2015/2020 are
+- **Legacy pages 2023 and 2024** are hand-written HTML under `public/<ano>/`;
+  they do not use BaseLayout. "Preserved" means the text and the concept, not
+  the CSS: both already had a "beautification" pass, and on 25/09/2026 got
+  readability fixes (contrast, type size, `lang`, `alt`, page-level scroll). 2014/2015/2020 are
   YouTube links, transcribed in `public/<ano>/video-text.txt`.
 - **`notes/` is committed on purpose.** He chose public-with-backup over
   private-without: *"melhor ele público com backup do que sem."*
@@ -292,3 +294,34 @@ deserves a decision of his in a later session. Delete an entry once decided.
 - **The "Vídeo YouTube" badge at 18px (UX-03)** is visibly bigger than before
   and covers more of the 2014/2015/2020 photos. It follows the §3 rule; if it
   feels loud, shorten the text (e.g. "Vídeo") rather than shrinking it.
+
+### PR "Legado" (UX-11 to UX-17)
+
+- **2024 petals and grain are now effectively invisible.** The backlog asked
+  for them *below* the text; every 2024 section has an opaque background, so
+  below the text means behind it. Decide: delete them (and their script), or
+  bring them back on top only over the header/footer photos.
+- **2024 parallax is now a 12-line script.** The old one was a CSS 3D trick
+  that only worked because the page scrolled inside a 100vh box (UX-12). The
+  new one moves the mobile header photo at 40% of the scroll and does nothing
+  on desktop, like before.
+- **2024 had a latent bug the old scroll box hid**: from 500px up, the
+  footer's wave was anchored to the top of the page (a 2px blue line above the
+  header). `.footer` is now `position: relative`.
+- **2024 desktop still right-aligns every other paragraph** (`.even p`). Only
+  the phone layout was changed to left-aligned (UX-13). Worth a look if
+  right-aligned blocks feel tiring on the computer too.
+- **2024 title** is now dark blue `#175a8f`; on phones it sits on a white
+  pill over the photo. The light blue and the black offset shadow are gone.
+- **2025 final card changed colour.** The translucent pink→gold gradient is
+  now an opaque rose→amber one, so the cream text reads at 6.5–7.9:1 instead
+  of ~2.4:1. It is the climax of 2025, so this is a taste call: any darker
+  warm pair works, as long as cream stays at least 4.5:1 on both ends.
+- **2025 party**: confetti and balloons now fly *behind* the card
+  (z-index 5 < content's 10) and fire once per visit. The fixed heart only
+  shows from 1280px up (`xl:`), where it no longer overlaps the column.
+- **2023 avatar** is `position: absolute` now: it stays at the top instead
+  of following the reader. Checked at 390px and 1440px; tablet widths
+  (577–1024px) were not looked at.
+- **Not in this PR**: the "← início" pill of 2023/2024/2025 (UX-10) goes with
+  the navigation PR, which replaces it.
