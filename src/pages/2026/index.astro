@@ -518,6 +518,11 @@ const MARCOS = [
       som.addEventListener("error", function () {
         caixa.hidden = true;
       });
+      // Com o mp3 em cache, os metadados podem chegar antes deste script, e o
+      // "loadedmetadata" já passou: sem isto a caixa do áudio nunca aparece.
+      if (som.readyState >= 1 && !som.error) {
+        caixa.hidden = false;
+      }
 
       botao.addEventListener("click", function () {
         if (som.paused) {
