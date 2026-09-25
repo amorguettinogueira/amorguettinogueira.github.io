@@ -173,13 +173,13 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
   - **Precisa de:** os originais das fotos em resolução maior.
   - **Depende de:** idealmente REPO-07 (imagens de cada ano em `src/anos/<ano>/`).
 
-- [ ] **UX-19 · Fonte Lobster carregada em todas as páginas** — P
+- [x] **UX-19 · Fonte Lobster carregada em todas as páginas** — P ✅ 25/09/2026 (PR "Metadados")
   - **Problema:** o `BaseLayout` carrega a Lobster sempre, mas só a pílula de 2025
     usa. Na home e em 2026 é uma requisição a mais antes da primeira exibição.
   - **Correção:** tirar do `BaseLayout` e passar via `fontsHref` só na página de 2025.
   - **Arquivos:** `src/layouts/BaseLayout.astro`, `src/pages/2025/index.astro`.
 
-- [ ] **UX-20 · Metadados de compartilhamento** — P
+- [x] **UX-20 · Metadados de compartilhamento** — P ✅ 25/09/2026 (PR "Metadados")
   - Faltam `og:url`, `og:locale` (`pt_BR`), `og:image:width/height/alt`,
     `twitter:card` (`summary_large_image`) e `<meta name="theme-color">`.
   - Os títulos "30/09/2026" são enigmáticos na aba e na prévia; algo como
@@ -193,7 +193,7 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
     corações; cortar brilhos periódicos, cintilar do título e pulsar da assinatura.
   - **Arquivo:** `src/pages/index.astro`.
 
-- [ ] **UX-22 · A 404 destoa do resto** — P
+- [x] **UX-22 · A 404 destoa do resto** — P ✅ 25/09/2026 (PR "Metadados")
   - Dancing Script vermelho e emoji 💔, fora da linguagem da home. Alinhar fontes e
     cores com a home.
   - **Arquivo:** `src/pages/404.astro`.
@@ -210,12 +210,12 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
     intermediária com o vídeo embutido e a transcrição que já existe em
     `public/<ano>/video-text.txt` a manteria dentro do arquivo.
 
-- [ ] **UX-25 · Player do áudio da Rafa** — P
+- [x] **UX-25 · Player do áudio da Rafa** — P ✅ 25/09/2026 (PR "Metadados")
   - Mostrar a duração (ex.: "0:42") e deixar tocar na barra para avançar. Hoje a
     barra é uma linha de 2 px que não responde ao toque.
   - **Arquivos:** `src/pages/2026/index.astro`, `src/styles/2026.css`.
 
-- [ ] **UX-26 · Barra do navegador acompanhando a carta** — P
+- [x] **UX-26 · Barra do navegador acompanhando a carta** — P ✅ 25/09/2026 (PR "Metadados")
   - `theme-color` no papel quente e trocado para a noite durante o trecho de 2041
     (no mesmo observador que vira o selo). Só aparece no Chrome Android.
 

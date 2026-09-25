@@ -1,6 +1,7 @@
 ---
 // Shared document shell for the Astro-managed pages (landing + each new year).
-// Bespoke legacy pages (2023, 2024) live untouched in /public and don't use this.
+// Bespoke legacy pages (2023, 2024) live in /public and don't use this; their
+// <head> carries a hand-made copy of the sharing tags below.
 interface Props {
   title: string;
   description?: string;
@@ -8,6 +9,13 @@ interface Props {
   fontsHref?: string;
   /** Optional Open Graph image URL (absolute path from site root). */
   ogImage?: string;
+  /** Describes the preview image. Defaults to a generic line about the photo. */
+  ogImageAlt?: string;
+  /** Pixel size of ogImage. Every cover is 622×415. */
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  /** Colour of the phone's browser bar (Chrome on Android). */
+  themeColor?: string;
   /** Language of the document. */
   lang?: string;
 }
@@ -17,11 +25,16 @@ const {
   description = "",
   fontsHref,
   ogImage,
+  ogImageAlt = "Foto da Michelle",
+  ogImageWidth = 622,
+  ogImageHeight = 415,
+  themeColor = "#fbe3ec",
   lang = "pt-BR",
 } = Astro.props;
 
 // Open Graph requires an absolute URL; WhatsApp drops the preview image otherwise.
 const ogImageUrl = ogImage && new URL(ogImage, Astro.site).href;
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -32,12 +45,27 @@ const ogImageUrl = ogImage && new URL(ogImage, Astro.site).href;
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <meta name="theme-color" content={themeColor} />
+    <link rel="canonical" href={pageUrl} />
 
-    <!-- Open Graph -->
+    <!-- Open Graph (WhatsApp, Facebook) + Twitter/X -->
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
     <meta property="og:type" content="website" />
-    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="michellenogueira.info" />
+    {
+      ogImageUrl && (
+        <>
+          <meta property="og:image" content={ogImageUrl} />
+          <meta property="og:image:width" content={String(ogImageWidth)} />
+          <meta property="og:image:height" content={String(ogImageHeight)} />
+          <meta property="og:image:alt" content={ogImageAlt} />
+        </>
+      )
+    }
+    <meta name="twitter:card" content={ogImageUrl ? "summary_large_image" : "summary"} />
 
     {
       fontsHref && (
@@ -48,7 +76,6 @@ const ogImageUrl = ogImage && new URL(ogImage, Astro.site).href;
         </>
       )
     }
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <slot name="head" />
   </head>
   <body>

@@ -138,7 +138,12 @@ This is the rule most easily broken by an agent being helpful.
   by the page. Do not widen the Tailwind globs.
 - **`src/layouts/BaseLayout.astro`** is the document shell. Props:
   `title`, `description`, `fontsHref` (a Google Fonts URL), `ogImage`
-  (absolute path from site root), `lang` (defaults `pt-BR`).
+  (absolute path from site root), `ogImageAlt`, `ogImageWidth`/`Height`
+  (default 622×415, the size of every cover), `themeColor` (the phone's
+  browser bar), `lang` (defaults `pt-BR`). It emits `og:url`, `og:locale`,
+  `twitter:card` and `canonical` on its own. It no longer loads Lobster; the
+  2025 page asks for it in its `fontsHref`. Titles follow
+  "Para a Mi — 30/09/<ano>".
 - **Legacy pages 2023 and 2024** are hand-written HTML under `public/<ano>/`;
   they do not use BaseLayout. "Preserved" means the text and the concept, not
   the CSS: both already had a "beautification" pass, and on 25/09/2026 got
@@ -359,3 +364,36 @@ deserves a decision of his in a later session. Delete an entry once decided.
 - **The 2026 end link from the P0 PR ("← todas as cartas") is replaced** by
   the full component. Before 29/09 the 2026 page shows only "← 2025"; the
   "2026 →" link on 2025 appears with the release rebuild.
+
+### PR "Metadados e detalhes" (UX-19, UX-20, UX-22, UX-25, UX-26)
+
+- **A real bug found on the live 2026 page** (fixed in the P0 PR, not here):
+  with the mp3 cached, `loadedmetadata` fired before the script attached its
+  listener and Rafa's audio box stayed hidden for good (3/3 loads in headless
+  Chromium). The script now checks `readyState` after wiring up.
+- **Sharing tags on 2023/2024 are a hand-made copy** of BaseLayout's (those
+  pages had none: a WhatsApp link to them showed no preview). Their titles
+  are now "Para a Mi — 30/09/<ano>" too.
+- **`og:image:alt` texts are mine**, describing what is in each cover.
+- **The 2026 browser bar** goes night (`#1e1627`) while the top of the screen
+  is inside the 2041 section and back to the warm paper (`#f7e2de`) after.
+  Only Chrome on Android shows it; untested on a real phone.
+- **The audio player** now shows the duration (1:06) before playing and
+  "0:33 / 1:06" while playing; the bar is an `<input type="range">` with a
+  44px-tall touch area. Screen readers get "0:33 de 1:06".
+- **404** now uses the home's fonts and palette: no emoji, no red.
+
+### Backlog items not done in this round, and why
+
+- **UX-18 (retina photos)** needs the original photos in higher resolution,
+  which are only on his devices. Blocked on him.
+- **UX-21 (home motion)** is marked in the backlog as his taste decision.
+  Nothing changed; the audit's suggestion still stands.
+- **REPO-07 (each year in one folder)** moves 2026's CSS and photos. Safe
+  now that `npm run verificar` exists, but it would conflict with every open
+  PR. Do it after they are merged.
+- **REPO-08 (2023/2024 into Astro)** is big and optional; the nav and
+  sharing tags were copied into their HTML instead. Revisit if the copies
+  start to drift.
+- **REPO-11 (letter in Markdown)** is for the 2027 letter; nothing to do
+  until that page starts.
