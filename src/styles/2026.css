@@ -441,25 +441,6 @@ body {
   line-height: 1.1;
 }
 
-/* Saída no fim da carta: são ~18 telas no celular até aqui. */
-.voltar-fim {
-  display: inline-block;
-  margin-top: 3.5rem;
-  padding: 0.75rem 1rem;
-  color: var(--tinta-media);
-  font-size: 1.1875rem;
-  font-style: italic;
-  text-decoration: underline;
-  text-decoration-color: var(--linha-quente);
-  text-underline-offset: 4px;
-}
-
-.voltar-fim:hover,
-.voltar-fim:focus-visible {
-  color: var(--rosa);
-  text-decoration-color: var(--rosa-claro);
-}
-
 /* ── Foco visível ──────────────────────────────────────────────────────── */
 
 a:focus-visible,

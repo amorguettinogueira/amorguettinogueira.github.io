@@ -92,7 +92,7 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
 
 ### P1 · Consistência do arquivo (depois de 30/09)
 
-- [ ] **UX-09 · Navegação entre os anos** — M
+- [x] **UX-09 · Navegação entre os anos** — M ✅ 25/09/2026 (PR "Navegação")
   - **Problema:** cada ano tem um "voltar" diferente (pílula em Lobster em
     2023/2024/2025, itálico discreto em 2026) e nenhum oferece "carta anterior /
     próxima". Quem quiser reler o arquivo tem que voltar à home toda vez.
@@ -100,7 +100,7 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
     carta, alimentado pela lista de anos do **REPO-03**.
   - **Depende de:** REPO-03. Nos anos legados, depende do REPO-08 (ou copiar o HTML).
 
-- [ ] **UX-10 · Pílula "← início" fixa cobre o texto** — P
+- [x] **UX-10 · Pílula "← início" fixa cobre o texto** — P ✅ 25/09/2026 (PR "Navegação")
   - **Evidência:** nas capturas de 2023, 2024 e 2025 a pílula fica em cima das
     linhas do parágrafo enquanto se lê no celular.
   - **Correção:** deixar de ser fixa (só no topo) ou sumir ao rolar para baixo e
@@ -200,12 +200,12 @@ numa linha — isso evita que uma sessão futura proponha a mesma coisa de novo.
 
 ### P3 · Ideias (não são defeitos)
 
-- [ ] **UX-23 · Home como linha do tempo** — M
+- [x] **UX-23 · Home como linha do tempo** — M ✅ 25/09/2026 (PR "Navegação") — frases escondidas até você reescrever, ver CLAUDE.md §9
   - Sob cada card, uma linha com o conceito do ano (tabela do CLAUDE.md §6:
     "2025 — não consigo lê-la"). A galeria passa a contar o arco.
   - **Depende de:** REPO-03.
 
-- [ ] **UX-24 · Anos em vídeo sem sair do site** — M
+- [x] **UX-24 · Anos em vídeo sem sair do site** — M ✅ 25/09/2026 (PR "Navegação")
   - 2014, 2015 e 2020 hoje mandam para o YouTube numa aba nova. Uma página
     intermediária com o vídeo embutido e a transcrição que já existe em
     `public/<ano>/video-text.txt` a manteria dentro do arquivo.
@@ -264,7 +264,7 @@ quebrado antes do push.
     atividade. Religar com `gh workflow enable release.yml` antes de 29/09 —
     CLAUDE.md §4 e §5.
 
-- [ ] **REPO-03 · Lista de anos num arquivo só** — P
+- [x] **REPO-03 · Lista de anos num arquivo só** — P ✅ 25/09/2026 (PR "Navegação")
   - **Problema:** o array `years` mora dentro de `src/pages/index.astro`, com a
     idade digitada à mão.
   - **Correção:** `src/data/anos.ts` com `{ ano, href, capa, tipo: "carta" | "video" | "legado", conceito }`;
