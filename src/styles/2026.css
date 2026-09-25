@@ -336,19 +336,67 @@ body {
   line-height: 1.4;
 }
 
-.audio__trilho {
-  display: block;
-  height: 2px;
-  margin-top: 0.6rem;
-  background: var(--linha-quente);
-  overflow: hidden;
+.audio__linha {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.15rem;
 }
 
-.audio__progresso {
-  display: block;
-  height: 100%;
-  width: 0%;
+.audio__tempo {
+  flex: 0 0 auto;
+  color: var(--tinta-media);
+  font-size: 1.1875rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* A barra: 44px de altura para o dedo, 4px de trilho à vista. */
+.audio__barra {
+  --pos: 0%;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 2.75rem;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.audio__barra::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--rosa) var(--pos), var(--linha-quente) var(--pos));
+}
+
+.audio__barra::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--rosa) var(--pos), var(--linha-quente) var(--pos));
+}
+
+.audio__barra::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: calc(2px - 0.55rem);
+  border: 0;
+  border-radius: 50%;
   background: var(--rosa);
+}
+
+.audio__barra::-moz-range-thumb {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--rosa);
+}
+
+.audio__barra:focus-visible {
+  outline: 2px solid var(--rosa);
+  outline-offset: 2px;
 }
 
 /* ── 2041: a página muda de hemisfério ─────────────────────────────────── */
