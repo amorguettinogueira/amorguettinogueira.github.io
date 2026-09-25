@@ -263,3 +263,32 @@ ending quietly contradicts.
 - Open items live in `notes/banco-de-ideias.md` §5. The two that decay with
   time: writing down the four details of editorial note nº 4, and asking
   Michelle and his mother about what he blocked out of Oct–Dec 2013.
+
+---
+
+## 9. Backlog sessions — constraints found (for Adriano to review)
+
+Written while working `notes/backlog-melhorias.md` in a cloud session on
+25/09/2026. Each entry is something that limited or shaped the work and
+deserves a decision of his in a later session. Delete an entry once decided.
+
+### PR "P0" (UX-01 to UX-08)
+
+- **The design skill named in §2 was not available.** The cloud session had
+  no `frontend-design:frontend-design`; the P0 fixes were small enough to
+  follow the audit's own prescriptions instead. Check again before designing
+  2027.
+- **Cloud screenshots render with fallback fonts.** Headless Chromium in the
+  cloud container does not load Google Fonts through the proxy, so every
+  screenshot there shows a generic serif/sans. Sizes and layout can be
+  verified there; the final look must still be checked on the phone.
+- **The 2026 card cannot be previewed from `dist/` before 29/09.** The date
+  filter runs at build time, so `astro preview` hides it; only `npm run dev`
+  shows it. The home fixes were verified on the other six cards.
+- **Home labels on touch screens (UX-01).** `@media (hover: none)` now keeps
+  year and age always visible, with a shorter gradient than the desktop hover
+  one so the photos are not tinted all over. A touchscreen laptop with a mouse
+  reports `hover: hover` and keeps the hover behaviour — intended.
+- **The "Vídeo YouTube" badge at 18px (UX-03)** is visibly bigger than before
+  and covers more of the 2014/2015/2020 photos. It follows the §3 rule; if it
+  feels loud, shorten the text (e.g. "Vídeo") rather than shrinking it.
