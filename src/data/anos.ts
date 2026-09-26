@@ -5,7 +5,7 @@
 // letter and the timeline line only go live on 29/09 of that year (see
 // `anosVisiveis` and CLAUDE.md §4).
 
-export type Tipo = "carta" | "video" | "legado";
+export type Tipo = "carta" | "video";
 
 export interface Ano {
   ano: number;
@@ -13,7 +13,7 @@ export interface Ano {
   href: string;
   /** Cover, also the WhatsApp preview image. Never move it (CLAUDE.md §5). */
   capa: string;
-  /** "carta": Astro page · "legado": hand-written HTML in public/ · "video": YouTube + transcript. */
+  /** "carta": a letter in src/anos/<ano>/ · "video": YouTube + transcript. */
   tipo: Tipo;
   /** One line under the card in the gallery (UX-23). Draft wording — Adriano's to rewrite. */
   conceito: string;
@@ -34,8 +34,8 @@ export const MOSTRAR_CONCEITOS = true;
 export const ANOS: Ano[] = [
   { ano: 2026, href: "/2026/", capa: "/2026.jpg", tipo: "carta", conceito: "a carta às filhas, lida por cima do ombro" },
   { ano: 2025, href: "/2025/", capa: "/2025.jpg", tipo: "carta", conceito: "o quadro que eu ainda não consigo ler" },
-  { ano: 2024, href: "/2024/index.html", capa: "/2024.jpg", tipo: "legado", conceito: "uma fábula, e a promessa das bodas de ouro" },
-  { ano: 2023, href: "/2023/index.html", capa: "/2023.jpg", tipo: "legado", conceito: "o que ninguém vê, nos atos de todo dia" },
+  { ano: 2024, href: "/2024/", capa: "/2024.jpg", tipo: "carta", conceito: "uma fábula, e a promessa das bodas de ouro" },
+  { ano: 2023, href: "/2023/", capa: "/2023.jpg", tipo: "carta", conceito: "o que ninguém vê, nos atos de todo dia" },
   { ano: 2020, href: "/2020/", capa: "/2020.jpg", tipo: "video", youtube: "gbf-Ln3W1r8", conceito: "outras vozes falando de você" },
   { ano: 2015, href: "/2015/", capa: "/2015.jpg", tipo: "video", youtube: "iaZs_Lzxa48", conceito: "a origem do seu nome" },
   { ano: 2014, href: "/2014/", capa: "/2014.jpg", tipo: "video", youtube: "Gb7v0Ki5Dm4", conceito: "tudo o que você toca se transforma" },

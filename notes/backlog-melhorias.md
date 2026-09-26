@@ -311,7 +311,7 @@ quebrado antes do push.
     muda a URL delas, o que não tem problema (ninguém linka foto direto) e habilita o UX-18.
   - **Depende de:** REPO-01.
 
-- [ ] **REPO-08 · Trazer 2023 e 2024 para dentro do Astro** — G · *opcional*
+- [x] **REPO-08 · Trazer 2023 e 2024 para dentro do Astro** — G · *opcional* ✅ 26/09/2026 — `src/anos/2023` e `src/anos/2024`, idênticas ao pixel
   - Hoje são HTML soltos em `public/` com CSS e scripts copiados entre si (pílula
     de voltar, granulação, corações). Migrar para `src/pages/2023/index.astro` e
     `src/pages/2024/index.astro` com o `BaseLayout` permite compartilhar navegação
