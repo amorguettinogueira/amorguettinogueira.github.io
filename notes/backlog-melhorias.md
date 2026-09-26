@@ -295,7 +295,7 @@ quebrado antes do push.
     o `CLAUDE.md` como fonte dos detalhes. Atualizar também o CLAUDE.md §8, que
     ainda diz que o card está "no working tree, not yet pushed" (já está commitado).
 
-- [ ] **REPO-07 · Cada ano num lugar só** — M
+- [x] **REPO-07 · Cada ano num lugar só** — M ✅ 26/09/2026 — `src/anos/<ano>/` (Carta.astro, estilo.css, fotos/, componentes/)
   - **Hoje**, um ano se espalha por até seis lugares: `public/<ano>.jpg`,
     `public/<ano>/`, `src/pages/<ano>/`, `src/styles/<ano>.css`,
     `src/components/year<ano>/`, `src/assets/<ano>/`.

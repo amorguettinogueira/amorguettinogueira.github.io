@@ -5,8 +5,7 @@
 export default {
   darkMode: ["class"],
   content: [
-    "./src/pages/2025/**/*.{astro,html,js,ts}",
-    "./src/components/year2025/**/*.{astro,html,js,ts}",
+    "./src/anos/2025/**/*.{astro,html,js,ts}",
   ],
   // These reveal classes are added at runtime by the page's scroll script, so
   // Tailwind can't see them in the markup. Force-generate them.
