@@ -450,12 +450,21 @@ deserves a decision of his in a later session. Delete an entry once decided.
   44px-tall touch area. Screen readers get "0:33 de 1:06".
 - **404** now uses the home's fonts and palette: no emoji, no red.
 
+### UX-21 (home motion), 26/09/2026
+
+- **Done exactly as the audit suggested**, at his request: the title enters
+  and stays still (no shimmer), the signature keeps its -1° tilt without the
+  pulse, and sparkles come only as the burst on load and under the mouse — no
+  more one every 750 ms. Measured after load: endless animations went from
+  25 to 23 (20 falling hearts + 3 footer hearts), sparkles from ~1.3/s to 0.
+- **Kept on purpose**: the falling hearts ("chuva leve de corações") and the
+  three bobbing footer hearts, which the suggestion did not list. They are
+  the next thing to cut if the home still feels busy.
+
 ### Backlog items not done in this round, and why
 
 - **UX-18 (retina photos)** needs the original photos in higher resolution,
   which are only on his devices. Blocked on him.
-- **UX-21 (home motion)** is marked in the backlog as his taste decision.
-  Nothing changed; the audit's suggestion still stands.
 - **REPO-07 (each year in one folder)** moves 2026's CSS and photos. Safe
   now that `npm run verificar` exists, but it would conflict with every open
   PR. Do it after they are merged.
